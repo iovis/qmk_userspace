@@ -9,3 +9,6 @@
 *.hex
 *.bin
 *.uf2
+
+# clangd
+compile_commands.json
