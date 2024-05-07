@@ -18,6 +18,8 @@ combo_t key_combos[] = {
 };
 
 /// Complex key definitions
+#define MY_MEH LCA(KC_LCMD)
+
 // Home Row Mods
 #define HM_A LCTL_T(KC_A)
 #define HM_S LALT_T(KC_S)
@@ -38,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+---------+--------+---------+--------|   |--------+---------+--------+---------+--------+--------|
        KC_LSFT, KC_Z   , KC_X    , KC_C   , KC_V    , KC_B   ,     KC_N   , KC_M    , HM_COMM, HM_DOT  , HM_SLSH, KC_RSFT,
     //`--------+--------+---------+--------+---------+--------/   \--------+---------+--------+---------+--------+--------'
-                                   TT(3)  , MO(1)   , KC_ENT  ,    MO(2)  , KC_SPC  , MO(4)
+                                   TT(3)  , MO(1)   , MY_MEH ,     MO(2)  , KC_SPC  , MO(4)
     //                           `+--------+---------+--------'   `--------+---------+--------+'
     ),
 
