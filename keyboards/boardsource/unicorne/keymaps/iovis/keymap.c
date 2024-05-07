@@ -26,6 +26,7 @@ combo_t key_combos[] = {
 #define HM_D LCMD_T(KC_D)
 #define HM_F LSFT_T(KC_F)
 
+#define HM_M RSFT_T(KC_M)
 #define HM_COMM RCMD_T(KC_COMM)
 #define HM_DOT LALT_T(KC_DOT)
 #define HM_SLSH RCTL_T(KC_SLSH)
@@ -38,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+---------+--------+---------+--------|   |--------+---------+--------+---------+--------+--------|
        KC_LCTL, HM_A   , HM_S    , HM_D   , HM_F    , KC_G   ,     KC_H   , KC_J    , KC_K   , KC_L    , KC_SCLN, KC_QUOT,
     //|--------+--------+---------+--------+---------+--------|   |--------+---------+--------+---------+--------+--------|
-       KC_LSFT, KC_Z   , KC_X    , KC_C   , KC_V    , KC_B   ,     KC_N   , KC_M    , HM_COMM, HM_DOT  , HM_SLSH, KC_RSFT,
+       KC_LSFT, KC_Z   , KC_X    , KC_C   , KC_V    , KC_B   ,     KC_N   , HM_M    , HM_COMM, HM_DOT  , HM_SLSH, KC_RSFT,
     //`--------+--------+---------+--------+---------+--------/   \--------+---------+--------+---------+--------+--------'
                                    TT(3)  , MO(1)   , MY_MEH ,     MO(2)  , KC_SPC  , MO(4)
     //                           `+--------+---------+--------'   `--------+---------+--------+'
