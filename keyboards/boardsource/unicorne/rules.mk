@@ -1,0 +1,5 @@
+AUDIO_DRIVER = pwm_hardware
+AUDIO_ENABLE = no
+POINTING_DEVICE_DRIVER = analog_joystick
+POINTING_DEVICE_ENABLE = no
+SERIAL_DRIVER = vendor
