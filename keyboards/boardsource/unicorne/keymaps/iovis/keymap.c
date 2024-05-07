@@ -9,7 +9,7 @@ enum layer_number {
 };
 
 /// Combos
-const uint16_t PROGMEM combo_esc[]   = {KC_TAB, KC_Q, COMBO_END};
+const uint16_t PROGMEM combo_esc[]   = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_enter[] = {KC_L, KC_SCLN, COMBO_END};
 
 combo_t key_combos[] = {
@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_NUBS, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,
+       _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_ESC , KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, _______,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
