@@ -1,30 +1,26 @@
-default: init
+alias flash := console
+alias compile := dev
+
+default: console
 
 # lists available tasks
 @list:
     just --list
 
-# init project
+# init project and clean
 init:
     qmk setup
     qmk compile --compiledb -j0
 
-# compile
-dev:
-    qmk compile -j0
-
-# open the project in the browser
 open:
     open .
 
-# start a console
+# flash the device
 console:
     cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
 
-# # run tests
-# test:
-#     rspec
-#
-# # Open the DB
-# db:
-#     pgcli $DATABASE_URL
+# compile
+dev:
+    #!/usr/bin/env fish
+    qmk compile -j0
+    pause_if_err
