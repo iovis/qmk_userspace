@@ -10,7 +10,7 @@ enum layer_number {
 
 /// Combos
 const uint16_t PROGMEM combo_esc[]   = {KC_TAB, KC_Q, COMBO_END};
-const uint16_t PROGMEM combo_enter[] = {KC_SCLN, KC_QUOT, COMBO_END};
+const uint16_t PROGMEM combo_enter[] = {KC_L, KC_SCLN, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo_esc, KC_ESC),
