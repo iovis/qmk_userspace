@@ -18,6 +18,29 @@ combo_t key_combos[] = {
     COMBO(combo_enter, KC_ENT),
 };
 
+/// Macros
+enum custom_keycodes {
+    MY_THIN = SAFE_RANGE,
+    MY_FATA,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MY_THIN:
+            if (record->event.pressed) {
+                SEND_STRING("->");
+            }
+            break;
+        case MY_FATA:
+            if (record->event.pressed) {
+                SEND_STRING("=>");
+            }
+            break;
+    }
+
+    return true;
+}
+
 /// Complex key definitions
 #define MY_MEH LCA(KC_LCMD)
 
@@ -48,11 +71,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_SY] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_NUBS, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_PLUS,
+       KC_NUBS, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_UNDS,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_TILD, KC_PIPE, KC_BSLS, KC_UNDS, XXXXXXX,     KC_GRV , KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, KC_EQL ,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_UNDS, XXXXXXX, KC_MINS, _______,
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     MY_FATA, MY_THIN, KC_PLUS, XXXXXXX, KC_MINS, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
