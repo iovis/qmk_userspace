@@ -44,6 +44,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 /// Complex key definitions
 #define MY_MEH LCA(KC_LCMD)
 #define SP_SYM LT(_SY, KC_SPC)
+#define MY_EURO S(A(KC_2))
 
 // Next/Previous
 #define MY_CTAB C(KC_TAB)
@@ -62,6 +63,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    // TODO:
+    // - home row number layer instead of MEH?
+    //   - Maybe also act as Enter on tap?
     [_BASE] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
@@ -100,11 +104,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NU] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_TILD, KC_7   , KC_8   , KC_9   , KC_ASTR, _______,
+       _______, KC_DLR , MY_EURO, XXXXXXX, XXXXXXX, XXXXXXX,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, XXXXXXX,     KC_PLUS, KC_4   , KC_5   , KC_6   , KC_EQL , KC_ENT ,
+       KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, KC_PERC, XXXXXXX,     KC_DOT , KC_4   , KC_5   , KC_6   , KC_MINS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_MINS, KC_1   , KC_2   , KC_3   , KC_SLSH, _______,
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_COMM, KC_1   , KC_2   , KC_3   , KC_SLSH, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     KC_0   , _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
