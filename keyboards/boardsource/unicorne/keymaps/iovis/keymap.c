@@ -45,6 +45,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define MY_MEH LCA(KC_LCMD)
 #define SP_SYM LT(_SY, KC_SPC)
 
+// Next/Previous
+#define MY_CTAB C(KC_TAB)
+#define MY_CSTB S(C(KC_TAB))
+
 // Home Row Mods
 #define HM_A LCTL_T(KC_A)
 #define HM_S LALT_T(KC_S)
@@ -88,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______,
+       _______, XXXXXXX, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,     XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
