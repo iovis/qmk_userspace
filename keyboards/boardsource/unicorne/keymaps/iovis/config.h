@@ -1,6 +1,7 @@
 #pragma once
 
 #define TAPPING_TOGGLE 2
+#define QUICK_TAP_TERM 0
 
 // UEFI was not detecting some of my boards
 #define SPLIT_WATCHDOG_ENABLE
