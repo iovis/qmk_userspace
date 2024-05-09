@@ -43,6 +43,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 /// Complex key definitions
 #define MY_MEH LCA(KC_LCMD)
+#define SP_SYM LT(_SY, KC_SPC)
 
 // Home Row Mods
 #define HM_A LCTL_T(KC_A)
@@ -65,17 +66,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , HM_M   , HM_COMM, HM_DOT , HM_SLSH, KC_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TT(_NU), MO(_SY), MY_MEH ,     TT(_NV), KC_SPC , MO(_ME)
+                                  TT(_NU), MO(_SY), MY_MEH ,     TT(_NV), SP_SYM , MO(_ME)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
     [_SY] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_NUBS, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,
+       _______, KC_1   , KC_LABK, KC_RABK, KC_BSLS, KC_AT  ,     KC_AMPR, KC_GRV , KC_LBRC, KC_RBRC, KC_0   , _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_TILD, KC_PIPE, KC_BSLS, KC_UNDS, XXXXXXX,     KC_GRV , KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, KC_EQL ,
+       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_HASH,     KC_PIPE, KC_UNDS, KC_LPRN, KC_RPRN, KC_SCLN, KC_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     MY_FATA, MY_THIN, KC_PLUS, KC_UNDS, KC_MINS, _______,
+       _______, KC_COLN, KC_PERC, KC_ASTR, KC_CIRC, MY_THIN,     KC_TILD, KC_DLR , KC_LCBR, KC_RCBR, KC_SLSH, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
