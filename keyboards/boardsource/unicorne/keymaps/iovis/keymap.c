@@ -45,6 +45,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Layer taps
 #define SYM_SPC LT(_SY, KC_SPC)
 #define NUM_ENT LT(_NU, KC_ENT)
+#define NAV_ENT LT(_NV, KC_ENT)
 
 // Next/Previous
 #define MY_CTAB C(KC_TAB)
@@ -73,19 +74,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , HM_M   , HM_COMM, HM_DOT , HM_SLSH, KC_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TT(_NP), MO(_SY), NUM_ENT,     TT(_NV), KC_SPC , MO(_ME)
+                                  TT(_NP), MO(_SY), MO(_NU),     NAV_ENT, KC_SPC , MO(_ME)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
     [_SY] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, KC_COLN, KC_LABK, KC_RABK, KC_BSLS, KC_AT  ,     KC_AMPR, KC_GRV , KC_LBRC, KC_RBRC, KC_0   , _______,
+       _______, KC_COLN, KC_LABK, KC_RABK, KC_PERC, KC_AT  ,     KC_AMPR, KC_GRV , KC_LBRC, KC_RBRC, KC_0   , _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_HASH,     KC_PIPE, KC_UNDS, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, MY_THIN, KC_PERC, KC_ASTR, KC_CIRC, MY_FATA,     KC_TILD, KC_DLR , KC_LCBR, KC_RCBR, KC_SLSH, _______,
+       _______, KC_BSLS, KC_PERC, KC_ASTR, KC_CIRC, MY_FATA,     KC_TILD, KC_DLR , KC_LCBR, KC_RCBR, KC_SLSH, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     _______, _______, _______
+                                  _______, _______, _______,     KC_ENT , _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
