@@ -40,7 +40,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 /// Complex key definitions
 #define MY_MEH LCA(KC_LCMD)
-#define MY_EURO S(A(KC_2))
+#define MY_EURO S(RALT(KC_2))
 
 // Layer taps
 #define SYM_SPC LT(_SY, KC_SPC)
