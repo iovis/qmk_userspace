@@ -56,6 +56,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define HM_D LCMD_T(KC_D)
 #define HM_F LSFT_T(KC_F)
 
+#define HM_QUOT RCAG_T(KC_QUOT)
+
 #define HM_M RSFT_T(KC_M)
 #define HM_COMM RCMD_T(KC_COMM)
 #define HM_DOT LALT_T(KC_DOT)
@@ -67,11 +69,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LCTL, HM_A   , HM_S   , HM_D   , HM_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
+       KC_LCTL, HM_A   , HM_S   , HM_D   , HM_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, HM_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , HM_M   , HM_COMM, HM_DOT , HM_SLSH, KC_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TT(_NP), MO(_SY), NUM_ENT,     TT(_NV), SYM_SPC, MO(_ME)
+                                  TT(_NP), MO(_SY), NUM_ENT,     TT(_NV), KC_SPC , MO(_ME)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
