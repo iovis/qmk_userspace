@@ -11,12 +11,12 @@ enum layer_number {
 };
 
 /// Combos
-const uint16_t PROGMEM combo_esc[]   = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_enter[] = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM combo_esc[]   = {KC_Q, KC_W, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(combo_esc, KC_ESC),
     COMBO(combo_enter, KC_ENT),
+    COMBO(combo_esc, KC_ESC),
 };
 
 /// Macros
@@ -28,14 +28,10 @@ enum custom_keycodes {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MY_THIN:
-            if (record->event.pressed) {
-                SEND_STRING("->");
-            }
+            if (record->event.pressed) SEND_STRING("->");
             break;
         case MY_FATA:
-            if (record->event.pressed) {
-                SEND_STRING("=>");
-            }
+            if (record->event.pressed) SEND_STRING("=>");
             break;
     }
 
@@ -44,10 +40,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 /// Complex key definitions
 #define MY_MEH LCA(KC_LCMD)
-#define SP_SYM LT(_SY, KC_SPC)
-#define HM_ENT LT(_NU, KC_ENT)
-
 #define MY_EURO S(A(KC_2))
+
+// Layer taps
+#define SYM_SPC LT(_SY, KC_SPC)
+#define NUM_ENT LT(_NU, KC_ENT)
 
 // Next/Previous
 #define MY_CTAB C(KC_TAB)
@@ -74,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , HM_M   , HM_COMM, HM_DOT , HM_SLSH, KC_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TT(_NP), MO(_SY), HM_ENT ,     TT(_NV), SP_SYM , MO(_ME)
+                                  TT(_NP), MO(_SY), NUM_ENT,     TT(_NV), SYM_SPC, MO(_ME)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
