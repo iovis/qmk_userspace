@@ -63,6 +63,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define HM_COMM RCMD_T(KC_COMM)
 #define HM_DOT LALT_T(KC_DOT)
 #define HM_SLSH RCTL_T(KC_SLSH)
+#define HM_RSFT RSFT_T(KC_ENT)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -72,9 +73,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LCTL, HM_A   , HM_S   , HM_D   , HM_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, HM_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , HM_M   , HM_COMM, HM_DOT , HM_SLSH, KC_RSFT,
+       KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , HM_M   , HM_COMM, HM_DOT , HM_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TT(_NP), MO(_SY), MO(_NU),     NAV_ENT, KC_SPC , MO(_ME)
+                                  TT(_NP), MO(_SY), MO(_NU),     MO(_NV), KC_SPC , MO(_ME)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
