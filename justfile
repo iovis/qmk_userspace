@@ -1,5 +1,7 @@
 alias flash := console
+alias build := console
 alias compile := dev
+alias run := dev
 
 default: console
 
