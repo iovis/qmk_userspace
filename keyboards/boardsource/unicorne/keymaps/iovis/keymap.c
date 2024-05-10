@@ -4,7 +4,8 @@ enum layer_number {
     _BASE = 0,
     _SY, // Symbols
     _NV, // Navigation
-    _NU, // Number Pad
+    _NU, // Number Row
+    _NP, // Number Pad
     _ME, // Media
     _GA, // Gaming
 };
@@ -44,6 +45,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 /// Complex key definitions
 #define MY_MEH LCA(KC_LCMD)
 #define SP_SYM LT(_SY, KC_SPC)
+#define HM_ENT LT(_NU, KC_ENT)
+
 #define MY_EURO S(A(KC_2))
 
 // Next/Previous
@@ -63,9 +66,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    // TODO:
-    // - home row number layer instead of MEH?
-    //   - Maybe also act as Enter on tap?
     [_BASE] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , HM_M   , HM_COMM, HM_DOT , HM_SLSH, KC_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TT(_NU), MO(_SY), MY_MEH ,     TT(_NV), SP_SYM , MO(_ME)
+                                  TT(_NP), MO(_SY), HM_ENT ,     TT(_NV), SP_SYM , MO(_ME)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -103,6 +103,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_NU] = LAYOUT_split_3x6_3(
+    //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
+       _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,     KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , _______,
+    //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
+       _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,
+    //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, _______, _______, _______, _______,
+    //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
+                                  _______, _______, _______,     _______, _______, _______
+    //                          `+--------+--------+--------'   `--------+--------+--------+'
+    ),
+
+    [_NP] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        _______, KC_DLR , MY_EURO, XXXXXXX, XXXXXXX, XXXXXXX,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -116,11 +128,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_ME] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, QK_BOOT,     XXXXXXX, KC_F7  , KC_F8  , KC_F9  , XXXXXXX, _______,
+       XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, QK_BOOT,     RGB_VAI, RGB_HUI, RGB_SAI, RGB_MOD, RGB_TOG, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_CAPS, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,     XXXXXXX, KC_F4  , KC_F5  , KC_F6  , XXXXXXX, XXXXXXX,
+       KC_CAPS, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, EE_CLR ,     RGB_VAD, RGB_HUD, RGB_SAD, RGB_RMOD,CK_TOGG, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, KC_F1  , KC_F2  , KC_F3  , XXXXXXX, _______,
+       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   TT(_GA), _______, _______,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
@@ -138,17 +150,5 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   TT(3)  , KC_SPC , MY_MEH ,     TT(_NV), KC_SPC , MO(4)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
-
-    // [_RAISE] = LAYOUT_split_3x6_3(
-    // //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-    //    QK_BOOT, KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,     RGB_VAI, RGB_HUI, RGB_SAI, RGB_MOD, RGB_TOG, _______,
-    // //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-    //    EE_CLR , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     RGB_VAD, RGB_HUD, RGB_SAD, RGB_RMOD,CK_TOGG, _______,
-    // //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-    //    KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 ,     _______, _______, _______, _______, _______, _______,
-    // //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-    //                               _______, _______, _______,     _______, _______, _______
-    // //                          `+--------+--------+--------'   `--------+--------+--------+'
-    // ),
 };
 // clang-format on
