@@ -1,9 +1,7 @@
-alias flash := console
-alias build := console
-alias compile := dev
-alias run := dev
+alias console := flash
+alias dev := compile
 
-default: console
+default: flash
 
 # lists available tasks
 @list:
@@ -18,11 +16,11 @@ open:
     open .
 
 # flash the device
-console:
+flash:
     cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
 
 # compile
-dev:
+compile:
     #!/usr/bin/env fish
     qmk compile -j0
     pause_if_err
