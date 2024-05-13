@@ -5,7 +5,7 @@
 #define QUICK_TAP_TERM 0
 
 // VIA
-// #define DYNAMIC_KEYMAP_LAYER_COUNT 6
+#define DYNAMIC_KEYMAP_LAYER_COUNT 6
 
 // UEFI was not detecting some of my boards
 #define SPLIT_WATCHDOG_ENABLE
