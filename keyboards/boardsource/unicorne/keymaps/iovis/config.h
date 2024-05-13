@@ -1,5 +1,7 @@
 #pragma once
 
+#define DYNAMIC_KEYMAP_LAYER_COUNT 6
+
 #define TAPPING_TOGGLE 2
 #define QUICK_TAP_TERM 0
 
