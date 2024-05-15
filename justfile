@@ -1,4 +1,3 @@
-alias console := flash
 alias dev := compile
 
 default: flash
@@ -13,11 +12,17 @@ init:
     qmk compile --compiledb -j0
 
 open:
-    open .
+    qmk docs -b
 
-# flash the device
+# Flash with `CONSOLE_ENABLE = yes`
+console:
+    qmk console
+
 flash:
     cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
+
+clean:
+    qmk clean -a
 
 # compile
 compile:
