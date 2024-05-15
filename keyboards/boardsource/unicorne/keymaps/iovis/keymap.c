@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "features/achordion.h"
 
 enum layer_number {
     _BASE = 0,
@@ -27,8 +26,6 @@ enum custom_keycodes {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_achordion(keycode, record)) return false;
-
     switch (keycode) {
         case MY_THIN:
             if (record->event.pressed) SEND_STRING("->");
@@ -39,10 +36,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     return true;
-}
-
-void matrix_scan_user(void) {
-    achordion_task();
 }
 
 /// Complex key definitions
