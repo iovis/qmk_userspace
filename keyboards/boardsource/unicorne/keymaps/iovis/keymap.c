@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "features/achordion.h"
 
 enum layer_number {
     _BASE = 0,
@@ -26,6 +27,8 @@ enum custom_keycodes {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_achordion(keycode, record)) return false;
+
     switch (keycode) {
         case MY_THIN:
             if (record->event.pressed) SEND_STRING("->");
@@ -36,6 +39,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     return true;
+}
+
+void matrix_scan_user(void) {
+    achordion_task();
 }
 
 /// Complex key definitions
@@ -58,6 +65,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define HM_F LSFT_T(KC_F)
 
 #define HM_QUOT RCAG_T(KC_QUOT)
+#define HM_Z RCAG_T(KC_Z)
 
 #define HM_M RSFT_T(KC_M)
 #define HM_COMM RCMD_T(KC_COMM)
@@ -73,9 +81,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LCTL, HM_A   , HM_S   , HM_D   , HM_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, HM_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , HM_M   , HM_COMM, HM_DOT , HM_SLSH, HM_RSFT,
+       KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , HM_M   , HM_COMM, HM_DOT , HM_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TT(_NP), MO(_SY), MO(_NV),     MO(_NU), KC_SPC , MO(_ME)
+                                  TT(_NP), MO(_SY), MO(_NV),     TT(_NU), KC_SPC , MO(_ME)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -93,11 +101,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, DM_REC1, DM_PLY1, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+       _______, DM_REC1, DM_PLY1, MY_CSTB, MY_CTAB, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, XXXXXXX, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,     XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______,
+       _______, XXXXXXX, XXXXXXX, G(KC_C), G(KC_V), XXXXXXX,     XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     KC_ENT , _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
@@ -109,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, XXXXXXX, XXXXXXX, G(KC_C), G(KC_V), XXXXXXX,     XXXXXXX, XXXXXXX, _______, _______, _______, _______,
+       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, _______, _______, _______, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, KC_ENT , KC_ENT ,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
