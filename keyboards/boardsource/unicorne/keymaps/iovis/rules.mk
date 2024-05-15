@@ -1,6 +1,7 @@
 SRC += features/achordion.c
 
 AUDIO_ENABLE = no
+CAPS_WORD_ENABLE = yes
 COMBO_ENABLE = yes
 CONSOLE_ENABLE = no
 DYNAMIC_MACRO_ENABLE = yes

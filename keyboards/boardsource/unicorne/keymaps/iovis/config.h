@@ -4,6 +4,10 @@
 #define TAPPING_TOGGLE 2
 #define QUICK_TAP_TERM 100 // Messes up TAPPING_TOGGLE for some reason
 
+// Caps Word
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+// #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+
 // VIA
 #define DYNAMIC_KEYMAP_LAYER_COUNT 7
 
