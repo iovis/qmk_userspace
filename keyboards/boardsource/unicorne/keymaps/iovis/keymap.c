@@ -94,11 +94,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, DM_REC1, DM_PLY1, MY_CSTB, MY_CTAB, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+       _______, DM_REC1, DM_PLY1, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, MY_MEH ,
+       _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, MY_MEH , XXXXXXX, G(KC_C), G(KC_V), XXXXXXX,     XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______,
+       _______, MY_MEH , XXXXXXX, MY_CSTB, MY_CTAB, XXXXXXX,     XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,     KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_COLN,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, MY_MEH , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_MINS, KC_UNDS, KC_COMM, KC_DOT , _______, _______,
+       _______, MY_MEH , XXXXXXX, G(KC_C), G(KC_V), XXXXXXX,     KC_MINS, KC_UNDS, KC_COMM, KC_DOT , _______, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     KC_ENT , _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
