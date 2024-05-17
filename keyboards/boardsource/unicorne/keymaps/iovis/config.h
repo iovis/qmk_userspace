@@ -1,6 +1,6 @@
 #pragma once
 
-#define PERMISSIVE_HOLD
+// #define PERMISSIVE_HOLD
 #define TAPPING_TOGGLE 2
 #define QUICK_TAP_TERM 100 // Messes up TAPPING_TOGGLE for some reason
 
