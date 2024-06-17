@@ -8,6 +8,11 @@ default: flash
 
 # init project and clean
 init:
+    git stash
+    git pull
+    git stash pop
+
+setup:
     qmk setup
     qmk compile --compiledb -j0
 
