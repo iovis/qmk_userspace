@@ -14,10 +14,10 @@ enum layer_number {
 const uint16_t PROGMEM combo_enter[] = {KC_L, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM combo_esc[]   = {KC_Q, KC_W, COMBO_END};
 
-combo_t key_combos[] = {
-    COMBO(combo_enter, KC_ENT),
-    COMBO(combo_esc, KC_ESC),
-};
+// combo_t key_combos[] = {
+//     COMBO(combo_enter, KC_ENT),
+//     COMBO(combo_esc, KC_ESC),
+// };
 
 /// Macros
 enum custom_keycodes {
@@ -59,6 +59,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // #define HM_QUOT RCAG_T(KC_QUOT)
 #define HM_Z LCTL_T(KC_Z)
+#define HM_LGUI LGUI_T(KC_ESC)
 
 #define HM_M RSFT_T(KC_M)
 #define HM_COMM RCMD_T(KC_COMM)
@@ -72,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LGUI, HM_A   , HM_S   , KC_D   , KC_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
+       HM_LGUI, HM_A   , HM_S   , KC_D   , KC_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , HM_COMM, HM_DOT , HM_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
@@ -82,13 +83,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_SY] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, KC_COLN, KC_LABK, KC_RABK, KC_PERC, KC_AT  ,     KC_AMPR, KC_GRV , KC_LBRC, KC_RBRC, KC_0   , _______,
+       _______, XXXXXXX, KC_AT  , KC_PERC, XXXXXXX, XXXXXXX,     KC_CIRC, KC_AMPR, KC_LBRC, KC_RBRC, KC_PIPE, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_HASH,     KC_PIPE, KC_UNDS, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,
+       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_AMPR,     KC_GRV , KC_HASH, KC_LPRN, KC_RPRN, KC_COLN, KC_BSLS,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_BSLS, KC_PERC, KC_ASTR, KC_CIRC, MY_FATA,     KC_TILD, KC_DLR , KC_LCBR, KC_RCBR, KC_SLSH, _______,
+       _______, KC_DLR , KC_LCBR, KC_RCBR, XXXXXXX, MY_FATA,     XXXXXXX, KC_TILD, KC_LABK, KC_RABK, KC_SLSH, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     KC_ENT , _______, _______
+                                  _______, _______, _______,     KC_ENT , KC_UNDS, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
