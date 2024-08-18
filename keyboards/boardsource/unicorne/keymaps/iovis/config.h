@@ -1,7 +1,7 @@
 #pragma once
 
+#define CAPS_WORD_TOGGLE_KEY
 #define COMBO_TERM 25
-#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 100 // Messes up TAPPING_TOGGLE for some reason
 #define TAPPING_TOGGLE 2

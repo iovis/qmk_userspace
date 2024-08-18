@@ -31,6 +31,5 @@ clean:
 
 # compile
 compile:
-    #!/usr/bin/env fish
     qmk compile -j0
-    pause_if_err
+    fish -ic pause_if_err
