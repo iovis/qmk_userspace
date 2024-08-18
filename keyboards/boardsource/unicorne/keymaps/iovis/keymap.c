@@ -44,8 +44,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Layer taps
 #define SYM_SPC LT(_SY, KC_SPC)
-#define NUM_ENT LT(_NU, KC_ENT)
-#define NAV_ENT LT(_NV, KC_ENT)
+#define NU_V LT(_NU, KC_V)
+#define NV_SLSH LT(_NV, KC_SLSH)
 
 // Next/Previous
 #define MY_CTAB C(KC_TAB)
@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       HM_LGUI, KC_A   , KC_S   , HM_D   , KC_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
+       KC_LGUI, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, HM_RSFT,
+       KC_LSFT, HM_Z   , KC_X   , KC_C   , NU_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TT(_NU), MO(_SY), MY_MEH ,     MO(_NV), KC_SPC , MO(_ME)
+                                  KC_LALT, MO(_SY), MY_MEH ,     KC_ESC , KC_SPC , MO(_ME) // TODO: use this key for something else?
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LGUI, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,     XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______,
+       _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,     KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
@@ -120,13 +120,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NU] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, KC_DLR , MY_EURO, XXXXXXX, XXXXXXX, XXXXXXX,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
+       _______, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX, XXXXXXX,     KC_COLN, KC_4   , KC_5   , KC_6   , KC_MINS, KC_EQL ,
+       _______, MY_EURO, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX,     KC_COLN, KC_4   , KC_5   , KC_6   , KC_MINS, KC_EQL ,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LPRN, KC_RPRN, KC_LBRC, KC_RBRC, XXXXXXX,     KC_HASH, KC_1   , KC_2   , KC_3   , KC_SLSH, KC_ENT ,
+       _______, KC_LCTL, KC_LALT, KC_LGUI, _______, XXXXXXX,     KC_HASH, KC_1   , KC_2   , KC_3   , KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, XXXXXXX, DF(_GA),     KC_UNDS, KC_0   , KC_SPC
+                                  KC_TILD, KC_SPC , KC_DLR ,     KC_UNDS, KC_0   , KC_PERC
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
