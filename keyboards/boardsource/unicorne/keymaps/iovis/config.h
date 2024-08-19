@@ -7,7 +7,7 @@
 #define TAPPING_TOGGLE 2
 
 // VIA
-#define DYNAMIC_KEYMAP_LAYER_COUNT 7
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
 // UEFI was not detecting some of my boards
 #define SPLIT_WATCHDOG_ENABLE
