@@ -5,8 +5,8 @@ enum layer_number {
     _SY, // Symbols
     _NV, // Navigation
     _NU, // Number Pad
-    _ME, // Media
     _GA, // Gaming
+    // _ME, // Media
 };
 
 /// Combos
@@ -43,30 +43,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define M_DASH S(LALT(KC_MINS))
 
 // Layer taps
-#define SYM_SPC LT(_SY, KC_SPC)
 #define NU_V LT(_NU, KC_V)
 #define NV_SLSH LT(_NV, KC_SLSH)
+// #define SYM_SPC LT(_SY, KC_SPC)
 
 // Next/Previous
 #define MY_CTAB C(KC_TAB)
 #define MY_CSTB S(C(KC_TAB))
 
 // Home Row Mods
-#define HM_A LCTL_T(KC_A)
-#define HM_S LALT_T(KC_S)
+// #define HM_A LCTL_T(KC_A)
+// #define HM_S LALT_T(KC_S)
 // #define HM_D LCMD_T(KC_D)
-#define HM_D LALT_T(KC_D)
-#define HM_F LSFT_T(KC_F)
+// #define HM_D LALT_T(KC_D)
+// #define HM_F LSFT_T(KC_F)
 
 // #define HM_QUOT RCAG_T(KC_QUOT)
 #define HM_Z LCTL_T(KC_Z)
 #define HM_LGUI LGUI_T(KC_ESC)
 
-#define HM_M RSFT_T(KC_M)
-#define HM_COMM RCMD_T(KC_COMM)
-#define HM_DOT LALT_T(KC_DOT)
-#define HM_SLSH RCTL_T(KC_SLSH)
 #define HM_RSFT RSFT_T(KC_ENT)
+// #define HM_M RSFT_T(KC_M)
+// #define HM_COMM RCMD_T(KC_COMM)
+// #define HM_DOT LALT_T(KC_DOT)
+// #define HM_SLSH RCTL_T(KC_SLSH)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, HM_Z   , KC_X   , KC_C   , NU_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_LALT, MO(_SY), MY_MEH ,     KC_ESC , KC_SPC , MO(_ME) // TODO: use this key for something else?
+                                  KC_LALT, MO(_SY), MY_MEH ,     KC_ESC , KC_SPC , TT(_GA)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -96,25 +96,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+       _______, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, QK_BOOT,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LGUI, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,     KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______, _______,
+       _______, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, XXXXXXX,     KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     _______, _______, _______
-    //                          `+--------+--------+--------'   `--------+--------+--------+'
-    ),
-
-    [_ME] = LAYOUT_split_3x6_3(
-    //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       XXXXXXX, DM_REC1, DM_PLY1, XXXXXXX, XXXXXXX, QK_BOOT,     RGB_VAI, RGB_HUI, RGB_SAI, RGB_MOD, RGB_TOG, XXXXXXX,
-    //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     RGB_VAD, RGB_HUD, RGB_SAD, RGB_RMOD,CK_TOGG, XXXXXXX,
-    //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR ,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     _______, _______, _______
+                                  _______, _______, MY_CSTB,     MY_CTAB, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -138,8 +126,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  DF(0)  , KC_SPC , KC_ESC ,     MO(_NV), KC_SPC , MO(_ME)
+                                  KC_LALT, KC_SPC , KC_ESC ,     KC_ESC , KC_SPC , _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
+
+    // [_ME] = LAYOUT_split_3x6_3(
+    // //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
+    //    XXXXXXX, DM_REC1, DM_PLY1, XXXXXXX, XXXXXXX, QK_BOOT,     RGB_VAI, RGB_HUI, RGB_SAI, RGB_MOD, RGB_TOG, XXXXXXX,
+    // //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
+    //    KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     RGB_VAD, RGB_HUD, RGB_SAD, RGB_RMOD,CK_TOGG, XXXXXXX,
+    // //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
+    //    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR ,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+    // //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
+    //                               _______, _______, _______,     _______, _______, _______
+    // //                          `+--------+--------+--------'   `--------+--------+--------+'
+    // ),
 };
 // clang-format on
