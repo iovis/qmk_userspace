@@ -1,3 +1,4 @@
+#include "quantum_keycodes.h"
 #include QMK_KEYBOARD_H
 
 enum layer_number {
@@ -41,8 +42,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define M_DASH S(LALT(KC_MINS))
 
 // Layer taps
-#define NU_V LT(_NU, KC_V)
+#define NU_G LT(_NU, KC_G)
 #define NV_SLSH LT(_NV, KC_SLSH)
+#define SY_M LT(_SY, KC_M)
+#define SY_V LT(_SY, KC_V)
 // #define SYM_SPC LT(_SY, KC_SPC)
 
 // Next/Previous
@@ -72,47 +75,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LGUI, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
+       HM_LGUI, KC_A   , KC_S   , KC_D   , KC_F   , NU_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LSFT, HM_Z   , KC_X   , KC_C   , NU_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
+       KC_LSFT, HM_Z   , KC_X   , KC_C   , SY_V   , KC_B   ,     KC_N   , SY_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_LALT, MO(_SY), MY_MEH ,     KC_ESC , KC_SPC , CW_TOGG
+                                  TT(_NU), KC_LALT, MY_MEH ,     CW_TOGG, KC_SPC , CW_TOGG
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
     [_SY] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, KC_DLR , KC_LCBR, KC_RCBR, KC_HASH, XXXXXXX,     KC_CIRC, KC_AMPR, KC_LBRC, KC_RBRC, KC_PIPE, KC_BSLS,
+       _______, KC_DLR , KC_LCBR, KC_RCBR, KC_HASH, KC_AT  ,     KC_CIRC, KC_AMPR, KC_LBRC, KC_RBRC, KC_PIPE, KC_BSLS,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_PERC,     KC_GRV , KC_ASTR, KC_LPRN, KC_RPRN, KC_COLN, KC_DQUO,
+       KC_LGUI, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_PERC,     KC_GRV , KC_ASTR, KC_LPRN, KC_RPRN, KC_COLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, XXXXXXX, KC_AT  , XXXXXXX, XXXXXXX,     M_DASH , KC_TILD, KC_LABK, KC_RABK, KC_SLSH, KC_ENT ,
+       _______, KC_LCTL, MY_CSTB, MY_CTAB, M_DASH , XXXXXXX,     KC_TILD, KC_UNDS, KC_LABK, KC_RABK, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     CW_TOGG, KC_UNDS, _______
+                                  _______, _______, KC_SPC ,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
     [_NV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, QK_BOOT,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+       _______, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LGUI, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, XXXXXXX,     KC_HOME, KC_PGUP, KC_PGDN, KC_END , _______, _______,
+       _______, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, XXXXXXX,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, MY_CSTB,     MY_CTAB, _______, _______
+                                  _______, _______, _______,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
     [_NU] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, MY_EURO, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
+       _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, KC_DLR ,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_DLR , KC_LPRN, KC_RPRN, XXXXXXX, KC_PERC,     KC_COLN, KC_4   , KC_5   , KC_6   , KC_MINS, KC_EQL ,
+       KC_LGUI, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_PERC,     KC_COLN, KC_4   , KC_5   , KC_6   , KC_MINS, KC_EQL ,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, KC_LALT, KC_LGUI, _______, KC_TILD,     KC_HASH, KC_1   , KC_2   , KC_3   , KC_SLSH, KC_ENT ,
+       _______, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, KC_TILD,     KC_HASH, KC_1   , KC_2   , KC_3   , KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_TILD, KC_SPC , MY_MEH ,     KC_UNDS, KC_0   , KC_DOT
+                                  KC_COMM, KC_SPC , MY_MEH ,     KC_UNDS, KC_0   , KC_DOT
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
