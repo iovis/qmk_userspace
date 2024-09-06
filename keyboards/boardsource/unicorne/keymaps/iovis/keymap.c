@@ -53,7 +53,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 /// Complex key definitions
 #define MY_MEH LCA(KC_LCMD)
 #define MY_EURO S(RALT(KC_2))
-#define M_DASH S(LALT(KC_MINS))
+#define M_DASH S(RALT(KC_MINS))
 
 // Next/Previous
 #define MY_CTAB C(KC_TAB)
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_PERC,     KC_GRV , KC_ASTR, KC_LPRN, KC_RPRN, KC_COLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, MY_CSTB, MY_CTAB, M_DASH , XXXXXXX,     KC_TILD, KC_UNDS, KC_LABK, KC_RABK, KC_SLSH, KC_ENT ,
+       _______, KC_LCTL, MY_CSTB, MY_CTAB, M_DASH , MY_EURO,     KC_TILD, KC_UNDS, KC_LABK, KC_RABK, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, KC_SPC ,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
