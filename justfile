@@ -1,5 +1,3 @@
-alias dev := compile
-
 default: flash
 
 # lists available tasks
@@ -11,17 +9,18 @@ init:
     git stash
     git pull
     git stash pop
+    qmk setup
 
 setup:
     qmk setup
     qmk compile --compiledb -j0
 
 open:
-    qmk docs -b
+    gh repo view --web
 
-# Flash with `CONSOLE_ENABLE = yes`
 console:
-    qmk console
+    # Flash with `CONSOLE_ENABLE = yes`
+    qmk console -n -t
 
 flash:
     cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
@@ -29,7 +28,8 @@ flash:
 clean:
     qmk clean -a
 
-# compile
+alias dev := compile
+
 compile:
     qmk compile -j0
     fish -ic pause_if_err
