@@ -6,6 +6,9 @@
 #define QUICK_TAP_TERM 200 // Messes up TAPPING_TOGGLE for some reason
 #define TAPPING_TOGGLE 2
 
+// sm_td
+#define MAX_DEFERRED_EXECUTORS 10
+
 // VIA
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
