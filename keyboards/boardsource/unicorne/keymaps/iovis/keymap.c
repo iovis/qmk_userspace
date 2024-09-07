@@ -21,7 +21,7 @@ enum custom_keycodes {
     SMTD_KEYCODES_BEGIN = SAFE_RANGE,
     HM_RSFT,
     HM_Z,
-    NU_G,
+    NU_F,
     NV_SLSH,
     SY_M,
     SY_V,
@@ -35,7 +35,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         SMTD_MT(HM_RSFT, KC_ENT, KC_RSFT)
         SMTD_MT(HM_Z, KC_Z, KC_LCTL)
 
-        SMTD_LT(NU_G, KC_G, _NU)
+        SMTD_LT(NU_F, KC_F, _NU)
         SMTD_LT(NV_SLSH, KC_SLSH, _NV)
         SMTD_LT(SY_M, KC_M, _SY)
         SMTD_LT(SY_V, KC_V, _SY)
@@ -45,9 +45,9 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     // Reduce the SMTD timeouts for easier rolling (TAPPING_TERM / 2 by default)
     if (timeout == SMTD_TIMEOUT_RELEASE) {
-        if (keycode == SY_M) return 15;
-        if (keycode == SY_V) return 15;
-        if (keycode == NU_G) return 15;
+        if (keycode == SY_M) return 10;
+        if (keycode == SY_V) return 10;
+        if (keycode == NU_F) return 10;
     }
 
     return get_smtd_timeout_default(timeout);
@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LGUI, KC_A   , KC_S   , KC_D   , KC_F   , NU_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
+       KC_LGUI, KC_A   , KC_S   , KC_D   , NU_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, HM_Z   , KC_X   , KC_C   , SY_V   , KC_B   ,     KC_N   , SY_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TT(_NU), KC_LALT, MY_MEH ,     KC_UNDS, KC_SPC , CW_TOGG
+                                  TT(_NU), KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, CW_TOGG
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -108,11 +108,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NU] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
+       _______, _______, _______, _______, _______, _______,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, _______,     KC_MINS, KC_4   , KC_5   , KC_6   , KC_COLN, KC_EQL ,
+       _______, _______, _______, _______, _______, _______,     KC_MINS, KC_4   , KC_5   , KC_6   , KC_COLN, KC_EQL ,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, XXXXXXX,     KC_COMM, KC_1   , KC_2   , KC_3   , KC_DOT , KC_PERC,
+       _______, _______, _______, _______, _______, _______,     KC_COMM, KC_1   , KC_2   , KC_3   , KC_DOT , KC_PERC,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     KC_SPC , KC_0   , KC_SLSH
     //                          `+--------+--------+--------'   `--------+--------+--------+'
