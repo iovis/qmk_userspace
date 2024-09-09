@@ -23,8 +23,8 @@ enum custom_keycodes {
     HM_Z,
     NU_F,
     NV_SLSH,
-    SY_M,
-    SY_V,
+    SY_DOT,
+    SY_X,
     SMTD_KEYCODES_END,
 };
 
@@ -37,17 +37,17 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         SMTD_LT(NU_F, KC_F, _NU)
         SMTD_LT(NV_SLSH, KC_SLSH, _NV)
-        SMTD_LT(SY_M, KC_M, _SY)
-        SMTD_LT(SY_V, KC_V, _SY)
+        SMTD_LT(SY_DOT, KC_DOT, _SY)
+        SMTD_LT(SY_X, KC_X, _SY)
     }
 }
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     // Reduce the SMTD timeouts for easier rolling (TAPPING_TERM / 2 by default)
     if (timeout == SMTD_TIMEOUT_RELEASE) {
-        if (keycode == SY_M) return 5;
-        if (keycode == SY_V) return 5;
         if (keycode == NU_F) return 5;
+        if (keycode == SY_DOT) return 5;
+        if (keycode == SY_X) return 5;
     }
 
     return get_smtd_timeout_default(timeout);
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LGUI, KC_A   , KC_S   , KC_D   , NU_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LSFT, HM_Z   , KC_X   , KC_C   , SY_V   , KC_B   ,     KC_N   , SY_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
+       KC_LSFT, HM_Z   , SY_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, SY_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   TO(_GA), KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, CW_TOGG
     //                          `+--------+--------+--------'   `--------+--------+--------+'
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, XXXXXXX,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     _______, _______, _______
+                                  _______, _______, MY_CSTB,     MY_CTAB, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
