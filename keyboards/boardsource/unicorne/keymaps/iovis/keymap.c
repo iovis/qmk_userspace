@@ -29,7 +29,7 @@ enum custom_keycodes {
 };
 
 // There's a bug in v0.4 that requires to put it here
-#include "sm_td.h"
+#include "features/sm_td.h"
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
         SMTD_MT(HM_RSFT, KC_ENT, KC_RSFT)
@@ -60,13 +60,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 /// Complex key definitions
-#define MY_MEH LCA(KC_LCMD)
-#define MY_EURO S(RALT(KC_2))
-#define M_DASH S(RALT(KC_MINS))
-
-// Next/Previous
-#define MY_CTAB C(KC_TAB)
 #define MY_CSTB S(C(KC_TAB))
+#define MY_CTAB C(KC_TAB)
+#define MY_EURO S(RALT(KC_2))
+#define MY_MEH LCA(KC_LCMD)
+#define M_DASH S(RALT(KC_MINS))
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -114,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, XXXXXXX,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, MY_CSTB,     MY_CTAB, _______, _______
+                                  _______, _______, _______,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
