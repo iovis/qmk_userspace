@@ -110,14 +110,14 @@ void keyboard_post_init_user(void) {
 /// RGB
 // clang-format off
 #define BLACK {   0,   0,   0 }
-#define BLUE  { 169, 255, 255 }
-#define CYAN  { 131, 255, 255 }
-#define GREEN {  74, 255, 255 }
-#define MAGNT { 219, 255, 255 }
-#define ORANG {  29, 255, 255 }
+#define BLUE  { 170, 255, 255 }
+#define CYAN  { 130, 255, 255 }
+#define GREEN {  75, 255, 255 }
+#define MAGNT { 220, 255, 255 }
+#define ORANG {  30, 255, 255 }
 #define RED   {   0, 255, 255 }
 #define WHITE {   0,   0, 255 }
-#define YELLW {  41, 255, 255 }
+#define YELLW {  40, 255, 255 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_BA] = {
