@@ -18,6 +18,7 @@ enum custom_keycodes {
     SMTD_KEYCODES_BEGIN,
     HM_RSFT,
     HM_Z,
+    NU_TAB,
     NV_SLSH,
     SY_DOT,
     SY_X,
@@ -31,6 +32,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         SMTD_MT(HM_RSFT, KC_ENT, KC_RSFT)
         SMTD_MT(HM_Z, KC_Z, KC_LCTL)
 
+        SMTD_LT(NU_TAB, KC_TAB, _NU)
         SMTD_LT(NV_SLSH, KC_SLSH, _NV)
         SMTD_LT(SY_DOT, KC_DOT, _SY)
         SMTD_LT(SY_X, KC_X, _SY)
@@ -61,7 +63,7 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BA] = LAYOUT_voyager(
     KC_ESC , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                       KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
-    KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , MO(4),
+    NU_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , TO(_GA),
     KC_LGUI, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
     KC_LSFT, HM_Z   , SY_X   , KC_C   , KC_V   , KC_B   ,                       KC_N   , KC_M   , KC_COMM, SY_DOT , NV_SLSH, HM_RSFT,
                                                  KC_LALT, MY_MEH ,     KC_UNDS, KC_SPC
@@ -69,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SY] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, KC_BSPC,
-    _______, XXXXXXX, KC_LABK, KC_RABK, KC_DLR , KC_AT  ,                       KC_CIRC, KC_AMPR, KC_LBRC, KC_RBRC, KC_PIPE, KC_BSLS,
+    KC_TAB , XXXXXXX, KC_LABK, KC_RABK, KC_DLR , KC_AT  ,                       KC_CIRC, KC_AMPR, KC_LBRC, KC_RBRC, KC_PIPE, KC_BSLS,
     _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_PERC,                       KC_GRV , KC_ASTR, KC_LPRN, KC_RPRN, KC_COLN, KC_DQUO,
     _______, KC_LCTL, MY_CSTB, MY_CTAB, M_DASH , MY_EURO,                       KC_TILD, KC_HASH, KC_LCBR, KC_RCBR, KC_SLSH, KC_ENT ,
                                                  _______, KC_SPC ,     _______, _______
@@ -85,18 +87,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_GA] = LAYOUT_voyager(
     KC_ESC , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                       KC_6   , KC_7   , KC_8   , KC_9  , KC_0   , KC_BSPC,
-    KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O  , KC_P   , KC_LGUI,
+    KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O  , KC_P   , TO(_BA),
     KC_LCTL, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L  , KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                       KC_N   , KC_M   , KC_COMM, KC_DOT, KC_SLSH, KC_ENT ,
-                                                 KC_SPC , KC_LALT,     TO(_BA), KC_SPC
+                                                 KC_SPC , KC_LALT,     KC_LGUI, KC_SPC
   ),
 
   [_NU] = LAYOUT_voyager(
     _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                       KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , _______,
-    _______, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, XXXXXXX,                       KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, KC_SLSH,
-    _______, KC_LABK, KC_RABK, KC_LPRN, KC_RPRN, TO(_GA),                       KC_MINS, KC_4   , KC_5   , KC_6   , KC_COLN, KC_EQL ,
-    _______, KC_LCTL, KC_LALT, KC_LGUI, _______, _______,                       KC_COMM, KC_1   , KC_2   , KC_3   , KC_DOT , KC_PERC,
-                                                 _______, KC_SPC,      _______, KC_0
+    _______, _______, _______, _______, _______, _______,                       KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, KC_SLSH,
+    _______, _______, _______, _______, _______, _______,                       KC_MINS, KC_4   , KC_5   , KC_6   , KC_COLN, KC_EQL ,
+    _______, _______, _______, _______, _______, _______,                       KC_COMM, KC_1   , KC_2   , KC_3   , KC_DOT , KC_PERC,
+                                                 _______, _______,     KC_SPC , KC_0
   ),
 };
 // clang-format on
@@ -178,26 +180,26 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
-        CYAN , CYAN , CYAN , CYAN , CYAN , BLUE ,
+        CYAN , CYAN , CYAN , CYAN , CYAN , WHITE,
         CYAN , CYAN , CYAN , CYAN , CYAN , CYAN ,
         CYAN , CYAN , CYAN , CYAN , CYAN , BLUE ,
-        YELLW, CYAN ,
+        BLUE , CYAN ,
     },
 
     [_NU] = {
         // Left
         BLUE , MAGNT, MAGNT, MAGNT, MAGNT, MAGNT,
-        BLUE , CYAN , CYAN , CYAN , CYAN , BLACK,
-        BLUE , CYAN , CYAN , CYAN , CYAN , YELLW,
-        BLUE , BLUE , BLUE , BLUE , BLACK, BLACK,
-                                    MAGNT, CYAN,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+                                    MAGNT, YELLW,
 
         // Right
         MAGNT, MAGNT, MAGNT, MAGNT, MAGNT, BLUE ,
-        CYAN , WHITE, WHITE, WHITE, CYAN , YELLW,
-        CYAN , WHITE, WHITE, WHITE, CYAN , CYAN ,
-        CYAN , WHITE, WHITE, WHITE, CYAN , CYAN ,
-        MAGNT, WHITE,
+        CYAN , GREEN, GREEN, GREEN, CYAN , CYAN ,
+        CYAN , GREEN, GREEN, GREEN, CYAN , CYAN ,
+        CYAN , GREEN, GREEN, GREEN, CYAN , CYAN ,
+        CYAN , GREEN,
     },
 
 };
