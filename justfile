@@ -9,10 +9,9 @@ init:
     git stash
     git pull
     git stash pop
-    qmk setup
 
 setup:
-    qmk setup --yes
+    qmk setup -H ~/code/qmk_firmware --yes
 
 alias dev := compile
 
@@ -25,15 +24,14 @@ flash:
 
 vsetup:
     @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
-    qmk setup -H ../zsa_firmware --yes
+    qmk setup -H ~/code/zsa_firmware --yes
 
-vcompile:
+vcompile: vsetup
     qmk compile --compiledb -j0 -kb zsa/voyager
     fish -ic pause_if_err
 
 vflash:
     qmk flash -kb zsa/voyager
-    fish -ic pause_if_err
 
 open:
     gh repo view --web
