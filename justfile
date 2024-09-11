@@ -12,8 +12,28 @@ init:
     qmk setup
 
 setup:
-    qmk setup
-    qmk compile --compiledb -j0
+    qmk setup --yes
+
+alias dev := compile
+
+compile: setup
+    qmk compile --compiledb -j0 -kb boardsource/unicorne
+    fish -ic pause_if_err
+
+flash:
+    cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
+
+vsetup:
+    @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
+    qmk setup -H ../zsa_firmware --yes
+
+vcompile:
+    qmk compile --compiledb -j0 -kb zsa/voyager
+    fish -ic pause_if_err
+
+vflash:
+    qmk flash -kb zsa/voyager
+    fish -ic pause_if_err
 
 open:
     gh repo view --web
@@ -22,14 +42,5 @@ console:
     # Flash with `CONSOLE_ENABLE = yes`
     qmk console -n -t
 
-flash:
-    cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
-
 clean:
     qmk clean -a
-
-alias dev := compile
-
-compile:
-    qmk compile -j0
-    fish -ic pause_if_err
