@@ -18,7 +18,6 @@ enum custom_keycodes {
     SMTD_KEYCODES_BEGIN,
     HM_RSFT,
     HM_Z,
-    NU_TAB,
     NV_SLSH,
     SMTD_KEYCODES_END,
 };
@@ -30,7 +29,6 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         SMTD_MT(HM_RSFT, KC_ENT, KC_RSFT)
         SMTD_MT(HM_Z, KC_Z, KC_LCTL)
 
-        SMTD_LT(NU_TAB, KC_TAB, _NU)
         SMTD_LT(NV_SLSH, KC_SLSH, _NV)
     }
 }
@@ -52,6 +50,7 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
 #define MY_MEH LCA(KC_LCMD)
 #define M_DASH S(RALT(KC_MINS))
 
+#define NU_F LT(_NU, KC_F)
 #define SY_M LT(_SY, KC_M)
 #define SY_V LT(_SY, KC_V)
 
@@ -62,15 +61,15 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BA] = LAYOUT_voyager(
     KC_ESC , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                       KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
-    NU_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , TO(_GA),
-    KC_LGUI, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
+    KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , TO(_GA),
+    KC_LGUI, KC_A   , KC_S   , KC_D   , NU_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
     KC_LSFT, HM_Z   , KC_X   , KC_C   , SY_V   , KC_B   ,                       KC_N   , SY_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
                                                  KC_LALT, MY_MEH ,     KC_UNDS, KC_SPC
   ),
 
   [_SY] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, KC_BSPC,
-    KC_TAB , XXXXXXX, KC_LABK, KC_RABK, KC_DLR , KC_AT  ,                       KC_CIRC, KC_AMPR, KC_LBRC, KC_RBRC, KC_PIPE, KC_BSLS,
+    _______, XXXXXXX, KC_LABK, KC_RABK, KC_DLR , KC_AT  ,                       KC_CIRC, KC_AMPR, KC_LBRC, KC_RBRC, KC_PIPE, KC_BSLS,
     _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_PERC,                       KC_GRV , KC_ASTR, KC_LPRN, KC_RPRN, KC_COLN, KC_DQUO,
     _______, KC_LCTL, MY_CSTB, MY_CTAB, M_DASH , MY_EURO,                       KC_TILD, KC_HASH, KC_LCBR, KC_RCBR, KC_SLSH, KC_ENT ,
                                                  _______, KC_SPC ,     _______, _______
