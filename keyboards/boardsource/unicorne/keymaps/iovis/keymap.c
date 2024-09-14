@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
 
+#include "features/layer_lock.h"
+
 enum layer_number {
     _BASE = 0,
     _GA, // Gaming
@@ -23,6 +25,7 @@ enum custom_keycodes {
     HM_Z,
     NV_SLSH,
     SMTD_KEYCODES_END,
+    MY_LLCK,
 };
 
 // There's a bug in v0.4 that requires to put it here
@@ -48,6 +51,7 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
     if (!process_smtd(keycode, record)) return false;
 
     return true;
@@ -110,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, XXXXXXX,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     CW_TOGG, _______, _______
+                                  _______, _______, _______,     CW_TOGG, MY_LLCK, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -122,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, _______, _______, _______, _______, _______,     KC_COMM, KC_1   , KC_2   , KC_3   , KC_DOT , KC_PERC,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     KC_0   , KC_SPC , KC_SLSH
+                                  _______, MY_LLCK, _______,     KC_0   , KC_SPC , KC_SLSH
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 

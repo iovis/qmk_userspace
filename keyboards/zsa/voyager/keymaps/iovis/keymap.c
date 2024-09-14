@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, RGB_VAI,                       KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     _______, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, RGB_VAD,                       KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
-                                                 _______, _______,     _______, CW_TOGG
+                                                 _______, _______,     QK_LLCK, CW_TOGG // layer lock seems to not work with sm_td
   ),
 
   [_GA] = LAYOUT_voyager(
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______,                       KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, KC_SLSH,
     _______, _______, _______, _______, _______, _______,                       KC_MINS, KC_4   , KC_5   , KC_6   , KC_COLN, KC_EQL ,
     _______, _______, _______, _______, _______, _______,                       KC_COMM, KC_1   , KC_2   , KC_3   , KC_DOT , KC_PERC,
-                                                 _______, _______,     KC_SPC , KC_0
+                                                 QK_LLCK, _______,     KC_SPC , KC_0
   ),
 };
 // clang-format on
@@ -156,16 +156,16 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         // Left
         BLUE , RED  , RED  , RED  , BLACK, RED  ,
         BLUE , WHITE, WHITE, WHITE, BLACK, BLACK,
-        BLUE , WHITE, WHITE, WHITE, BLACK, RED,
-        BLUE , BLUE , BLUE , BLUE , BLACK, RED,
-                                    BLACK, BLACK,
+        BLUE , WHITE, WHITE, WHITE, BLACK, RED  ,
+        BLUE , BLUE , BLUE , BLUE , BLACK, RED  ,
+                                    MAGNT, YELLW,
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLUE ,
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         GREEN, GREEN, GREEN, GREEN, BLACK, BLACK,
         YELLW, YELLW, YELLW, YELLW, YELLW, RED  ,
-        BLACK, MAGNT,
+        ORANG, MAGNT,
     },
 
     [_GA] = {
@@ -190,7 +190,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-                                    MAGNT, YELLW,
+                                    ORANG, YELLW,
 
         // Right
         MAGNT, MAGNT, MAGNT, MAGNT, MAGNT, BLUE ,
