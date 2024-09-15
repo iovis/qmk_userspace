@@ -43,6 +43,21 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     return get_smtd_timeout_default(timeout);
 }
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_smtd(keycode, record)) return false;
+
+    switch (keycode) {
+        case RGB_SLD:
+            if (record->event.pressed) {
+                rgblight_mode(1);
+            }
+
+            return false;
+    }
+
+    return true;
+}
+
 /// Complex key definitions
 #define MY_CSTB S(C(KC_TAB))
 #define MY_CTAB C(KC_TAB)
@@ -109,15 +124,15 @@ void keyboard_post_init_user(void) {
 
 /// RGB
 // clang-format off
-#define BLACK {   0,   0,   0 }
-#define BLUE  { 170, 255, 255 }
-#define CYAN  { 130, 255, 255 }
-#define GREEN {  75, 255, 255 }
-#define MAGNT { 220, 255, 255 }
-#define ORANG {  30, 255, 255 }
-#define RED   {   0, 255, 255 }
-#define WHITE {   0,   0, 255 }
-#define YELLW {  40, 255, 255 }
+#define BLACK { HSV_BLACK }
+#define BLUE  { HSV_BLUE }
+#define CYAN  { HSV_CYAN }
+#define GREEN { HSV_GREEN }
+#define MAGNT { HSV_MAGENTA }
+#define ORANG { HSV_ORANGE }
+#define RED   { HSV_RED }
+#define WHITE { HSV_WHITE }
+#define YELLW { HSV_YELLOW }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_BA] = {
@@ -244,21 +259,6 @@ bool rgb_matrix_indicators_user(void) {
         default:
             if (rgb_matrix_get_flags() == LED_FLAG_NONE) rgb_matrix_set_color_all(0, 0, 0);
             break;
-    }
-
-    return true;
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_smtd(keycode, record)) return false;
-
-    switch (keycode) {
-        case RGB_SLD:
-            if (record->event.pressed) {
-                rgblight_mode(1);
-            }
-
-            return false;
     }
 
     return true;
