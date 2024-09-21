@@ -11,7 +11,7 @@ init:
     git stash pop
 
 setup:
-    qmk setup -H ~/code/qmk_firmware --yes
+    qmk setup -H ../qmk_firmware --yes
 
 alias dev := compile
 
@@ -24,7 +24,7 @@ flash:
 
 vsetup:
     @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
-    qmk setup -H ~/code/zsa_firmware --yes
+    qmk setup -H ../zsa_firmware --yes
 
 vcompile: vsetup
     qmk compile --compiledb -j0 -kb zsa/voyager
