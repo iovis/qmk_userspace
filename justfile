@@ -1,4 +1,6 @@
-default: flash
+alias dev := compile
+
+default: init
 
 # lists available tasks
 @list:
@@ -12,8 +14,6 @@ init:
 
 setup:
     qmk setup -H ../qmk_firmware --yes
-
-alias dev := compile
 
 compile: setup
     qmk compile --compiledb -j0 -kb boardsource/unicorne
