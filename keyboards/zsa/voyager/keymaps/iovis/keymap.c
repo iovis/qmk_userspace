@@ -34,11 +34,12 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 }
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
-    // Reduce the SMTD timeouts for easier rolling (TAPPING_TERM / 2 by default)
-    // if (timeout == SMTD_TIMEOUT_RELEASE) {
-    //     if (keycode == SY_M) return 5;
-    //     if (keycode == SY_V) return 5;
-    // }
+    // Fix SMTD timeout
+    if (timeout == SMTD_TIMEOUT_RELEASE) {
+        if (keycode == HM_Z) return 40;
+        if (keycode == HM_RSFT) return 40;
+        if (keycode == NV_SLSH) return 40;
+    }
 
     return get_smtd_timeout_default(timeout);
 }
