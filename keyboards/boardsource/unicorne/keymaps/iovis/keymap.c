@@ -40,12 +40,12 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 }
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
-    // Reduce the SMTD timeouts for easier rolling (TAPPING_TERM / 2 by default)
-    // if (timeout == SMTD_TIMEOUT_RELEASE) {
-    //     if (keycode == NU_F) return 5;
-    //     if (keycode == SY_DOT) return 5;
-    //     if (keycode == SY_X) return 5;
-    // }
+    // Fix SMTD timeout
+    if (timeout == SMTD_TIMEOUT_RELEASE) {
+        if (keycode == HM_Z) return 40;
+        if (keycode == HM_RSFT) return 40;
+        if (keycode == NV_SLSH) return 40;
+    }
 
     return get_smtd_timeout_default(timeout);
 }
@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, HM_Z   , KC_X   , KC_C   , SY_V   , KC_B   ,     KC_N   , SY_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  TO(_GA), KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, CW_TOGG
+                                  KC_SPC , KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, TO(_GA)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -120,13 +120,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NU] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, _______, _______, _______, _______, _______,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
+       _______, _______, _______, _______, _______, _______,     KC_SLSH, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, _______, _______, _______, _______, _______,     KC_COLN, KC_4   , KC_5   , KC_6   , KC_MINS, KC_EQL ,
+       _______, _______, _______, KC_LSFT, _______, _______,     KC_COLN, KC_4   , KC_5   , KC_6   , KC_MINS, KC_EQL ,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, _______, _______, _______, _______, _______,     KC_COMM, KC_1   , KC_2   , KC_3   , KC_DOT , KC_PERC,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, MY_LLCK,     KC_0   , KC_SPC , KC_SLSH
+                                  _______, _______, MY_LLCK,     KC_0   , KC_SPC , KC_TILD
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
