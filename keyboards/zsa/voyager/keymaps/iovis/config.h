@@ -3,7 +3,7 @@
   See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
 */
 
-// #define TAPPING_TERM 160
+#define TAPPING_TERM 175
 #define MAX_DEFERRED_EXECUTORS 10
 
 #undef RGB_MATRIX_TIMEOUT
