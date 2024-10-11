@@ -3,7 +3,7 @@
 #include "features/layer_lock.h"
 
 enum layer_number {
-    _BASE = 0,
+    _BA = 0,
     _GA, // Gaming
     _SY, // Symbols
     _NV, // Navigation
@@ -70,7 +70,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_split_3x6_3(
+    [_BA] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -143,3 +143,191 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ),
 };
 // clang-format on
+
+extern rgb_config_t rgb_matrix_config;
+
+void keyboard_post_init_user(void) {
+    rgb_matrix_enable();
+}
+
+/// RGB
+// clang-format off
+#define BLACK { HSV_BLACK }
+#define BLUE  { HSV_BLUE }
+#define CYAN  { HSV_CYAN }
+#define GREEN { HSV_GREEN }
+#define MAGNT { HSV_MAGENTA }
+#define ORANG { HSV_ORANGE }
+#define RED   { HSV_RED }
+#define WHITE { HSV_WHITE }
+#define YELLW { HSV_YELLOW }
+
+const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
+    [_BA] = {
+        // Left
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        YELLW,
+        CYAN , CYAN , CYAN , // BGT
+        CYAN , CYAN , CYAN , // RFV
+        MAGNT, CYAN ,
+        CYAN , CYAN , CYAN , // CDE
+        CYAN , CYAN , CYAN , // WSX
+        CYAN , CYAN , CYAN , // ZAQ
+        BLUE , BLUE , BLUE , // TAB, CMD, SFT
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        CYAN ,
+        CYAN , CYAN , CYAN , // NHY
+        CYAN , CYAN , CYAN , // UJM
+        CYAN , WHITE,
+        CYAN , CYAN , CYAN , // ,KI
+        CYAN , CYAN , CYAN , // OL.
+        CYAN , CYAN , CYAN , // /;P
+        BLUE , CYAN , BLUE , // DEL, ', SFT
+    },
+
+    [_SY] = {
+        // Left
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        CYAN ,
+        ORANG, ORANG, ORANG,  // BGT
+        ORANG, ORANG, ORANG,  // RFV
+        MAGNT, CYAN ,
+        BLUE , ORANG, ORANG,  // CDE
+        ORANG, ORANG, BLUE ,  // WSX
+        BLUE , ORANG, BLACK,  // ZAQ
+        BLUE , BLUE , BLUE ,  // TAB, CMD, SFT
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        CYAN ,
+        ORANG, ORANG, ORANG, // NHY
+        ORANG, ORANG, ORANG, // UJM
+        CYAN , WHITE,
+        ORANG, ORANG, ORANG, // ,KI
+        ORANG, ORANG, ORANG, // OL.
+        ORANG, ORANG, ORANG, // /;P
+        BLUE , ORANG, BLUE , // DEL, ', SFT
+    },
+
+    [_NV] = {
+        // Left
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        YELLW,
+        BLACK, BLACK, BLACK, // BGT
+        BLACK, BLACK, BLACK, // RFV
+        MAGNT, CYAN ,
+        BLUE , WHITE, WHITE, // CDE
+        BLUE , WHITE, WHITE, // WSX
+        BLUE , WHITE, WHITE, // ZAQ
+        BLUE , BLUE , BLUE , // TAB, CMD, SFT
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        ORANG,
+        YELLW, GREEN, BLACK, // NHY
+        BLACK, GREEN, YELLW, // UJM
+        MAGNT, WHITE,
+        YELLW, GREEN, BLACK, // ,KI
+        BLACK, GREEN, YELLW, // OL.
+        BLACK, BLACK, BLACK, // /;P
+        BLACK, BLACK, RED  , // DEL, ', SFT
+    },
+
+    [_GA] = {
+        // Left
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        GREEN,
+        CYAN , CYAN , CYAN , // BGT
+        CYAN , CYAN , CYAN , // RFV
+        CYAN , MAGNT,
+        CYAN , CYAN , CYAN , // CDE
+        CYAN , CYAN , CYAN , // WSX
+        CYAN , CYAN , CYAN , // ZAQ
+        BLUE , BLUE , BLUE , // TAB, CMD, SFT
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        CYAN ,
+        CYAN , CYAN , CYAN , // NHY
+        CYAN , CYAN , CYAN , // UJM
+        BLUE , WHITE,
+        CYAN , CYAN , CYAN , // ,KI
+        CYAN , CYAN , CYAN , // OL.
+        CYAN , CYAN , CYAN , // /;P
+        BLUE , CYAN , BLUE , // DEL, ', SFT
+    },
+
+    [_NU] = {
+        // Left
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        GREEN,
+        CYAN , CYAN , CYAN , // BGT
+        CYAN , CYAN , CYAN , // RFV
+        MAGNT, CYAN ,
+        CYAN , BLUE , CYAN , // CDE
+        CYAN , CYAN , CYAN , // WSX
+        CYAN , CYAN , CYAN , // ZAQ
+        BLUE , BLUE , BLUE , // TAB, CMD, SFT
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        GREEN,
+        CYAN , CYAN , CYAN , // NHY
+        GREEN, GREEN, GREEN, // UJM
+        CYAN , ORANG,
+        GREEN, GREEN, GREEN, // ,KI
+        GREEN, GREEN, GREEN, // OL.
+        CYAN , CYAN , CYAN , // /;P
+        BLUE , CYAN , CYAN , // DEL, ', SFT
+    },
+
+};
+// clang-format on
+
+void set_layer_color(int layer) {
+    for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
+        HSV hsv = {
+            .h = pgm_read_byte(&ledmap[layer][i][0]),
+            .s = pgm_read_byte(&ledmap[layer][i][1]),
+            .v = pgm_read_byte(&ledmap[layer][i][2]),
+        };
+
+        if (!hsv.h && !hsv.s && !hsv.v) {
+            rgb_matrix_set_color(i, 0, 0, 0);
+        } else {
+            RGB   rgb = hsv_to_rgb(hsv);
+            float f   = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+            rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
+        }
+    }
+}
+
+bool rgb_matrix_indicators_user(void) {
+    // if (rawhid_state.rgb_control) return false;
+    // if (keyboard_config.disable_layer_led) return false;
+
+    switch (biton32(layer_state)) {
+        case 0:
+            set_layer_color(0);
+            break;
+        case 1:
+            set_layer_color(1);
+            break;
+        case 2:
+            set_layer_color(2);
+            break;
+        case 3:
+            set_layer_color(3);
+            break;
+        case 4:
+            set_layer_color(4);
+            break;
+        default:
+            if (rgb_matrix_get_flags() == LED_FLAG_NONE) rgb_matrix_set_color_all(0, 0, 0);
+            break;
+    }
+
+    return true;
+}
