@@ -13,9 +13,6 @@
 // VIA
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
-// RGB
-#define RGB_MATRIX_TIMEOUT 300000
-
 // UEFI was not detecting some of my boards
 #define SPLIT_WATCHDOG_ENABLE
 #define SPLIT_MAX_CONNECTION_ERRORS 30
