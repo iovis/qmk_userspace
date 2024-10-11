@@ -14,9 +14,10 @@ init:
 
 setup:
     qmk setup -H ../qmk_firmware --yes
-
-compile: setup
     qmk compile --compiledb -j0 -kb boardsource/unicorne
+
+compile:
+    qmk compile -j0 -kb boardsource/unicorne
     fish -ic pause_if_err
 
 flash:
@@ -25,9 +26,10 @@ flash:
 vsetup:
     @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
     qmk setup -H ../zsa_firmware --yes
-
-vcompile: vsetup
     qmk compile --compiledb -j0 -kb zsa/voyager
+
+vcompile:
+    qmk compile -j0 -kb zsa/voyager
     fish -ic pause_if_err
 
 vflash:
