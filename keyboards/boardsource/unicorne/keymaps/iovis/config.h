@@ -3,7 +3,7 @@
 #define CAPS_WORD_TOGGLE_KEY
 #define COMBO_TERM 25
 // #define PERMISSIVE_HOLD
-#define TAPPING_TERM 175
+#define TAPPING_TERM 200
 #define TAPPING_TOGGLE 2
 // #define QUICK_TAP_TERM 200 // Affects TT()
 
@@ -12,6 +12,9 @@
 
 // VIA
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
+
+// RGB
+#define RGB_MATRIX_TIMEOUT 300000
 
 // UEFI was not detecting some of my boards
 #define SPLIT_WATCHDOG_ENABLE
