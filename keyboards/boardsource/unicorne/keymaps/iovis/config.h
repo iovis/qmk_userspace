@@ -2,13 +2,16 @@
 
 #define CAPS_WORD_TOGGLE_KEY
 #define COMBO_TERM 25
-// #define PERMISSIVE_HOLD
-#define TAPPING_TERM 200
+#define PERMISSIVE_HOLD
+#define TAPPING_TERM 175
 #define TAPPING_TOGGLE 2
 // #define QUICK_TAP_TERM 200 // Affects TT()
 
 // sm_td
 #define MAX_DEFERRED_EXECUTORS 10
+
+// achordion
+#define ACHORDION_STREAK
 
 // VIA
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5

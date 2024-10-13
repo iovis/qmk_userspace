@@ -5,6 +5,7 @@ CONSOLE_ENABLE = no
 DEFERRED_EXEC_ENABLE = yes
 DYNAMIC_MACRO_ENABLE = no
 POINTING_DEVICE_ENABLE = no
+SRC += features/achordion.c
 SRC += features/layer_lock.c
 TAP_DANCE_ENABLE = no
 VIA_ENABLE = yes
