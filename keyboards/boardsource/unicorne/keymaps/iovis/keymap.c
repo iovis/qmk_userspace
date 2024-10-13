@@ -1,7 +1,9 @@
 #include QMK_KEYBOARD_H
 
+#include "features/achordion.h"
 #include "features/layer_lock.h"
 
+/// Layers
 enum layer_number {
     _BA = 0,
     _GA, // Gaming
@@ -10,6 +12,17 @@ enum layer_number {
     _NU, // Number Pad
     // _ME, // Media
 };
+
+/// Complex key definitions
+#define MY_CSTB S(C(KC_TAB))
+#define MY_CTAB C(KC_TAB)
+#define MY_EURO S(RALT(KC_2))
+#define MY_MEH LCA(KC_LCMD)
+#define M_DASH S(RALT(KC_MINS))
+
+#define NU_F LT(_NU, KC_F)
+#define SY_M LT(_SY, KC_M)
+#define SY_V LT(_SY, KC_V)
 
 /// Combos
 const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
@@ -25,9 +38,10 @@ enum custom_keycodes {
     HM_Z,
     NV_SLSH,
     SMTD_KEYCODES_END,
-    MY_LLCK,
+    MY_LLCK, // doesn't work with achordion
 };
 
+/// SM_TD
 // There's a bug in v0.4 that requires to put it here
 #include "features/sm_td.h"
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
@@ -42,31 +56,40 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     // Fix SMTD timeout
     if (timeout == SMTD_TIMEOUT_RELEASE) {
-        if (keycode == HM_Z) return 50;
-        if (keycode == HM_RSFT) return 50;
-        if (keycode == NV_SLSH) return 50;
+        switch (keycode) {
+            case HM_Z:
+            case HM_RSFT:
+            case NV_SLSH:
+                return 50;
+        }
     }
 
     return get_smtd_timeout_default(timeout);
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+/// Achordion
+void matrix_scan_user(void) {
+    achordion_task();
+}
+
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
+    // Allow same hand holds
+    switch (tap_hold_keycode) {
+        case NU_F:
+            if (other_keycode == KC_D) return true;
+            break;
+    }
+
+    return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    if (!process_achordion(keycode, record)) return false;
     if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
     if (!process_smtd(keycode, record)) return false;
 
     return true;
 }
-
-/// Complex key definitions
-#define MY_CSTB S(C(KC_TAB))
-#define MY_CTAB C(KC_TAB)
-#define MY_EURO S(RALT(KC_2))
-#define MY_MEH LCA(KC_LCMD)
-#define M_DASH S(RALT(KC_MINS))
-
-#define NU_F LT(_NU, KC_F)
-#define SY_M LT(_SY, KC_M)
-#define SY_V LT(_SY, KC_V)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -114,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX, XXXXXXX,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     CW_TOGG, MY_LLCK, _______
+                                  _______, _______, _______,     _______, CW_TOGG, MY_LLCK
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
