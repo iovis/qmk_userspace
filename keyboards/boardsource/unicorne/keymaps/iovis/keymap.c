@@ -42,7 +42,7 @@ enum custom_keycodes {
     MY_LLCK, // doesn't work with achordion
 };
 
-/// SM_TD
+/// SMTD
 // There's a bug in v0.4 that requires to put it here
 #include "features/sm_td.h"
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
@@ -56,7 +56,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 }
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
-    // Fix SMTD timeout
+    // Freeze STMD timeout
     if (timeout == SMTD_TIMEOUT_RELEASE) {
         switch (keycode) {
             case HM_LGUI:
@@ -79,7 +79,20 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
     // Allow same hand holds
     switch (tap_hold_keycode) {
         case NU_F:
-            if (other_keycode == KC_D) return true;
+            switch (other_keycode) {
+                case KC_D:
+                case MY_MEH:
+                    return true;
+            }
+
+            break;
+        case SY_V:
+            switch (other_keycode) {
+                case KC_C:
+                case KC_X:
+                    return true;
+            }
+
             break;
     }
 
