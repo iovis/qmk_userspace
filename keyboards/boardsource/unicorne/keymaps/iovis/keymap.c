@@ -99,6 +99,16 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
+uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
+    // Disable achordion streak for some keys
+    switch (tap_hold_keycode) {
+        case NU_F:
+            return 0;
+    }
+
+    return 100;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_achordion(keycode, record)) return false;
     if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
