@@ -85,7 +85,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
             break;
         case SY_V:
             switch (other_keycode) {
-                case KC_SPC:
+                case MY_MEH:
                     return true;
             }
 
