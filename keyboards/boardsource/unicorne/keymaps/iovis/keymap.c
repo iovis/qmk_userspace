@@ -78,6 +78,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
         case NU_F:
             switch (other_keycode) {
                 case KC_D:
+                case KC_LSFT:
                 case MY_MEH:
                     return true;
             }
@@ -85,6 +86,9 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
             break;
         case SY_V:
             switch (other_keycode) {
+                case KC_C:
+                case KC_X:
+                case KC_Z:
                 case MY_MEH:
                     return true;
             }
@@ -143,9 +147,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_ESC , MY_EURO, KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LPRN, KC_LCBR, KC_LBRC, KC_SCLN, KC_DQUO,
+       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LBRC, KC_LPRN, KC_LCBR, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, XXXXXXX, KC_LABK, KC_RABK, KC_GRV , M_DASH ,     KC_TILD, KC_RCBR, KC_RBRC, KC_RPRN, KC_SLSH, KC_ENT ,
+       _______, KC_QUES, KC_LABK, KC_RABK, KC_GRV , M_DASH ,     KC_TILD, KC_RPRN, KC_RCBR, KC_RBRC, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, KC_SPC ,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
