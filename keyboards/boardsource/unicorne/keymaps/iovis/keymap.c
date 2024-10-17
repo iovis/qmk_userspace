@@ -99,6 +99,18 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
     return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
+// How long to leave a key press till achordion ignores it and
+// does a hold (default 1000ms)
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+    // Bypass Achordion for these keys.
+    // switch (tap_hold_keycode) {
+    //   case HM_Z:
+    //     return 0;
+    // }
+
+    return TAPPING_TERM * 2;
+}
+
 uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
     // Disable achordion streak for some keys
     switch (tap_hold_keycode) {
