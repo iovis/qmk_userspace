@@ -21,6 +21,7 @@ enum layer_number {
 #define MY_MEH LCA(KC_LCMD)
 #define M_DASH S(RALT(KC_MINS))
 
+#define HM_RSFT RSFT_T(KC_ENT)
 #define NU_F LT(_NU, KC_F)
 #define SY_M LT(_SY, KC_M)
 #define SY_V LT(_SY, KC_V)
@@ -32,7 +33,6 @@ enum layer_number {
 enum custom_keycodes {
     RGB_SLD = ML_SAFE_RANGE,
     SMTD_KEYCODES_BEGIN,
-    HM_RSFT,
     HM_Z,
     NV_SLSH,
     SMTD_KEYCODES_END,
@@ -43,19 +43,19 @@ enum custom_keycodes {
 #include "features/sm_td.h"
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
-        SMTD_MT(HM_RSFT, KC_ENT, KC_RSFT)
         SMTD_MT(HM_Z, KC_Z, KC_LCTL)
-
         SMTD_LT(NV_SLSH, KC_SLSH, _NV)
     }
 }
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
-    // Fix SMTD timeout
+    // Freeze STMD timeout
     if (timeout == SMTD_TIMEOUT_RELEASE) {
-        if (keycode == HM_Z) return 40;
-        if (keycode == HM_RSFT) return 40;
-        if (keycode == NV_SLSH) return 40;
+        switch (keycode) {
+            case HM_Z:
+            case NV_SLSH:
+                return 50;
+        }
     }
 
     return get_smtd_timeout_default(timeout);
@@ -110,6 +110,7 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
     // Disable achordion streak for some keys
     switch (tap_hold_keycode) {
+        case HM_RSFT:
         case NU_F:
             return 0;
     }
