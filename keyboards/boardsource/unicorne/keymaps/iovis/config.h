@@ -13,6 +13,10 @@
 // achordion
 #define ACHORDION_STREAK
 
+// RGB
+#undef RGB_MATRIX_TIMEOUT
+#define RGB_MATRIX_TIMEOUT 300000
+
 // VIA
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
 
