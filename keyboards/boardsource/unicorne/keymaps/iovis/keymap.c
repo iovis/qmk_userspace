@@ -22,6 +22,7 @@ enum layer_number {
 
 #define HM_RSFT RSFT_T(KC_ENT)
 #define NU_F LT(_NU, KC_F)
+#define NV_SLSH LT(_NV, KC_SLSH)
 #define SY_M LT(_SY, KC_M)
 #define SY_V LT(_SY, KC_V)
 
@@ -36,7 +37,6 @@ combo_t key_combos[] = {
 enum custom_keycodes {
     SMTD_KEYCODES_BEGIN = SAFE_RANGE,
     HM_Z,
-    NV_SLSH,
     SMTD_KEYCODES_END,
     MY_LLCK, // doesn't work with achordion
 };
@@ -45,10 +45,7 @@ enum custom_keycodes {
 // There's a bug in v0.4 that requires to put it here
 #include "features/sm_td.h"
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
-    switch (keycode) {
-        SMTD_MT(HM_Z, KC_Z, KC_LCTL)
-        SMTD_LT(NV_SLSH, KC_SLSH, _NV)
-    }
+    switch (keycode) { SMTD_MT(HM_Z, KC_Z, KC_LCTL) }
 }
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
@@ -56,7 +53,6 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     if (timeout == SMTD_TIMEOUT_RELEASE) {
         switch (keycode) {
             case HM_Z:
-            case NV_SLSH:
                 return 50;
         }
     }
@@ -79,6 +75,18 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                 case KC_LSFT:
                 case KC_Z:
                 case MY_MEH:
+                    return true;
+            }
+
+            break;
+        case NV_SLSH:
+            switch (other_keycode) {
+                case KC_H:
+                case KC_J:
+                case KC_K:
+                case KC_L:
+                case KC_UNDS:
+                case KC_BSPC:
                     return true;
             }
 
@@ -169,13 +177,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MY_LLCK,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     _______, CW_TOGG, MY_LLCK
+                                  _______, _______, _______,     _______, CW_TOGG, XXXXXXX
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -286,14 +294,14 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        ORANG,
+        CYAN ,
         YELLW, GREEN, BLACK, // NHY
         BLACK, GREEN, YELLW, // UJM
-        MAGNT, WHITE,
+        MAGNT, BLACK,
         YELLW, GREEN, BLACK, // ,KI
         BLACK, GREEN, YELLW, // OL.
         BLACK, BLACK, BLACK, // /;P
-        BLACK, BLACK, RED  , // DEL, ', SFT
+        WHITE, BLACK, RED  , // DEL, ', SFT
     },
 
     [_GA] = {
