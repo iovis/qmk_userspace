@@ -177,11 +177,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MY_LLCK,
+       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, RGB_TOG,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MY_LLCK,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
+       _______, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, RGB_VAI,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
+       _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, RGB_VAD,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, _______,     _______, CW_TOGG, XXXXXXX
     //                          `+--------+--------+--------'   `--------+--------+--------+'
@@ -284,7 +284,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         YELLW,
-        BLACK, BLACK, BLACK, // BGT
+        RED  , RED  , RED  , // BGT
         BLACK, BLACK, BLACK, // RFV
         MAGNT, CYAN ,
         BLUE , WHITE, WHITE, // CDE
