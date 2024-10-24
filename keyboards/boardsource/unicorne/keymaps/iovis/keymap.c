@@ -35,12 +35,20 @@ combo_t key_combos[] = {
     COMBO(combo_esc, KC_ESC),
 };
 
+/// Key Overrides
+// Make shift+= return = to prevent issues when rolling
+const key_override_t equals_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_EQL);
+
+const key_override_t* key_overrides[] = {
+    &equals_key_override,
+};
+
 /// Macros
 enum custom_keycodes {
     SMTD_KEYCODES_BEGIN = SAFE_RANGE,
     HM_Z,
     SMTD_KEYCODES_END,
-    MY_LLCK, // doesn't work with achordion
+    MY_LLCK,
 };
 
 /// SMTD
