@@ -14,17 +14,19 @@ enum layer_number {
 };
 
 /// Complex key definitions
+// clang-format off
 #define MY_CSTB S(C(KC_TAB))
 #define MY_CTAB C(KC_TAB)
 #define MY_EURO S(RALT(KC_2))
-#define MY_MEH LCA(KC_LCMD)
-#define M_DASH S(RALT(KC_MINS))
+#define MY_MEH  LCA(KC_LCMD)
+#define M_DASH  S(RALT(KC_MINS))
 
 #define HM_RSFT RSFT_T(KC_ENT)
-#define NU_F LT(_NU, KC_F)
+#define NU_F    LT(_NU, KC_F)
 #define NV_SLSH LT(_NV, KC_SLSH)
-#define SY_M LT(_SY, KC_M)
-#define SY_V LT(_SY, KC_V)
+#define SY_M    LT(_SY, KC_M)
+#define SY_V    LT(_SY, KC_V)
+// clang-format on
 
 /// Combos
 const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
