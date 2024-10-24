@@ -4,6 +4,7 @@ COMBO_ENABLE = yes
 CONSOLE_ENABLE = no
 DEFERRED_EXEC_ENABLE = yes
 DYNAMIC_MACRO_ENABLE = no
+KEY_OVERRIDE_ENABLE = yes
 POINTING_DEVICE_ENABLE = no
 SRC += features/achordion.c
 SRC += features/layer_lock.c
