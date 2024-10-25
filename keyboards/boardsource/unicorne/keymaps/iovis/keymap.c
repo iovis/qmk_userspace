@@ -175,11 +175,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_SY] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_ESC , MY_EURO, KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______,
+       KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LBRC, KC_LPRN, KC_LCBR, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_QUES, KC_LABK, KC_RABK, KC_GRV , M_DASH ,     KC_TILD, KC_RPRN, KC_RCBR, KC_RBRC, KC_SLSH, KC_ENT ,
+       _______, KC_QUES, KC_LABK, KC_RABK, MY_EURO, M_DASH ,     KC_TILD, KC_RPRN, KC_RCBR, KC_RBRC, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, KC_SPC ,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
