@@ -1,6 +1,8 @@
 #pragma once
 
+#define CAPS_WORD_IDLE_TIMEOUT 3000
 #define CAPS_WORD_TOGGLE_KEY
+
 #define COMBO_TERM 25
 #define PERMISSIVE_HOLD
 #define TAPPING_TERM 175

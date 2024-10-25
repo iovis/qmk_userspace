@@ -95,7 +95,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                 case KC_J:
                 case KC_K:
                 case KC_L:
-                case KC_UNDS:
+                case KC_SPC:
                 case KC_BSPC:
                     return true;
             }
@@ -177,9 +177,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LBRC, KC_LPRN, KC_LCBR, KC_SCLN, KC_DQUO,
+       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LBRC, KC_LCBR, KC_LPRN, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_QUES, KC_LABK, KC_RABK, MY_EURO, M_DASH ,     KC_TILD, KC_RPRN, KC_RCBR, KC_RBRC, KC_SLSH, KC_ENT ,
+       _______, KC_QUES, KC_LABK, KC_RABK, MY_EURO, M_DASH ,     KC_TILD, KC_RPRN, KC_RBRC, KC_RCBR, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, KC_SPC ,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, RGB_VAD,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     _______, CW_TOGG, XXXXXXX
+                                  _______, _______, _______,     CW_TOGG, _______, XXXXXXX
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -304,10 +304,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        CYAN ,
+        MAGNT,
         YELLW, GREEN, BLACK, // NHY
         BLACK, GREEN, YELLW, // UJM
-        MAGNT, BLACK,
+        CYAN , BLACK,
         YELLW, GREEN, BLACK, // ,KI
         BLACK, GREEN, YELLW, // OL.
         BLACK, BLACK, BLACK, // /;P
