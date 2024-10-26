@@ -75,14 +75,14 @@ enum custom_keycodes {
 
 /// Tap Dance
 enum {
-    TD_WIN,
     TD_1P,
+    TD_WIN,
 };
 
 // Tap Dance definitions
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_WIN] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_ESC, _GA),
     [TD_1P]  = ACTION_TAP_DANCE_DOUBLE(KC_SPC, G(S(KC_BSLS))),
+    [TD_WIN] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_ESC, _GA),
 };
 
 /// SMTD
@@ -223,11 +223,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, RGB_TOG,     EE_CLR , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MY_LLCK,
+       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, RGB_VAD, RGB_TOG,     EE_CLR , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MY_LLCK,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, RGB_VAI,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
+       _______, KC_MUTE, KC_VOLD, KC_VOLU, DM_REC1, DM_REC2,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, RGB_VAD,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
+       _______, KC_LCTL, MY_CSTB, MY_CTAB, DM_PLY1, DM_PLY2,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   KC_CAPS, _______, _______,     _______, _______, XXXXXXX
     //                          `+--------+--------+--------'   `--------+--------+--------+'
@@ -330,8 +330,8 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         YELLW,
-        ORANG, ORANG, ORANG, // BGT
-        BLACK, BLACK, BLACK, // RFV
+        GREEN, ORANG, RED  , // BGT
+        RED  , ORANG, GREEN, // RFV
         MAGNT, WHITE,
         BLUE , WHITE, WHITE, // CDE
         WHITE, WHITE, BLUE , // WSX
