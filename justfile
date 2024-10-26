@@ -17,6 +17,7 @@ setup:
     qmk compile --compiledb -j0 -kb boardsource/unicorne
 
 compile:
+    qmk lint -kb boardsource/unicorne
     qmk compile -j0 -kb boardsource/unicorne
     fish -ic pause_if_err
 
@@ -30,6 +31,7 @@ vsetup:
     qmk compile --compiledb -j0 -kb zsa/voyager
 
 vcompile:
+    qmk lint -kb zsa/voyager
     qmk compile -j0 -kb zsa/voyager
     fish -ic pause_if_err
 
