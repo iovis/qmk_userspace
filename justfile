@@ -21,7 +21,8 @@ compile:
     fish -ic pause_if_err
 
 flash:
-    cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
+    # cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
+    qmk flash -kb boardsource/unicorne
 
 vsetup:
     @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
@@ -40,7 +41,7 @@ open:
 
 console:
     # Flash with `CONSOLE_ENABLE = yes`
-    qmk console -n -t
+    qmk console -t
 
 clean:
     qmk clean -a

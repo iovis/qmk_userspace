@@ -51,6 +51,18 @@ enum custom_keycodes {
     MY_LLCK,
 };
 
+/// Tap Dance
+enum {
+    TD_WIN,
+    TD_1P,
+};
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_WIN] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_ESC, _GA),
+    [TD_1P]  = ACTION_TAP_DANCE_DOUBLE(KC_SPC, G(S(KC_BSLS))),
+};
+
 /// SMTD
 // There's a bug in v0.4 that requires to put it here
 #include "features/sm_td.h"
@@ -140,6 +152,8 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+
     if (!process_achordion(keycode, record)) return false;
     if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
     if (!process_smtd(keycode, record)) return false;
@@ -157,7 +171,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, HM_Z   , KC_X   , KC_C   , SY_V   , KC_B   ,     KC_N   , SY_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_SPC , KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, TO(_GA)
+                                TD(TD_1P), KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, TD(TD_WIN)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -187,13 +201,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, RGB_TOG,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MY_LLCK,
+       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, RGB_TOG,     EE_CLR , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MY_LLCK,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, RGB_VAI,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, RGB_VAD,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     CW_TOGG, _______, XXXXXXX
+                                  KC_CAPS, _______, _______,     _______, _______, XXXXXXX
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -294,9 +308,9 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         YELLW,
-        RED  , RED  , RED  , // BGT
+        ORANG, ORANG, ORANG, // BGT
         BLACK, BLACK, BLACK, // RFV
-        MAGNT, CYAN ,
+        MAGNT, WHITE,
         BLUE , WHITE, WHITE, // CDE
         WHITE, WHITE, BLUE , // WSX
         BLUE , WHITE, WHITE, // ZAQ
@@ -305,7 +319,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         MAGNT,
-        YELLW, GREEN, BLACK, // NHY
+        YELLW, GREEN, RED  , // NHY
         BLACK, GREEN, YELLW, // UJM
         CYAN , BLACK,
         YELLW, GREEN, BLACK, // ,KI
@@ -406,6 +420,13 @@ bool rgb_matrix_indicators_user(void) {
         default:
             if (rgb_matrix_get_flags() == LED_FLAG_NONE) rgb_matrix_set_color_all(0, 0, 0);
             break;
+    }
+
+    // Caps indicator
+    // uprintf("Caps Lock: %s\n", host_keyboard_led_state().caps_lock ? "on" : "off");
+    // uprintf("Caps Word: %s\n", is_caps_word_on() ? "on" : "off");
+    if (host_keyboard_led_state().caps_lock || is_caps_word_on()) {
+        rgb_matrix_set_color(26, RGB_WHITE);
     }
 
     return true;
