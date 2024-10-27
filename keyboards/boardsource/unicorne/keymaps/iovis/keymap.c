@@ -57,11 +57,14 @@ combo_t key_combos[] = {
 };
 
 /// Key Overrides
-// Make shift+= return = to prevent issues when rolling
-const key_override_t equals_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_EQL);
+const key_override_t backspace_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_UNDS);
+const key_override_t equals_key_override    = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_EQL);
+const key_override_t space_key_override     = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_MINS);
 
 const key_override_t* key_overrides[] = {
+    &backspace_key_override,
     &equals_key_override,
+    &space_key_override,
 };
 
 /// Macros
