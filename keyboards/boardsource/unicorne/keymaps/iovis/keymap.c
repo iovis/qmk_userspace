@@ -27,12 +27,11 @@
 
 /// Layers
 enum layer_number {
-    _BA = 0,
-    _GA, // Gaming
-    _SY, // Symbols
-    _NV, // Navigation
-    _NU, // Number Pad
-    // _ME, // Media
+    LAYER_BASE = 0,
+    LAYER_GAME,
+    LAYER_SYM,
+    LAYER_NAV,
+    LAYER_NUM,
 };
 
 /// Complex key definitions
@@ -44,10 +43,10 @@ enum layer_number {
 #define M_DASH  S(RALT(KC_MINS))
 
 #define HM_RSFT RSFT_T(KC_ENT)
-#define NU_F    LT(_NU, KC_F)
-#define NV_SLSH LT(_NV, KC_SLSH)
-#define SY_SCLN LT(_SY, KC_SCLN)
-#define SY_A    LT(_SY, KC_A)
+#define NU_F    LT(LAYER_NUM, KC_F)
+#define NV_SLSH LT(LAYER_NAV, KC_SLSH)
+#define SY_SCLN LT(LAYER_SYM, KC_SCLN)
+#define SY_A    LT(LAYER_SYM, KC_A)
 // clang-format on
 
 /// Combos
@@ -82,7 +81,7 @@ enum {
 // Tap Dance definitions
 tap_dance_action_t tap_dance_actions[] = {
     [TD_1P]  = ACTION_TAP_DANCE_DOUBLE(KC_SPC, G(S(KC_BSLS))),
-    [TD_WIN] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_ESC, _GA),
+    [TD_WIN] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_ESC, LAYER_GAME),
 };
 
 /// SMTD
@@ -185,7 +184,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BA] = LAYOUT_split_3x6_3(
+    [LAYER_BASE] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -197,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
-    [_GA] = LAYOUT_split_3x6_3(
+    [LAYER_GAME] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -205,11 +204,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_LALT, KC_SPC , TT(_NU),     KC_SPC , KC_ESC , TO(0)
+                                  KC_LALT, KC_SPC , KC_ESC ,     KC_SPC , TT(LAYER_NUM), TO(0)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
-    [_SY] = LAYOUT_split_3x6_3(
+    [LAYER_SYM] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -221,7 +220,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
-    [_NV] = LAYOUT_split_3x6_3(
+    [LAYER_NAV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, RGB_VAD, RGB_TOG,     EE_CLR , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MY_LLCK,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -233,7 +232,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
-    [_NU] = LAYOUT_split_3x6_3(
+    [LAYER_NUM] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        _______, _______, _______, _______, _______, _______,     KC_SLSH, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -278,7 +277,7 @@ void keyboard_post_init_user(void) {
 #define YELLW { HSV_YELLOW }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [_BA] = {
+    [LAYER_BASE] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         YELLW,
@@ -302,7 +301,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , CYAN , BLUE , // DEL, ', SFT
     },
 
-    [_SY] = {
+    [LAYER_SYM] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         CYAN ,
@@ -326,7 +325,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , ORANG, BLUE , // DEL, ', SFT
     },
 
-    [_NV] = {
+    [LAYER_NAV] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         YELLW,
@@ -350,7 +349,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         WHITE, BLACK, RED  , // DEL, ', SFT
     },
 
-    [_GA] = {
+    [LAYER_GAME] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         GREEN,
@@ -374,7 +373,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , CYAN , BLUE , // DEL, ', SFT
     },
 
-    [_NU] = {
+    [LAYER_NUM] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         WHITE,
