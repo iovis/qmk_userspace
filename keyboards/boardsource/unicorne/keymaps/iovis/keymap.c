@@ -46,8 +46,8 @@ enum layer_number {
 #define HM_RSFT RSFT_T(KC_ENT)
 #define NU_F    LT(_NU, KC_F)
 #define NV_SLSH LT(_NV, KC_SLSH)
-#define SY_M    LT(_SY, KC_M)
-#define SY_V    LT(_SY, KC_V)
+#define SY_SCLN LT(_SY, KC_SCLN)
+#define SY_A    LT(_SY, KC_A)
 // clang-format on
 
 /// Combos
@@ -135,11 +135,11 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
             }
 
             break;
-        case SY_V:
+        case SY_A:
             switch (other_keycode) {
-                case KC_C:
-                case KC_X:
-                case KC_Z:
+                // case KC_C:
+                // case KC_X:
+                // case KC_Z:
                 case MY_MEH:
                     return true;
             }
@@ -189,9 +189,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LGUI, KC_A   , KC_S   , KC_D   , NU_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
+       KC_LGUI, SY_A   , KC_S   , KC_D   , NU_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , SY_SCLN, KC_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LSFT, HM_Z   , KC_X   , KC_C   , SY_V   , KC_B   ,     KC_N   , SY_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
+       KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                 TD(TD_1P), KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, TD(TD_WIN)
     //                          `+--------+--------+--------'   `--------+--------+--------+'
@@ -215,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LBRC, KC_LCBR, KC_LPRN, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_QUES, KC_LABK, KC_RABK, MY_EURO, M_DASH ,     KC_TILD, KC_RPRN, KC_RBRC, KC_RCBR, KC_SLSH, KC_ENT ,
+       _______, MY_EURO, KC_LABK, KC_RABK, KC_QUES, M_DASH ,     KC_TILD, KC_RPRN, KC_RBRC, KC_RCBR, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, KC_SPC ,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
