@@ -310,9 +310,9 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         ORANG, ORANG, ORANG,  // BGT
         ORANG, ORANG, ORANG,  // RFV
         MAGNT, CYAN ,
-        BLUE , ORANG, ORANG,  // CDE
-        ORANG, ORANG, BLUE ,  // WSX
-        BLUE , ORANG, ORANG,  // ZAQ
+        ORANG, ORANG, ORANG,  // CDE
+        ORANG, ORANG, ORANG,  // WSX
+        ORANG, ORANG, ORANG,  // ZAQ
         BLUE , BLUE , BLUE ,  // TAB, CMD, SFT
 
         // Right
