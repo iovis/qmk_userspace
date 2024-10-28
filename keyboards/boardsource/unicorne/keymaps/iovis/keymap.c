@@ -71,6 +71,14 @@ const key_override_t* key_overrides[] = {
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_SCLN)) {
         tap_code16(G(S(KC_BSLS))); // 1Password popup
+    } else if (leader_sequence_one_key(KC_I)) {
+        tap_code16(G(A(KC_I))); // Devtools
+    } else if (leader_sequence_one_key(KC_J)) {
+        tap_code16(G(S(KC_4))); // Screenshot
+    } else if (leader_sequence_one_key(KC_DOT)) {
+        tap_code16(G(S(KC_3))); // Screenshot
+    } else if (leader_sequence_one_key(KC_K)) {
+        tap_code16(G(S(KC_5))); // Screen Recording
     } else if (leader_sequence_two_keys(KC_L, KC_W)) {
         layer_move(LAYER_GAME);
     } else if (leader_sequence_two_keys(KC_L, KC_F)) {
