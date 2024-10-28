@@ -47,6 +47,8 @@ enum layer_number {
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
 #define SY_A    LT(LAYER_SYM, KC_A)
+
+#define TT_NUM TT(LAYER_NUM)
 // clang-format on
 
 /// Combos
@@ -67,24 +69,23 @@ const key_override_t* key_overrides[] = {
     &space_key_override,
 };
 
-/// Macros
+/// Leader
+void leader_end_user(void) {
+    if (leader_sequence_one_key(KC_SCLN)) {
+        tap_code16(G(S(KC_BSLS))); // 1Password popup
+    } else if (leader_sequence_two_keys(KC_L, KC_W)) {
+        layer_move(LAYER_GAME);
+    } else if (leader_sequence_two_keys(KC_L, KC_F)) {
+        layer_move(LAYER_BASE);
+    }
+}
+
+/// Custom Keycodes
 enum custom_keycodes {
     SMTD_KEYCODES_BEGIN = SAFE_RANGE,
     HM_Z,
     SMTD_KEYCODES_END,
     MY_LLCK,
-};
-
-/// Tap Dance
-enum {
-    TD_1P,
-    TD_WIN,
-};
-
-// Tap Dance definitions
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_1P]  = ACTION_TAP_DANCE_DOUBLE(KC_SPC, G(S(KC_BSLS))),
-    [TD_WIN] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_ESC, LAYER_GAME),
 };
 
 /// SMTD
@@ -195,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                TD(TD_1P), KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, TD(TD_WIN)
+                                  KC_SPC , KC_LALT, MY_MEH ,     KC_SPC , QK_LEAD, KC_ESC
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -207,7 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_LALT, KC_SPC , KC_ESC ,     KC_SPC , TT(LAYER_NUM), TO(0)
+                                  KC_LALT, KC_SPC , KC_ESC ,     KC_SPC , QK_LEAD, TT_NUM
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -231,7 +232,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, MY_CSTB, MY_CTAB, DM_PLY1, DM_PLY2,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_CAPS, _______, _______,     _______, _______, XXXXXXX
+                                  KC_CAPS, _______, _______,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -297,7 +298,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         CYAN ,
         CYAN , CYAN , CYAN , // NHY
         CYAN , CYAN , CYAN , // UJM
-        CYAN , WHITE,
+        WHITE, BLUE ,
         CYAN , CYAN , CYAN , // ,KI
         CYAN , CYAN , CYAN , // OL.
         CYAN , CYAN , CYAN , // /;P
@@ -321,7 +322,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         CYAN ,
         ORANG, ORANG, ORANG, // NHY
         ORANG, ORANG, ORANG, // UJM
-        CYAN , WHITE,
+        WHITE, BLUE,
         ORANG, ORANG, ORANG, // ,KI
         ORANG, ORANG, ORANG, // OL.
         ORANG, ORANG, ORANG, // /;P
@@ -345,7 +346,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         MAGNT,
         YELLW, GREEN, RED  , // NHY
         BLACK, GREEN, YELLW, // UJM
-        CYAN , BLACK,
+        WHITE, BLUE ,
         YELLW, GREEN, BLACK, // ,KI
         BLACK, GREEN, YELLW, // OL.
         BLACK, BLACK, BLACK, // /;P
@@ -355,7 +356,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [LAYER_GAME] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        GREEN,
+        BLUE ,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
         CYAN , MAGNT,
@@ -369,7 +370,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         CYAN ,
         CYAN , CYAN , CYAN , // NHY
         CYAN , CYAN , CYAN , // UJM
-        BLUE , WHITE,
+        WHITE, GREEN,
         CYAN , CYAN , CYAN , // ,KI
         CYAN , CYAN , CYAN , // OL.
         CYAN , CYAN , CYAN , // /;P
@@ -452,6 +453,11 @@ bool rgb_matrix_indicators_user(void) {
     if (host_keyboard_led_state().caps_lock || is_caps_word_on()) {
         rgb_matrix_set_color(26, RGB_WHITE);
     }
+
+    // Leader indicator
+    // if (leader_sequence_active()) {
+    //     rgb_matrix_set_color(40, RGB_GREEN);
+    // }
 
     return true;
 }
