@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#include "quantum.h"
 #include QMK_KEYBOARD_H
 
 #include "features/achordion.h"
@@ -71,17 +72,21 @@ const key_override_t* key_overrides[] = {
 
 /// Leader
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_SCLN)) {
-        tap_code16(G(S(KC_BSLS))); // 1Password popup
-    } else if (leader_sequence_one_key(KC_I)) {
-        tap_code16(G(A(KC_I))); // Devtools
-    } else if (leader_sequence_one_key(KC_J)) {
-        tap_code16(G(S(KC_4))); // Screenshot
+    if (leader_sequence_one_key(KC_S)) { // Snippets
+        SEND_STRING("-> ");
+    } else if (leader_sequence_one_key(KC_F)) {
+        SEND_STRING("=> ");
+    } else if (leader_sequence_one_key(KC_P)) { // 1Password popup
+        tap_code16(G(S(KC_BSLS)));
+    } else if (leader_sequence_one_key(KC_I)) { // Devtools
+        tap_code16(G(A(KC_I)));
+    } else if (leader_sequence_one_key(KC_J)) { // Screenshots
+        tap_code16(G(S(KC_4)));
     } else if (leader_sequence_one_key(KC_DOT)) {
-        tap_code16(G(S(KC_3))); // Screenshot
+        tap_code16(G(S(KC_3)));
     } else if (leader_sequence_one_key(KC_K)) {
-        tap_code16(G(S(KC_5))); // Screen Recording
-    } else if (leader_sequence_two_keys(KC_L, KC_W)) {
+        tap_code16(G(S(KC_5)));
+    } else if (leader_sequence_two_keys(KC_L, KC_W)) { // Layers
         layer_move(LAYER_GAME);
     } else if (leader_sequence_two_keys(KC_L, KC_F)) {
         layer_move(LAYER_BASE);
