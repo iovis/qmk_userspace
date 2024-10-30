@@ -149,9 +149,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
             break;
         case SY_A:
             switch (other_keycode) {
-                // case KC_C:
-                // case KC_X:
-                // case KC_Z:
                 case MY_MEH:
                     return true;
             }
@@ -165,7 +162,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
 // How long to leave a key press till achordion ignores it and
 // does a hold (default 1000ms)
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-    // Bypass Achordion for these keys.
+    // Bypass Achordion for these keys and let QMK handle it
     switch (tap_hold_keycode) {
         case HM_SPC:
             return 0;
