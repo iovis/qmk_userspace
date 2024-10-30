@@ -20,7 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#include "quantum.h"
 #include QMK_KEYBOARD_H
 
 #include "features/achordion.h"
@@ -43,6 +42,7 @@ enum layer_number {
 #define MY_MEH  LCA(KC_LCMD)
 #define M_DASH  S(RALT(KC_MINS))
 
+#define HM_SPC  LGUI_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
 #define NU_F    LT(LAYER_NUM, KC_F)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
@@ -60,14 +60,10 @@ combo_t key_combos[] = {
 };
 
 /// Key Overrides
-// const key_override_t backspace_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_UNDS);
 const key_override_t equals_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_EQL);
-// const key_override_t space_key_override  = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_UNDS);
 
 const key_override_t* key_overrides[] = {
-    // &backspace_key_override,
     &equals_key_override,
-    // &space_key_override,
 };
 
 /// Leader
@@ -170,10 +166,10 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
 // does a hold (default 1000ms)
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     // Bypass Achordion for these keys.
-    // switch (tap_hold_keycode) {
-    //     case HM_Z:
-    //         return 0;
-    // }
+    switch (tap_hold_keycode) {
+        case HM_SPC:
+            return 0;
+    }
 
     return TAPPING_TERM * 2;
 }
@@ -209,7 +205,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_SPC , KC_LALT, MY_MEH ,     KC_SPC , QK_LEAD, KC_ESC
+                                  HM_SPC , KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, QK_LEAD
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -221,13 +217,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_LALT, KC_SPC , KC_ESC ,     KC_SPC , QK_LEAD, TT_NUM
+                                  KC_LALT, KC_SPC , KC_ESC ,     KC_SPC , TT_NUM , QK_LEAD
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
     [LAYER_SYM] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, KC_UNDS,
+       KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LBRC, KC_LCBR, KC_LPRN, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -245,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, MY_CSTB, MY_CTAB, DM_PLY1, DM_PLY2,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  KC_CAPS, _______, _______,     _______, _______, _______
+                                  _______, _______, _______,     KC_CAPS, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -300,7 +296,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         YELLW,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
-        MAGNT, CYAN ,
+        MAGNT, BLUE ,
         CYAN , CYAN , CYAN , // CDE
         CYAN , CYAN , CYAN , // WSX
         CYAN , CYAN , CYAN , // ZAQ
@@ -311,7 +307,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         CYAN ,
         CYAN , CYAN , CYAN , // NHY
         CYAN , CYAN , CYAN , // UJM
-        WHITE, BLUE ,
+        CYAN , WHITE,
         CYAN , CYAN , CYAN , // ,KI
         CYAN , CYAN , CYAN , // OL.
         CYAN , CYAN , CYAN , // /;P
@@ -324,7 +320,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         CYAN ,
         ORANG, ORANG, ORANG,  // BGT
         ORANG, ORANG, ORANG,  // RFV
-        MAGNT, CYAN ,
+        MAGNT, BLUE ,
         ORANG, ORANG, ORANG,  // CDE
         ORANG, ORANG, ORANG,  // WSX
         ORANG, ORANG, ORANG,  // ZAQ
@@ -335,7 +331,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         CYAN ,
         ORANG, ORANG, ORANG, // NHY
         ORANG, ORANG, ORANG, // UJM
-        WHITE, BLUE,
+        CYAN , WHITE,
         ORANG, ORANG, ORANG, // ,KI
         ORANG, ORANG, ORANG, // OL.
         ORANG, ORANG, ORANG, // /;P
@@ -348,7 +344,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         YELLW,
         GREEN, ORANG, RED  , // BGT
         RED  , ORANG, GREEN, // RFV
-        MAGNT, WHITE,
+        MAGNT, BLUE ,
         BLUE , WHITE, WHITE, // CDE
         WHITE, WHITE, BLUE , // WSX
         BLUE , WHITE, WHITE, // ZAQ
@@ -359,7 +355,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         MAGNT,
         YELLW, GREEN, RED  , // NHY
         BLACK, GREEN, YELLW, // UJM
-        WHITE, BLUE ,
+        CYAN , WHITE,
         YELLW, GREEN, BLACK, // ,KI
         BLACK, GREEN, YELLW, // OL.
         BLACK, BLACK, BLACK, // /;P
@@ -383,7 +379,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         CYAN ,
         CYAN , CYAN , CYAN , // NHY
         CYAN , CYAN , CYAN , // UJM
-        WHITE, GREEN,
+        GREEN, WHITE,
         CYAN , CYAN , CYAN , // ,KI
         CYAN , CYAN , CYAN , // OL.
         CYAN , CYAN , CYAN , // /;P
@@ -396,7 +392,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         WHITE,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
-        MAGNT, CYAN ,
+        MAGNT, BLUE ,
         CYAN , CYAN , CYAN , // CDE
         CYAN , CYAN , CYAN , // WSX
         CYAN , CYAN , CYAN , // ZAQ
