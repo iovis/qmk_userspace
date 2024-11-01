@@ -175,7 +175,7 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
     // Disable achordion streak for some keys
     switch (tap_hold_keycode) {
         case HM_RSFT:
-        case NU_F:
+        case SY_SCLN:
             return 0;
     }
 
