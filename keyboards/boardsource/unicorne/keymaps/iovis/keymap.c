@@ -44,10 +44,10 @@ enum layer_number {
 
 #define HM_SPC  LGUI_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
-#define NU_F    LT(LAYER_NUM, KC_F)
+#define NU_A    LT(LAYER_NUM, KC_A)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
+#define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
-#define SY_A    LT(LAYER_SYM, KC_A)
 
 #define TT_NUM TT(LAYER_NUM)
 // clang-format on
@@ -124,7 +124,7 @@ void matrix_scan_user(void) {
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
-        case NU_F:
+        case NU_A:
             switch (other_keycode) {
                 case KC_LALT:
                 case KC_LGUI:
@@ -147,7 +147,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
             }
 
             break;
-        case SY_A:
+        case SY_F:
             switch (other_keycode) {
                 case MY_MEH:
                     return true;
@@ -198,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,     KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       KC_LGUI, SY_A   , KC_S   , KC_D   , NU_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , SY_SCLN, KC_QUOT,
+       KC_LGUI, NU_A   , KC_S   , KC_D   , SY_F   , KC_G   ,     KC_H   , KC_J   , KC_K   , KC_L   , SY_SCLN, KC_QUOT,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
@@ -224,7 +224,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, MY_EURO, KC_LABK, KC_RABK, KC_QUES, M_DASH ,     KC_TILD, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
+       _______, KC_QUES, KC_LABK, KC_RABK, MY_EURO, M_DASH ,     KC_TILD, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, KC_SPC ,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
