@@ -68,23 +68,17 @@ const key_override_t* key_overrides[] = {
 
 /// Leader
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_S)) { // Snippets
-        SEND_STRING("-> ");
-    } else if (leader_sequence_one_key(KC_F)) {
-        SEND_STRING("=> ");
-    } else if (leader_sequence_one_key(KC_P)) { // 1Password popup
+    if (leader_sequence_one_key(KC_P)) { // 1Password popup
         tap_code16(G(S(KC_BSLS)));
-    } else if (leader_sequence_one_key(KC_I)) { // Devtools
-        tap_code16(G(A(KC_I)));
     } else if (leader_sequence_one_key(KC_J)) { // Screenshots
         tap_code16(G(S(KC_4)));
     } else if (leader_sequence_one_key(KC_DOT)) {
         tap_code16(G(S(KC_3)));
     } else if (leader_sequence_one_key(KC_K)) {
         tap_code16(G(S(KC_5)));
-    } else if (leader_sequence_two_keys(KC_L, KC_W)) { // Layers
+    } else if (leader_sequence_one_key(KC_W)) { // Layers
         layer_move(LAYER_GAME);
-    } else if (leader_sequence_two_keys(KC_L, KC_F)) {
+    } else if (leader_sequence_one_key(KC_Q)) {
         layer_move(LAYER_BASE);
     }
 }
@@ -95,6 +89,8 @@ enum custom_keycodes {
     HM_Z,
     SMTD_KEYCODES_END,
     MY_LLCK,
+    MY_THIN,
+    MY_FATA,
 };
 
 /// SMTD
@@ -189,6 +185,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
     if (!process_smtd(keycode, record)) return false;
 
+    switch (keycode) {
+        case MY_THIN:
+            if (record->event.pressed) {
+                SEND_STRING("->");
+            }
+            break;
+        case MY_FATA:
+            if (record->event.pressed) {
+                SEND_STRING("=>");
+            }
+            break;
+    }
+
     return true;
 }
 
@@ -222,11 +231,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,
+       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     MY_THIN, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_QUES, KC_LABK, KC_RABK, MY_EURO, M_DASH ,     KC_TILD, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
+       _______, KC_QUES, KC_LABK, KC_RABK, MY_FATA, MY_EURO,     KC_TILD, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, KC_SPC ,     _______, _______, _______
+                                  _______, _______, KC_0   ,     _______, _______, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
