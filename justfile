@@ -10,7 +10,7 @@ default: init
 init:
     git stash
     git pull
-    git stash pop
+    git stash pop || true
 
 setup:
     qmk setup -H ../qmk_firmware --yes
