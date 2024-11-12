@@ -10,5 +10,6 @@ LEADER_ENABLE = yes
 POINTING_DEVICE_ENABLE = no
 SRC += features/achordion.c
 SRC += features/layer_lock.c
+SRC += features/socd_cleaner.c
 TAP_DANCE_ENABLE = no
 VIA_ENABLE = yes
