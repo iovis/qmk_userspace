@@ -24,6 +24,7 @@
 
 #include "features/achordion.h"
 #include "features/layer_lock.h"
+#include "features/socd_cleaner.h"
 
 /// Layers
 enum layer_number {
@@ -32,6 +33,16 @@ enum layer_number {
     LAYER_SYM,
     LAYER_NAV,
     LAYER_NUM,
+};
+
+/// Custom Keycodes
+enum custom_keycodes {
+    SMTD_KEYCODES_BEGIN = SAFE_RANGE,
+    HM_Z,
+    SMTD_KEYCODES_END,
+    MY_LLCK,
+    MY_THIN,
+    MY_FATA,
 };
 
 /// Complex key definitions
@@ -76,22 +87,12 @@ void leader_end_user(void) {
         tap_code16(G(S(KC_3)));
     } else if (leader_sequence_one_key(KC_K)) {
         tap_code16(G(S(KC_5)));
-    } else if (leader_sequence_one_key(KC_W)) { // Layers
+    } else if (leader_sequence_one_key(KC_G)) { // Layers
         layer_move(LAYER_GAME);
-    } else if (leader_sequence_one_key(KC_Q)) {
+    } else if (leader_sequence_one_key(KC_F)) {
         layer_move(LAYER_BASE);
     }
 }
-
-/// Custom Keycodes
-enum custom_keycodes {
-    SMTD_KEYCODES_BEGIN = SAFE_RANGE,
-    HM_Z,
-    SMTD_KEYCODES_END,
-    MY_LLCK,
-    MY_THIN,
-    MY_FATA,
-};
 
 /// SMTD
 // There's a bug in v0.4 that requires to put it here
@@ -178,9 +179,19 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
     return 100;
 }
 
+/// SOCD Cleaner
+socd_cleaner_t socd_h = {{KC_A, KC_D}, SOCD_CLEANER_LAST};
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    socd_cleaner_enabled = IS_LAYER_ON_STATE(state, LAYER_GAME);
+    return state;
+}
+
+/// Process Keystroke
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 
+    if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
     if (!process_achordion(keycode, record)) return false;
     if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
     if (!process_smtd(keycode, record)) return false;
