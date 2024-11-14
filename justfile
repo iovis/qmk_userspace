@@ -1,3 +1,6 @@
+qmk_firmware := quote(justfile_directory() / "../qmk_firmware/")
+zsa_firmware := quote(justfile_directory() / "../zsa_firmware/")
+
 alias dev := compile
 
 default: init
@@ -13,7 +16,7 @@ init:
     git stash pop || true
 
 setup:
-    qmk setup -H ../qmk_firmware --yes
+    qmk setup -H {{ qmk_firmware }} --yes
     qmk compile --compiledb -j0 -kb boardsource/unicorne
 
 compile:
@@ -27,7 +30,7 @@ flash:
 
 vsetup:
     @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
-    qmk setup -H ../zsa_firmware --yes
+    qmk setup -H {{ zsa_firmware }} --yes
     qmk compile --compiledb -j0 -kb zsa/voyager
 
 vcompile:
