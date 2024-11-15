@@ -41,8 +41,10 @@ enum custom_keycodes {
     HM_Z,
     SMTD_KEYCODES_END,
     MY_LLCK,
-    MY_THIN,
-    MY_FATA,
+    MY_AROW,
+    MY_FARW,
+    MY_MEMO,
+    MY_COLN,
 };
 
 /// Complex key definitions
@@ -146,6 +148,9 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
             break;
         case SY_F:
             switch (other_keycode) {
+                case KC_LALT:
+                case KC_LGUI:
+                case KC_LSFT:
                 case MY_MEH:
                     return true;
             }
@@ -174,6 +179,8 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
         case HM_RSFT:
         case SY_SCLN:
             return 0;
+        case SY_F:
+            return 30;
     }
 
     return 100;
@@ -197,14 +204,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_smtd(keycode, record)) return false;
 
     switch (keycode) {
-        case MY_THIN:
+        case MY_AROW:
             if (record->event.pressed) {
                 SEND_STRING("->");
             }
             break;
-        case MY_FATA:
+        case MY_FARW:
             if (record->event.pressed) {
                 SEND_STRING("=>");
+            }
+            break;
+        case MY_MEMO:
+            if (record->event.pressed) {
+                SEND_STRING("||=");
+            }
+            break;
+        case MY_COLN:
+            if (record->event.pressed) {
+                SEND_STRING("::");
             }
             break;
     }
@@ -242,11 +259,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     MY_THIN, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,
+       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_COLN, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_QUES, KC_LABK, KC_RABK, MY_FATA, MY_EURO,     KC_TILD, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
+       _______, MY_AROW, KC_LABK, KC_RABK, MY_MEMO, MY_EURO,     KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, KC_0   ,     _______, _______, _______
+                                  _______, MY_COLN, MY_FARW,     _______, KC_TILD, KC_0
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -273,18 +290,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   _______, _______, MY_LLCK,     KC_0   , _______, KC_TILD
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
-
-    // [_ME] = LAYOUT_split_3x6_3(
-    // //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-    //    XXXXXXX, DM_REC1, DM_PLY1, XXXXXXX, XXXXXXX, QK_BOOT,     RGB_VAI, RGB_HUI, RGB_SAI, RGB_MOD, RGB_TOG, XXXXXXX,
-    // //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-    //    KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     RGB_VAD, RGB_HUD, RGB_SAD, RGB_RMOD,CK_TOGG, XXXXXXX,
-    // //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-    //    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR ,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    // //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-    //                               _______, _______, _______,     _______, _______, _______
-    // //                          `+--------+--------+--------'   `--------+--------+--------+'
-    // ),
 };
 // clang-format on
 
