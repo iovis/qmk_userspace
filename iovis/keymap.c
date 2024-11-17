@@ -61,6 +61,23 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
             }
 
             break;
+        case SY_F:
+            switch (other_keycode) {
+                case KC_LALT:
+                case KC_LGUI:
+                case KC_LSFT:
+                case MY_MEH:
+                    return true;
+            }
+
+            break;
+        case SY_SCLN:
+            switch (other_keycode) {
+                case KC_UNDS:
+                    return true;
+            }
+
+            break;
         case NV_SLSH:
             switch (other_keycode) {
                 case KC_H:
@@ -73,16 +90,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                 case KC_DOT:
                 case KC_SPC:
                 case KC_BSPC:
-                    return true;
-            }
-
-            break;
-        case SY_F:
-            switch (other_keycode) {
-                case KC_LALT:
-                case KC_LGUI:
-                case KC_LSFT:
-                case MY_MEH:
                     return true;
             }
 
