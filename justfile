@@ -16,6 +16,7 @@ init:
     git stash pop || true
 
 setup:
+    cd {{ qmk_firmware }} && git pull
     qmk setup -H {{ qmk_firmware }} --yes
     qmk compile --compiledb -j0 -kb boardsource/unicorne
 
@@ -30,6 +31,7 @@ flash:
 
 vsetup:
     @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
+    cd {{ zsa_firmware }} && git pull
     qmk setup -H {{ zsa_firmware }} --yes
     qmk compile --compiledb -j0 -kb zsa/voyager
 
