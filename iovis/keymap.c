@@ -16,6 +16,7 @@ enum layers {
 enum custom_keycodes {
     SMTD_KEYCODES_BEGIN = SAFE_RANGE,
     HM_Z,
+    NV_SLSH,
     SMTD_KEYCODES_END,
     MY_LLCK,
     MY_ARRW,
@@ -36,7 +37,6 @@ enum custom_keycodes {
 #define HM_SPC  LGUI_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
 #define NU_A    LT(LAYER_NUM, KC_A)
-#define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
 #define TT_NUM  TT(LAYER_NUM)
@@ -59,8 +59,8 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                 case MY_MEH:
                     return true;
             }
-
             break;
+
         case SY_F:
             switch (other_keycode) {
                 case KC_LALT:
@@ -69,30 +69,13 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                 case MY_MEH:
                     return true;
             }
-
             break;
+
         case SY_SCLN:
             switch (other_keycode) {
                 case KC_UNDS:
                     return true;
             }
-
-            break;
-        case NV_SLSH:
-            switch (other_keycode) {
-                case KC_H:
-                case KC_J:
-                case KC_K:
-                case KC_L:
-                case KC_M:
-                case KC_N:
-                case KC_COMM:
-                case KC_DOT:
-                case KC_SPC:
-                case KC_BSPC:
-                    return true;
-            }
-
             break;
     }
 
@@ -161,7 +144,10 @@ void leader_end_user(void) {
 // There's a bug in v0.4 that requires to put it here
 #include "features/sm_td.h"
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
-    switch (keycode) { SMTD_MT(HM_Z, KC_Z, KC_LCTL) }
+    switch (keycode) {
+        SMTD_LT(NV_SLSH, KC_SLSH, LAYER_NAV);
+        SMTD_MT(HM_Z, KC_Z, KC_LCTL);
+    }
 }
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
@@ -169,6 +155,7 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     if (timeout == SMTD_TIMEOUT_RELEASE) {
         switch (keycode) {
             case HM_Z:
+            case NV_SLSH:
                 return 50;
         }
     }
