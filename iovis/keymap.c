@@ -1,4 +1,5 @@
 #include "features/achordion.h"
+#include "features/custom_shift_keys.h"
 #include "features/socd_cleaner.h"
 
 #ifdef QMK_LAYER_LOCK_ENABLE
@@ -113,6 +114,20 @@ const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo_esc, KC_ESC),
 };
+
+/// Custom Shift Keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
+// clang-format off
+const custom_shift_key_t custom_shift_keys[] = {
+    {KC_EQL,  KC_EQL},
+    {KC_LBRC, KC_LBRC},
+    {KC_MINS, KC_MINS},
+    {KC_RBRC, KC_RBRC},
+    {KC_SCLN, KC_SCLN},
+    {KC_SLSH, KC_SLSH}
+};
+// clang-format on
+
+uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
 /// Key Overrides (https://docs.qmk.fm/features/key_overrides)
 #ifdef KEY_OVERRIDE_ENABLE
@@ -259,6 +274,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 #ifdef QMK_LAYER_LOCK_ENABLE
     if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
 #endif
+
+    if (IS_LAYER_ON(LAYER_SYM)) {
+        if (!process_custom_shift_keys(keycode, record)) return false;
+    }
 
     switch (keycode) {
         case MY_ARRW:
