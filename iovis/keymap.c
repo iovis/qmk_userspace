@@ -118,12 +118,24 @@ combo_t key_combos[] = {
 /// Custom Shift Keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
 // clang-format off
 const custom_shift_key_t custom_shift_keys[] = {
+    // Symbols layer (allow fast rolling)
     {KC_EQL,  KC_EQL},
-    {KC_LBRC, KC_LBRC},
     {KC_MINS, KC_MINS},
+    {KC_LBRC, KC_LBRC},
     {KC_RBRC, KC_RBRC},
     {KC_SCLN, KC_SCLN},
-    {KC_SLSH, KC_SLSH}
+    {KC_SLSH, KC_SLSH},
+
+    // Number layer
+    {KC_0, KC_SPC},
+    {KC_1, KC_UNDS},
+    {KC_2, KC_COMM},
+    {KC_3, KC_DOT},
+    {KC_5, KC_LBRC},
+    {KC_6, KC_RBRC},
+    {KC_7, MY_EURO},
+    {KC_8, KC_LPRN},
+    {KC_9, KC_RPRN},
 };
 // clang-format on
 
@@ -275,7 +287,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
 #endif
 
-    if (IS_LAYER_ON(LAYER_SYM)) {
+    if (IS_LAYER_ON(LAYER_SYM) || IS_LAYER_ON(LAYER_NUM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
     }
 
