@@ -118,21 +118,21 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [LAYER_SYM] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        CYAN ,
+        ORANG,
         ORANG, ORANG, ORANG,  // BGT
         ORANG, ORANG, ORANG,  // RFV
         MAGNT, BLUE ,
         ORANG, ORANG, ORANG,  // CDE
         ORANG, ORANG, ORANG,  // WSX
         ORANG, ORANG, ORANG,  // ZAQ
-        BLUE , BLUE , BLUE ,  // TAB, CMD, SFT
+        RED  , BLUE , BLUE ,  // TAB, CMD, SFT
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         CYAN ,
         ORANG, ORANG, ORANG, // NHY
         ORANG, ORANG, ORANG, // UJM
-        CYAN , WHITE,
+        ORANG, WHITE,
         ORANG, ORANG, ORANG, // ,KI
         ORANG, ORANG, ORANG, // OL.
         ORANG, ORANG, ORANG, // /;P
@@ -149,7 +149,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , WHITE, WHITE, // CDE
         WHITE, WHITE, BLUE , // WSX
         BLUE , WHITE, WHITE, // ZAQ
-        BLUE , BLUE , BLUE , // TAB, CMD, SFT
+        RED  , BLUE , BLUE , // TAB, CMD, SFT
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
@@ -190,7 +190,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [LAYER_NUM] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        WHITE,
+        YELLW,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
         MAGNT, BLUE ,
@@ -202,13 +202,13 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         GREEN,
-        CYAN , CYAN , CYAN , // NHY
+        ORANG, ORANG, ORANG, // NHY
         GREEN, GREEN, GREEN, // UJM
-        CYAN , ORANG,
+        ORANG, WHITE,
         GREEN, GREEN, GREEN, // ,KI
         GREEN, GREEN, GREEN, // OL.
-        CYAN , CYAN , CYAN , // /;P
-        BLUE , CYAN , CYAN , // DEL, ', SFT
+        ORANG, ORANG, ORANG, // /;P
+        BLUE , ORANG, ORANG, // DEL, ', SFT
     },
 
 };
