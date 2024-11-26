@@ -1,10 +1,7 @@
 #include "features/achordion.h"
 #include "features/custom_shift_keys.h"
+#include "features/layer_lock.h"
 #include "features/socd_cleaner.h"
-
-#ifdef QMK_LAYER_LOCK_ENABLE
-#    include "features/layer_lock.h"
-#endif
 
 enum layers {
     LAYER_BASE = 0,
@@ -271,10 +268,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
     if (!process_achordion(keycode, record)) return false;
     if (!process_smtd(keycode, record)) return false;
-
-#ifdef QMK_LAYER_LOCK_ENABLE
     if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
-#endif
 
     if (IS_LAYER_ON(LAYER_SYM) || IS_LAYER_ON(LAYER_NUM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
