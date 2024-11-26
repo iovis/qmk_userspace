@@ -24,6 +24,7 @@ enum custom_keycodes {
     MY_FARW,
     MY_MEMO,
     MY_COLN,
+    MY_CODE,
     RGB_SLD,
 };
 
@@ -37,8 +38,8 @@ enum custom_keycodes {
 
 #define HM_SPC  LGUI_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
-#define NU_A    LT(LAYER_NUM, KC_A)
-#define SY_F    LT(LAYER_SYM, KC_F)
+#define SY_A    LT(LAYER_SYM, KC_A)
+#define NU_F    LT(LAYER_NUM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
 #define TT_NUM  TT(LAYER_NUM)
 
@@ -51,30 +52,18 @@ enum custom_keycodes {
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
-        case NU_A:
+        case SY_A:
             switch (other_keycode) {
-                case KC_LALT:
-                case KC_LGUI:
-                case KC_LSFT:
-                case KC_Z:
                 case MY_MEH:
                     return true;
             }
             break;
 
-        case SY_F:
+        case NU_F:
             switch (other_keycode) {
                 case KC_LALT:
                 case KC_LGUI:
                 case KC_LSFT:
-                case MY_MEH:
-                    return true;
-            }
-            break;
-
-        case SY_SCLN:
-            switch (other_keycode) {
-                case KC_UNDS:
                     return true;
             }
             break;
@@ -101,7 +90,7 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
         case HM_RSFT:
         case SY_SCLN:
             return 0;
-        case SY_F:
+        case NU_F:
             return 30;
     }
 
@@ -310,6 +299,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case MY_COLN:
             if (record->event.pressed) {
                 SEND_STRING("::");
+            }
+            break;
+        case MY_CODE:
+            if (record->event.pressed) {
+                SEND_STRING("```");
             }
             break;
         case RGB_SLD:
