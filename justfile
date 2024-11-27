@@ -15,33 +15,21 @@ init:
     git pull
     git stash pop || true
 
-setup:
-    cd {{ qmk_firmware }} && git pull
-    qmk setup -H {{ qmk_firmware }} --yes
-    qmk compile --compiledb -j0 -kb boardsource/unicorne
+setup firmware="qmk":
+    @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
+    cd {{ quote(justfile_directory() / "../" + firmware + "_firmware/") }} && git pull
+    qmk setup -H {{ quote(justfile_directory() / "../" + firmware + "_firmware/") }} --yes
+    qmk config user.keyboard={{ if firmware == "qmk" { "boardsource/unicorne" } else { "zsa/voyager" } }}
+    qmk compile --compiledb -j0
 
 compile:
-    qmk lint -kb boardsource/unicorne
-    qmk compile -j0 -kb boardsource/unicorne
+    qmk lint
+    qmk compile -j0
     fish -ic pause_if_err
 
 flash:
     # cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
-    qmk flash -kb boardsource/unicorne
-
-vsetup:
-    @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
-    cd {{ zsa_firmware }} && git pull
-    qmk setup -H {{ zsa_firmware }} --yes
-    qmk compile --compiledb -j0 -kb zsa/voyager
-
-vcompile:
-    qmk lint -kb zsa/voyager
-    qmk compile -j0 -kb zsa/voyager
-    fish -ic pause_if_err
-
-vflash:
-    qmk flash -kb zsa/voyager
+    qmk flash
 
 open:
     gh repo view --web
