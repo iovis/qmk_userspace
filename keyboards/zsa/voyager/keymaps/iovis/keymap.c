@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_MPRV, KC_MPLY, KC_MNXT, RGB_VAD, RGB_TOG,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_LLCK,
     _______, KC_MUTE, KC_VOLD, KC_VOLU, DM_REC1, DM_REC2,                       KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     _______, KC_LCTL, MY_CSTB, MY_CTAB, DM_PLY1, DM_PLY2,                       KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
-                                                 _______, _______,     _______, KC_CAPS
+                                                 _______, _______,     KC_CAPS, CW_TOGG
   ),
 
   [LAYER_NUM] = LAYOUT_voyager(
@@ -133,7 +133,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK, BLACK, BLACK, BLACK, BLACK, WHITE,
         GREEN, GREEN, GREEN, GREEN, BLACK, BLACK,
         YELLW, YELLW, YELLW, YELLW, YELLW, RED  ,
-        CYAN , WHITE,
+        WHITE, WHITE,
     },
 
     [LAYER_NUM] = {

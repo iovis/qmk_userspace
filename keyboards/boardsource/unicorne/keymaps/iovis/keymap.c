@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_LCTL, MY_CSTB, MY_CTAB, DM_PLY1, DM_PLY2,     KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  QK_BOOT, _______, _______,     KC_CAPS, _______, _______
+                                  QK_BOOT, _______, _______,     CW_TOGG, KC_CAPS, _______
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -177,10 +177,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        MAGNT,
+        WHITE,
         YELLW, GREEN, RED  , // NHY
         BLACK, GREEN, YELLW, // UJM
-        CYAN , WHITE,
+        WHITE, WHITE,
         YELLW, GREEN, BLACK, // ,KI
         BLACK, GREEN, YELLW, // OL.
         BLACK, BLACK, BLACK, // /;P
