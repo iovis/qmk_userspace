@@ -1,6 +1,5 @@
 #include "features/achordion.h"
 #include "features/custom_shift_keys.h"
-#include "features/layer_lock.h"
 #include "features/socd_cleaner.h"
 
 enum layers {
@@ -16,7 +15,6 @@ enum custom_keycodes {
     HM_Z,
     NV_SLSH,
     SMTD_KEYCODES_END,
-    MY_LLCK,
     MY_ARRW,
     MY_FARW,
     MY_MEMO,
@@ -269,7 +267,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
     if (!process_achordion(keycode, record)) return false;
     if (!process_smtd(keycode, record)) return false;
-    if (!process_layer_lock(keycode, record, MY_LLCK)) return false;
 
     if (IS_LAYER_ON(LAYER_SYM) || IS_LAYER_ON(LAYER_NUM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
