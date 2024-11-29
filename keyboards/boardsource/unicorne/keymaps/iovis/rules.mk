@@ -16,4 +16,4 @@ SRC += features/achordion.c
 SRC += features/custom_shift_keys.c
 SRC += features/socd_cleaner.c
 TAP_DANCE_ENABLE = no
-VIA_ENABLE = yes
+VIA_ENABLE = no
