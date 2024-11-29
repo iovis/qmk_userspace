@@ -1,5 +1,8 @@
 #pragma once
 
+// Debugging
+#define DEBUG_MATRIX_SCAN_RATE
+
 // Achordion
 #define ACHORDION_STREAK
 

@@ -28,9 +28,6 @@
 #define SERIAL_NUMBER "6p4AX/Lw3JX"
 #define LAYER_STATE_8BIT
 
-// Debugging
-// #define DEBUG_MATRIX_SCAN_RATE
-
 // RGB
 #define RGB_MATRIX_STARTUP_SPD 60
 
