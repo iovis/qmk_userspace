@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_NAV] = LAYOUT_voyager(
     _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                       KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , _______,
-    _______, KC_MPRV, KC_MPLY, KC_MNXT, RGB_VAD, RGB_TOG,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_LLCK,
+    _______, KC_MPRV, KC_MPLY, KC_MNXT, RGB_VAD, RGB_TOG,                       EE_CLR , XXXXXXX, DB_TOGG, XXXXXXX, XXXXXXX, QK_LLCK,
     _______, KC_MUTE, KC_VOLD, KC_VOLU, DM_REC1, DM_REC2,                       KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
     _______, KC_LCTL, MY_CSTB, MY_CTAB, DM_PLY1, DM_PLY2,                       KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, QK_BOOT,
                                                  _______, _______,     KC_CAPS, CW_TOGG
@@ -130,7 +130,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         MAGNT, MAGNT, MAGNT, MAGNT, MAGNT, BLUE ,
-        BLACK, BLACK, BLACK, BLACK, BLACK, WHITE,
+        RED  , BLACK, MAGNT, BLACK, BLACK, WHITE,
         GREEN, GREEN, GREEN, GREEN, BLACK, BLACK,
         YELLW, YELLW, YELLW, YELLW, YELLW, RED  ,
         WHITE, WHITE,
