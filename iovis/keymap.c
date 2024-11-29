@@ -149,6 +149,8 @@ void leader_end_user(void) {
         layer_move(LAYER_GAME);
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(LAYER_BASE);
+    } else if (leader_sequence_one_key(KC_QUOT)) {
+        layer_lock_on(LAYER_NAV);
     }
 }
 
