@@ -147,8 +147,10 @@ void leader_end_user(void) {
         tap_code16(G(S(KC_5)));
     } else if (leader_sequence_one_key(KC_G)) { // Layers
         layer_move(LAYER_GAME);
+        combo_disable();
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(LAYER_BASE);
+        combo_enable();
     } else if (leader_sequence_one_key(KC_QUOT)) {
         layer_lock_on(LAYER_NAV);
     }
