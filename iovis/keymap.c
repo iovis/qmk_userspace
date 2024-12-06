@@ -191,6 +191,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 /// RGB Matrix (https://docs.qmk.fm/features/rgb_matrix)
 extern const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3];
 extern rgb_config_t rgb_matrix_config;
+extern const int left_shift_index;
 
 // clang-format off
 #define BLACK { HSV_BLACK }
@@ -255,7 +256,7 @@ bool rgb_matrix_indicators_user(void) {
     // uprintf("Caps Lock: %s\n", host_keyboard_led_state().caps_lock ? "on" : "off");
     // uprintf("Caps Word: %s\n", is_caps_word_on() ? "on" : "off");
     if (host_keyboard_led_state().caps_lock || is_caps_word_on()) {
-        rgb_matrix_set_color(26, RGB_WHITE);
+        rgb_matrix_set_color(left_shift_index, RGB_WHITE);
     }
 
     // Leader indicator
