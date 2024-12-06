@@ -94,9 +94,11 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
 }
 
 /// Combos (https://docs.qmk.fm/features/combo)
+const uint16_t PROGMEM combo_caps_word[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
 
 combo_t key_combos[] = {
+    COMBO(combo_caps_word, CW_TOGG),
     COMBO(combo_esc, KC_ESC),
 };
 
@@ -187,10 +189,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 /// RGB Matrix (https://docs.qmk.fm/features/rgb_matrix)
-// clang-format off
 extern const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3];
 extern rgb_config_t rgb_matrix_config;
 
+// clang-format off
 #define BLACK { HSV_BLACK }
 #define BLUE  { HSV_BLUE }
 #define CYAN  { HSV_CYAN }
@@ -217,8 +219,8 @@ void set_layer_color(int layer) {
         if (!hsv.h && !hsv.s && !hsv.v) {
             rgb_matrix_set_color(i, 0, 0, 0);
         } else {
-            RGB   rgb = hsv_to_rgb(hsv);
-            float f   = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+            RGB rgb = hsv_to_rgb(hsv);
+            float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
             rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
         }
     }
