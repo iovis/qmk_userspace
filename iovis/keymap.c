@@ -13,7 +13,6 @@ enum layers {
 enum custom_keycodes {
     SMTD_KEYCODES_BEGIN = SAFE_RANGE,
     HM_Z,
-    NV_SLSH,
     SMTD_KEYCODES_END,
     MY_ARRW,
     MY_FARW,
@@ -34,6 +33,7 @@ enum custom_keycodes {
 #define HM_SPC  LGUI_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
 #define NU_A    LT(LAYER_NUM, KC_A)
+#define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
 #define TT_NUM  TT(LAYER_NUM)
@@ -63,6 +63,19 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                     return true;
             }
             break;
+        case NV_SLSH:
+            switch (other_keycode) {
+                case KC_LALT:
+                case KC_LCTL:
+                case KC_LGUI:
+                case KC_LSFT:
+                case MY_MEH:
+                case KC_H:
+                case KC_J:
+                case KC_K:
+                case KC_L:
+                    return true;
+            }
     }
 
     return achordion_opposite_hands(tap_hold_record, other_record);
@@ -81,10 +94,11 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 }
 
 uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
-    // Disable achordion streak for some keys
     switch (tap_hold_keycode) {
         case HM_RSFT:
+        case NV_SLSH:
         case SY_SCLN:
+            // Disable achordion streak
             return 0;
         case SY_F:
             return 30;
@@ -156,8 +170,6 @@ void leader_end_user(void) {
         layer_move(LAYER_GAME);
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(LAYER_BASE);
-    } else if (leader_sequence_one_key(KC_QUOT)) {
-        layer_lock_on(LAYER_NAV);
     }
 }
 
@@ -165,10 +177,7 @@ void leader_end_user(void) {
 // There's a bug in v0.4 that requires to put it here
 #include "features/sm_td.h"
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
-    switch (keycode) {
-        SMTD_LT(NV_SLSH, KC_SLSH, LAYER_NAV);
-        SMTD_MT(HM_Z, KC_Z, KC_LCTL);
-    }
+    switch (keycode) { SMTD_MT(HM_Z, KC_Z, KC_LCTL); }
 }
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
@@ -176,7 +185,6 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     if (timeout == SMTD_TIMEOUT_RELEASE) {
         switch (keycode) {
             case HM_Z:
-            case NV_SLSH:
                 return 50;
         }
     }
