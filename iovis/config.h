@@ -15,6 +15,7 @@
 
 // Combos
 #define COMBO_TERM 25
+#define COMBO_SHOULD_TRIGGER
 
 // Leader
 // #define LEADER_PER_KEY_TIMING
