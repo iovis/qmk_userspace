@@ -327,6 +327,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return true;
 }
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
+    switch (keycode) {
+        case NU_A:
+            return 250;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
 void matrix_scan_user(void) {
     achordion_task();
 }
