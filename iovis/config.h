@@ -31,6 +31,7 @@
 // Taps
 #define PERMISSIVE_HOLD
 #define TAPPING_TERM 175
+#define TAPPING_TERM_PER_KEY
 #ifndef TAPPING_TOGGLE
 #    define TAPPING_TOGGLE 2
 #endif
