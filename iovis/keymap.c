@@ -102,6 +102,11 @@ combo_t key_combos[] = {
     COMBO(combo_esc, KC_ESC),
 };
 
+bool combo_should_trigger(uint16_t combo_index, combo_t* combo, uint16_t keycode, keyrecord_t* record) {
+    // Only trigger combos in the base layer
+    return layer_state_is(LAYER_BASE);
+}
+
 /// Custom Shift Keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
 // clang-format off
 const custom_shift_key_t custom_shift_keys[] = {
@@ -149,10 +154,8 @@ void leader_end_user(void) {
         tap_code16(G(S(KC_5)));
     } else if (leader_sequence_one_key(KC_G)) { // Layers
         layer_move(LAYER_GAME);
-        combo_disable();
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(LAYER_BASE);
-        combo_enable();
     } else if (leader_sequence_one_key(KC_QUOT)) {
         layer_lock_on(LAYER_NAV);
     }
@@ -275,7 +278,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_achordion(keycode, record)) return false;
     if (!process_smtd(keycode, record)) return false;
 
-    if (IS_LAYER_ON(LAYER_SYM) || IS_LAYER_ON(LAYER_NUM)) {
+    if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
     }
 
