@@ -8,6 +8,7 @@ enum layers {
     LAYER_SYM,
     LAYER_NAV,
     LAYER_NUM,
+    LAYER_NUM_SYM,
 };
 
 enum custom_keycodes {
@@ -36,6 +37,7 @@ enum custom_keycodes {
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
+#define OSL_NSY OSL(LAYER_NUM_SYM)
 #define TT_NUM  TT(LAYER_NUM)
 
 #define MOON_LED_LEVEL LED_LEVEL
@@ -52,6 +54,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                 case KC_LALT:
                 case KC_LGUI:
                 case KC_LSFT:
+                case MY_MEH:
                     return true;
             }
             break;
@@ -131,17 +134,6 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_RBRC, KC_RBRC},
     {KC_SCLN, KC_SCLN},
     {KC_SLSH, KC_SLSH},
-
-    // Number layer
-    {KC_0, KC_SPC},
-    {KC_1, KC_UNDS},
-    {KC_2, KC_COMM},
-    {KC_3, KC_DOT},
-    {KC_5, KC_LBRC},
-    {KC_6, KC_RBRC},
-    {KC_7, MY_EURO},
-    {KC_8, KC_LPRN},
-    {KC_9, KC_RPRN},
 };
 // clang-format on
 
