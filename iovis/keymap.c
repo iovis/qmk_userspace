@@ -77,6 +77,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                 case KC_J:
                 case KC_K:
                 case KC_L:
+                case KC_QUOT:
                     return true;
             }
     }
