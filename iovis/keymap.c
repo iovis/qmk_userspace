@@ -2,6 +2,7 @@
 #include "features/custom_shift_keys.h"
 #include "features/socd_cleaner.h"
 #include "iovis/config.h"
+#include "keycodes.h"
 
 enum layers {
     LAYER_BASE = 0,
@@ -9,7 +10,6 @@ enum layers {
     LAYER_SYM,
     LAYER_NAV,
     LAYER_NUM,
-    LAYER_NUM_SYM,
 };
 
 enum custom_keycodes {
@@ -32,11 +32,10 @@ enum custom_keycodes {
 #define HM_SPC  LGUI_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
 #define HM_Z    LCTL_T(KC_Z)
-#define NU_A    LT(LAYER_NUM, KC_A)
+#define NU_F    LT(LAYER_NUM, KC_F)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
-#define SY_F    LT(LAYER_SYM, KC_F)
+#define SY_A    LT(LAYER_SYM, KC_A)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
-#define OSL_NSY OSL(LAYER_NUM_SYM)
 #define TT_NUM  TT(LAYER_NUM)
 
 #define MOON_LED_LEVEL LED_LEVEL
@@ -50,19 +49,33 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
     switch (tap_hold_keycode) {
         case HM_Z:
             return true;
-        case NU_A:
+        case SY_A:
+            switch (other_keycode) {
+                case KC_LGUI:
+                case MY_MEH:
+                    return true;
+            }
+            break;
+        case NU_F:
             switch (other_keycode) {
                 case KC_LALT:
+                case KC_LCTL:
                 case KC_LGUI:
                 case KC_LSFT:
                 case MY_MEH:
                     return true;
             }
             break;
-        case SY_F:
+        case SY_SCLN:
             switch (other_keycode) {
-                case KC_LGUI:
-                case MY_MEH:
+                case KC_U:
+                case KC_I:
+                case KC_H:
+                case KC_J:
+                case KC_K:
+                case KC_N:
+                case KC_M:
+                case KC_COMM:
                     return true;
             }
             break;
@@ -104,7 +117,7 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
         case SY_SCLN:
             // Disable achordion streak
             return 0;
-        case SY_F:
+        case NU_F:
             return 50;
         case HM_Z:
             return TAPPING_TERM;
@@ -114,7 +127,7 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
 }
 
 /// Combos (https://docs.qmk.fm/features/combo)
-const uint16_t PROGMEM combo_caps_word[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_caps_word[] = {KC_DOT, NV_SLSH, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
 
 combo_t key_combos[] = {
@@ -137,6 +150,17 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_RBRC, KC_RBRC},
     {KC_SCLN, KC_SCLN},
     {KC_SLSH, KC_SLSH},
+
+    // Number layer
+    {KC_0, KC_SPC},
+    {KC_1, KC_HASH},
+    {KC_2, KC_COMM},
+    {KC_3, KC_DOT},
+    {KC_5, KC_LBRC},
+    {KC_6, KC_RBRC},
+    {KC_7, MY_EURO},
+    {KC_8, KC_LPRN},
+    {KC_9, KC_RPRN},
 };
 // clang-format on
 
@@ -311,7 +335,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         case HM_Z:
             return 125;
-        case NU_A:
+        case SY_A:
             return 250;
         default:
             return TAPPING_TERM;
