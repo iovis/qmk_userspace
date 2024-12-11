@@ -101,6 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 /// RGB
+#ifdef RGB_MATRIX_ENABLE
 const int left_shift_index = 26;
 
 // clang-format off
@@ -226,4 +227,5 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     },
 
 };
+#endif
 // clang-format on

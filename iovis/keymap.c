@@ -176,6 +176,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 /// RGB Matrix (https://docs.qmk.fm/features/rgb_matrix)
+#ifdef RGB_MATRIX_ENABLE
 extern const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3];
 extern rgb_config_t rgb_matrix_config;
 extern const int left_shift_index;
@@ -253,6 +254,7 @@ bool rgb_matrix_indicators_user(void) {
 
     return true;
 }
+#endif
 
 /// User macro callbacks (https://docs.qmk.fm/feature_macros)
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
@@ -291,12 +293,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 SEND_STRING("```");
             }
             break;
+#ifdef RGB_MATRIX_ENABLE
         case RGB_SLD:
             if (record->event.pressed) {
                 rgblight_mode(1);
             }
 
             return false;
+#endif
     }
 
     return true;
