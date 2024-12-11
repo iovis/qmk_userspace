@@ -12,10 +12,7 @@ enum layers {
 };
 
 enum custom_keycodes {
-    SMTD_KEYCODES_BEGIN = SAFE_RANGE,
-    HM_Z,
-    SMTD_KEYCODES_END,
-    MY_ARRW,
+    MY_ARRW = SAFE_RANGE,
     MY_FARW,
     MY_MEMO,
     MY_COLN,
@@ -33,6 +30,7 @@ enum custom_keycodes {
 
 #define HM_SPC  LGUI_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
+#define HM_Z    LCTL_T(KC_Z)
 #define NU_A    LT(LAYER_NUM, KC_A)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_F    LT(LAYER_SYM, KC_F)
@@ -49,6 +47,8 @@ enum custom_keycodes {
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
+        case HM_Z:
+            return true;
         case NU_A:
             switch (other_keycode) {
                 case KC_LALT:
@@ -58,7 +58,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                     return true;
             }
             break;
-
         case SY_F:
             switch (other_keycode) {
                 case KC_LGUI:
@@ -88,9 +87,11 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
 // How long to leave a key press till achordion ignores it and
 // does a hold (default 1000ms)
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-    // Bypass Achordion for these keys and let QMK handle it
     switch (tap_hold_keycode) {
+        case HM_Z:
+            return 120;
         case HM_SPC:
+            // Bypass Achordion for these keys and let QMK handle it
             return 0;
     }
 
@@ -166,24 +167,6 @@ void leader_end_user(void) {
     }
 }
 
-/// SMTD (https://github.com/stasmarkin/sm_td)
-// There's a bug in v0.4 that requires to put it here
-#include "features/sm_td.h"
-void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
-    switch (keycode) { SMTD_MT(HM_Z, KC_Z, KC_LCTL); }
-}
-
-uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
-    // Freeze STMD timeout
-    if (timeout == SMTD_TIMEOUT_RELEASE) {
-        switch (keycode) {
-            case HM_Z:
-                return 50;
-        }
-    }
-
-    return get_smtd_timeout_default(timeout);
-}
 /// SOCD Cleaner (https://getreuer.info/posts/keyboards/socd-cleaner)
 socd_cleaner_t socd_h = {{KC_A, KC_D}, SOCD_CLEANER_LAST};
 
@@ -277,7 +260,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
     if (!process_achordion(keycode, record)) return false;
-    if (!process_smtd(keycode, record)) return false;
 
     if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
@@ -322,6 +304,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
+        case HM_Z:
+            return 120;
         case NU_A:
             return 250;
         default:
