@@ -1,6 +1,7 @@
 #include "features/achordion.h"
 #include "features/custom_shift_keys.h"
 #include "features/socd_cleaner.h"
+#include "iovis/config.h"
 
 enum layers {
     LAYER_BASE = 0,
@@ -88,8 +89,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
 // does a hold (default 1000ms)
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
-        case HM_Z:
-            return 120;
         case HM_SPC:
             // Bypass Achordion for these keys and let QMK handle it
             return 0;
@@ -106,7 +105,9 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
             // Disable achordion streak
             return 0;
         case SY_F:
-            return 30;
+            return 50;
+        case HM_Z:
+            return TAPPING_TERM;
     }
 
     return 100;
@@ -309,7 +310,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         case HM_Z:
-            return 120;
+            return 125;
         case NU_A:
             return 250;
         default:
