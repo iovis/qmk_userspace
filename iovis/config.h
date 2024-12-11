@@ -1,7 +1,7 @@
 #pragma once
 
 // Debugging
-#define DEBUG_MATRIX_SCAN_RATE
+// #define DEBUG_MATRIX_SCAN_RATE
 
 // Achordion
 #define ACHORDION_STREAK
@@ -24,9 +24,6 @@
 // RGB
 #define RGB_MATRIX_TIMEOUT 300000
 #define RGB_MATRIX_DEFAULT_VAL 15
-
-// SMTD
-#define MAX_DEFERRED_EXECUTORS 10
 
 // Taps
 #define PERMISSIVE_HOLD
