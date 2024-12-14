@@ -319,6 +319,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 SEND_STRING("```");
             }
             break;
+        case MY_NWLN:
+            if (record->event.pressed) {
+                SEND_STRING("\\n");
+            }
+            break;
 #ifdef RGB_MATRIX_ENABLE
         case RGB_SLD:
             if (record->event.pressed) {

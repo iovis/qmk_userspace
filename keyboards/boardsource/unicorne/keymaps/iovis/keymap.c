@@ -52,11 +52,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_SYM] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_BSLS, _______,
+       KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, MY_NWLN, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_COLN,     KC_QUES, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_COLN, KC_LABK, KC_RABK, MY_COLN, MY_CODE,     MY_ARRW, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
+       _______, KC_LABK, KC_RABK, KC_BSLS, MY_COLN, MY_CODE,     MY_ARRW, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, MY_FARW,     _______, KC_TILD, KC_0
     //                          `+--------+--------+--------'   `--------+--------+--------+'
