@@ -18,6 +18,7 @@ enum custom_keycodes {
     MY_MEMO,
     MY_COLN,
     MY_CODE,
+    MY_NWLN,
     RGB_SLD,
 };
 
@@ -29,12 +30,12 @@ enum custom_keycodes {
 #define MY_MEH  LCA(KC_LCMD)
 #define M_DASH  S(RALT(KC_MINS))
 
-#define HM_SPC  LGUI_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
+#define HM_SPC  LGUI_T(KC_SPC)
 #define HM_Z    LCTL_T(KC_Z)
-#define NU_F    LT(LAYER_NUM, KC_F)
+#define NU_A    LT(LAYER_NUM, KC_A)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
-#define SY_A    LT(LAYER_SYM, KC_A)
+#define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
 #define TT_NUM  TT(LAYER_NUM)
 
@@ -49,19 +50,19 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
     switch (tap_hold_keycode) {
         case HM_Z:
             return true;
-        case SY_A:
-            switch (other_keycode) {
-                case KC_LGUI:
-                case MY_MEH:
-                    return true;
-            }
-            break;
-        case NU_F:
+        case NU_A:
             switch (other_keycode) {
                 case KC_LALT:
                 case KC_LCTL:
                 case KC_LGUI:
                 case KC_LSFT:
+                case MY_MEH:
+                    return true;
+            }
+            break;
+        case SY_F:
+            switch (other_keycode) {
+                case KC_LGUI:
                 case MY_MEH:
                     return true;
             }
@@ -76,6 +77,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
                 case KC_N:
                 case KC_M:
                 case KC_COMM:
+                case KC_MINS:
                     return true;
             }
             break;
@@ -117,7 +119,7 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
         case SY_SCLN:
             // Disable achordion streak
             return 0;
-        case NU_F:
+        case SY_F:
         case HM_Z:
             return 50;
     }
@@ -334,7 +336,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         case HM_Z:
             return 125;
-        case SY_A:
+        case NU_A:
             return 250;
         default:
             return TAPPING_TERM;
