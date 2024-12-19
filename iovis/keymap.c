@@ -45,7 +45,7 @@ enum custom_keycodes {
 // clang-format on
 
 /// Achordion (https://getreuer.info/posts/keyboards/achordion)
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
         case HM_Z:
@@ -137,7 +137,7 @@ combo_t key_combos[] = {
     COMBO(combo_esc, KC_ESC),
 };
 
-bool combo_should_trigger(uint16_t combo_index, combo_t* combo, uint16_t keycode, keyrecord_t* record) {
+bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     // Only trigger combos in the base layer
     return layer_state_is(LAYER_BASE);
 }
@@ -172,7 +172,7 @@ uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_
 #ifdef KEY_OVERRIDE_ENABLE
 const key_override_t equals_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_EQL);
 
-const key_override_t* key_overrides[] = {
+const key_override_t *key_overrides[] = {
     &equals_key_override,
 };
 #endif
@@ -284,7 +284,7 @@ bool rgb_matrix_indicators_user(void) {
 #endif
 
 /// User macro callbacks (https://docs.qmk.fm/feature_macros)
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 
     if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
@@ -338,7 +338,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return true;
 }
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_Z:
             return 125;
