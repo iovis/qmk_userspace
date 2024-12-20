@@ -120,9 +120,9 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
             // Disable achordion streak
             return 0;
         case SY_F:
-            return 50;
+            return 40;
         case HM_Z:
-            return 80;
+            return 120;
     }
 
     return 100;
