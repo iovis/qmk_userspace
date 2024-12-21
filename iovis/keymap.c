@@ -2,7 +2,6 @@
 #include "features/custom_shift_keys.h"
 #include "features/socd_cleaner.h"
 #include "iovis/config.h"
-#include "keycodes.h"
 
 enum layers {
     LAYER_BASE = 0,
@@ -191,6 +190,8 @@ void leader_end_user(void) {
         layer_move(LAYER_GAME);
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(LAYER_BASE);
+    } else if (leader_sequence_one_key(KC_ENT)) { // QK_BOOT
+        reset_keyboard();
     }
 }
 
