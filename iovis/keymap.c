@@ -307,7 +307,10 @@ bool rgb_matrix_indicators_user(void) {
 /// User macro callbacks (https://docs.qmk.fm/feature_macros)
 void keyboard_post_init_user(void) {
     defer_exec(100, custom_os_settings, NULL);
+
+#ifdef RGB_MATRIX_ENABLE
     rgb_matrix_enable();
+#endif
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
