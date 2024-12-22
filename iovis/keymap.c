@@ -205,15 +205,18 @@ void leader_end_user(void) {
 
 /// OS Detection
 uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
-    os_variant_t host = detected_host_os();
-    uint16_t retry_ms = 500;
-
-    if (host == OS_WINDOWS) {
-        keymap_config.swap_lctl_lgui = true;
-        retry_ms = 0;
+    switch (detected_host_os()) {
+        case OS_WINDOWS:
+        case OS_LINUX:
+            // Swap LCTRL and LGUI
+            keymap_config.swap_lctl_lgui = true;
+            return 0;
+        case OS_MACOS:
+        case OS_IOS:
+            return 0;
+        default:
+            return 500;
     }
-
-    return retry_ms;
 }
 
 /// SOCD Cleaner (https://getreuer.info/posts/keyboards/socd-cleaner)
