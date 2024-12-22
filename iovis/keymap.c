@@ -195,6 +195,19 @@ void leader_end_user(void) {
     }
 }
 
+/// OS Detection
+uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
+    os_variant_t host = detected_host_os();
+    uint16_t retry_ms = 500;
+
+    if (host == OS_WINDOWS) {
+        keymap_config.swap_lctl_lgui = true;
+        retry_ms = 0;
+    }
+
+    return retry_ms;
+}
+
 /// SOCD Cleaner (https://getreuer.info/posts/keyboards/socd-cleaner)
 socd_cleaner_t socd_h = {{KC_A, KC_D}, SOCD_CLEANER_LAST};
 
@@ -220,10 +233,6 @@ extern const int left_shift_index;
 #define WHITE { HSV_WHITE }
 #define YELLW { HSV_YELLOW }
 // clang-format on
-
-void keyboard_post_init_user(void) {
-    rgb_matrix_enable();
-}
 
 void set_layer_color(int layer) {
     for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
@@ -285,6 +294,11 @@ bool rgb_matrix_indicators_user(void) {
 #endif
 
 /// User macro callbacks (https://docs.qmk.fm/feature_macros)
+void keyboard_post_init_user(void) {
+    defer_exec(100, custom_os_settings, NULL);
+    rgb_matrix_enable();
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 
