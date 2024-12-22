@@ -177,6 +177,8 @@ const key_override_t *key_overrides[] = {
 #endif
 
 /// Leader (https://docs.qmk.fm/features/leader_key)
+bool original_swap_lctl_lgui = false;
+
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_P)) { // 1Password popup
         tap_code16(G(S(KC_BSLS)));
@@ -187,9 +189,15 @@ void leader_end_user(void) {
     } else if (leader_sequence_one_key(KC_K)) {
         tap_code16(G(S(KC_5)));
     } else if (leader_sequence_one_key(KC_G)) { // Layers
+        original_swap_lctl_lgui = keymap_config.swap_lctl_lgui;
         layer_move(LAYER_GAME);
+        keymap_config.swap_lctl_lgui = false;
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(LAYER_BASE);
+        keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
+    } else if (leader_sequence_one_key(KC_W)) { // Keyboard settings
+        // Toggle lctl and lgui swap
+        keymap_config.swap_lctl_lgui = !keymap_config.swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_ENT)) { // QK_BOOT
         reset_keyboard();
     }
