@@ -371,8 +371,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_Z:
             return 125;
-        case NU_A:
-            return 250;
         default:
             return TAPPING_TERM;
     }
