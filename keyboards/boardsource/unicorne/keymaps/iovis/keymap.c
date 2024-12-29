@@ -54,9 +54,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
        KC_ESC , KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, MY_NWLN, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_EXLM, KC_MINS, KC_COLN, KC_EQL , KC_BSLS,     KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, MY_ARRW,
+       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_BSLS,     KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, MY_ARRW,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_LABK, KC_RABK, KC_PLUS, MY_COLN, MY_MEMO,     KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
+       _______, KC_LABK, KC_RABK, KC_COLN, MY_COLN, MY_MEMO,     KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
                                   _______, _______, MY_FARW,     _______, KC_TILD, KC_0
     //                          `+--------+--------+--------'   `--------+--------+--------+'
