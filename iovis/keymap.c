@@ -121,10 +121,10 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
         case SY_F:
             return 40;
         case HM_Z:
-            return 120;
+            return 200;
     }
 
-    return 100;
+    return 80;
 }
 
 /// Combos (https://docs.qmk.fm/features/combo)
@@ -371,6 +371,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_Z:
             return 125;
+        case NV_SLSH:
+            return 150;
         default:
             return TAPPING_TERM;
     }
