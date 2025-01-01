@@ -61,6 +61,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
             break;
         case SY_F:
             switch (other_keycode) {
+                case KC_LALT:
                 case KC_LGUI:
                 case MY_MEH:
                     return true;
@@ -119,7 +120,7 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
             // Disable achordion streak
             return 0;
         case SY_F:
-            return 40;
+            return 25;
         case HM_Z:
             return 200;
     }
