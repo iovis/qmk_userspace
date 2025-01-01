@@ -121,6 +121,8 @@ uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next
             return 0;
         case SY_F:
             return 25;
+        case NU_A:
+            return 50;
         case HM_Z:
             return 200;
     }
@@ -154,10 +156,9 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_SLSH, KC_SLSH},
 
     // Number layer
-    {KC_0, KC_SPC},
-    {KC_1, KC_UNDS},
+    {KC_0, KC_UNDS},
     {KC_2, KC_COMM},
-    {KC_3, KC_HASH},
+    {KC_3, KC_DOT },
     {KC_5, KC_LBRC},
     {KC_6, KC_RBRC},
     {KC_7, MY_EURO},
