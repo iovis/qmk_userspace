@@ -184,10 +184,10 @@ bool original_swap_lctl_lgui = false;
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_P)) { // 1Password popup
         tap_code16(G(S(KC_BSLS)));
-    } else if (leader_sequence_one_key(KC_J)) { // Screenshots
-        tap_code16(G(S(KC_4)));
-    } else if (leader_sequence_one_key(KC_DOT)) {
+    } else if (leader_sequence_one_key(KC_DOT)) { // Screenshots
         tap_code16(G(S(KC_3)));
+    } else if (leader_sequence_one_key(KC_J)) {
+        tap_code16(G(S(KC_4)));
     } else if (leader_sequence_one_key(KC_K)) {
         tap_code16(G(S(KC_5)));
     } else if (leader_sequence_one_key(KC_G)) { // Layers
