@@ -144,14 +144,14 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-                                    ORANG, YELLW,
+                                    MAGNT, YELLW,
 
         // Right
         ORANG, ORANG, ORANG, ORANG, ORANG, BLUE ,
-        ORANG, GREEN, GREEN, GREEN, ORANG, BLUE ,
+        ORANG, GREEN, GREEN, GREEN, ORANG, WHITE,
         ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
         ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
-        WHITE, GREEN,
+        CYAN , GREEN,
     },
 
 };
