@@ -198,8 +198,9 @@ void leader_end_user(void) {
         layer_move(LAYER_BASE);
         keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_W)) { // Keyboard settings
-        // Toggle lctl and lgui swap
         keymap_config.swap_lctl_lgui = !keymap_config.swap_lctl_lgui;
+    } else if (leader_sequence_one_key(KC_S)) {
+        socd_cleaner_enabled = !socd_cleaner_enabled;
     } else if (leader_sequence_one_key(KC_ENT)) { // QK_BOOT
         reset_keyboard();
     }
