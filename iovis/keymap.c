@@ -374,6 +374,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_Z:
             return 125;
+        case SY_F:
+            return 150;
         case NV_SLSH:
             return 150;
         default:
