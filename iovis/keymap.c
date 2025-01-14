@@ -29,6 +29,7 @@ enum custom_keycodes {
 #define MY_MEH  LCA(KC_LCMD)
 #define M_DASH  S(RALT(KC_MINS))
 
+#define HM_NSPC RSFT_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
 #define HM_SPC  LGUI_T(KC_SPC)
 #define HM_Z    LCTL_T(KC_Z)
@@ -47,6 +48,7 @@ enum custom_keycodes {
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
+        case HM_NSPC:
         case HM_Z:
             return true;
         case NU_A:
@@ -114,6 +116,7 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 
 uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
     switch (tap_hold_keycode) {
+        case HM_NSPC:
         case HM_RSFT:
         case NV_SLSH:
         case SY_SCLN:
@@ -156,7 +159,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_SLSH, KC_SLSH},
 
     // Number layer
-    {KC_0, KC_UNDS},
+    {KC_1, KC_UNDS},
     {KC_2, KC_COMM},
     {KC_3, KC_DOT },
     {KC_5, KC_LBRC},
@@ -372,6 +375,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case HM_NSPC:
         case HM_Z:
             return 125;
         case SY_F:
@@ -380,6 +384,15 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return 150;
         default:
             return TAPPING_TERM;
+    }
+}
+
+bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HM_NSPC:
+            return true;
+        default:
+            return false;
     }
 }
 
