@@ -45,10 +45,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_SYM] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, KC_BSPC,
-    _______, KC_GRV , KC_AT  , KC_HASH, KC_DLR , KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, MY_ARRW, KC_UNDS,
-    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_BSLS,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, MY_NWLN,
-    _______, KC_COLN, KC_LABK, KC_RABK, MY_COLN, MY_MEMO,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_SLSH, KC_ENT ,
-                                                 KC_TILD, MY_FARW,     XXXXXXX, _______
+    _______, KC_GRV , KC_AT  , KC_COLN, KC_DLR , KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, MY_ARRW, KC_UNDS,
+    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_BSLS,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, MY_FARW,
+    _______, KC_SLSH, KC_LABK, KC_RABK, MY_COLN, MY_MEMO,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
+                                                 KC_TILD, _______,     XXXXXXX, _______
   ),
 
   [LAYER_NAV] = LAYOUT_voyager(
