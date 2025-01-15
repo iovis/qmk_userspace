@@ -57,6 +57,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
                 case KC_LCTL:
                 case KC_LGUI:
                 case KC_LSFT:
+                case KC_SPC:
                 case MY_MEH:
                     return true;
             }
@@ -159,12 +160,13 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_SLSH, KC_SLSH},
 
     // Number layer
-    {KC_1, KC_UNDS},
+    {KC_0, KC_UNDS},
+    {KC_1, KC_0   },
     {KC_2, KC_COMM},
     {KC_3, KC_DOT },
     {KC_5, KC_LBRC},
     {KC_6, KC_RBRC},
-    {KC_7, MY_EURO},
+    {KC_7, KC_HASH},
     {KC_8, KC_LPRN},
     {KC_9, KC_RPRN},
 };
