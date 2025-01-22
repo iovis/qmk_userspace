@@ -1,4 +1,3 @@
-#include "features/achordion.h"
 #include "features/custom_shift_keys.h"
 #include "features/socd_cleaner.h"
 #include "iovis/config.h"
@@ -46,8 +45,8 @@ enum custom_keycodes {
 #define RGB_FWD RGB_MODE_FORWARD
 // clang-format on
 
-/// Achordion (https://getreuer.info/posts/keyboards/achordion)
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+/// Chordal Hold
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
         case HM_NSPC:
@@ -102,38 +101,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
             }
     }
 
-    return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-// How long to leave a key press till achordion ignores it and
-// does a hold (default 1000ms)
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-    switch (tap_hold_keycode) {
-        case HM_SPC:
-            // Bypass Achordion for these keys and let QMK handle it
-            return 0;
-    }
-
-    return TAPPING_TERM * 2;
-}
-
-uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
-    switch (tap_hold_keycode) {
-        case HM_NSPC:
-        case HM_RSFT:
-        case NV_SLSH:
-        case SY_SCLN:
-            // Disable achordion streak
-            return 0;
-        case SY_F:
-            return 25;
-        case NU_A:
-            return 50;
-        case HM_Z:
-            return 200;
-    }
-
-    return 80;
+    return get_chordal_hold_default(tap_hold_record, other_record);
 }
 
 /// Combos (https://docs.qmk.fm/features/combo)
@@ -330,7 +298,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 
     if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
-    if (!process_achordion(keycode, record)) return false;
 
     if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM) || layer_state_is(LAYER_NUMSYM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
@@ -403,8 +370,4 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
         default:
             return false;
     }
-}
-
-void matrix_scan_user(void) {
-    achordion_task();
 }
