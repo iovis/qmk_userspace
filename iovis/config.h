@@ -3,15 +3,15 @@
 // Debugging
 // #define DEBUG_MATRIX_SCAN_RATE
 
-// Achordion
-#define ACHORDION_STREAK
-
 // Caps Word
 #define CAPS_WORD_TOGGLE_KEY
 #define CAPS_WORD_INVERT_ON_SHIFT // don't break caps word on shift
 // #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 // #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 // #define CAPS_WORD_IDLE_TIMEOUT 5000
+
+// Chordal Hold
+#define CHORDAL_HOLD
 
 // Combos
 #define COMBO_TERM 25

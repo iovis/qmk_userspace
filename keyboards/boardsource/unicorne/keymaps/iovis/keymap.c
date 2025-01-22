@@ -100,6 +100,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
+/// Chordal Hold Layout
+// clang-format off
+const char PROGMEM chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] = LAYOUT_split_3x6_3(
+    'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+    'L', '*', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+                   '*', '*', '*',  '*', '*', '*'
+);
+// clang-format on
+
 /// RGB
 #ifdef RGB_MATRIX_ENABLE
 const int left_shift_index = 26;
