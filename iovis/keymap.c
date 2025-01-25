@@ -9,6 +9,7 @@ enum layers {
     LAYER_SYM,
     LAYER_NAV,
     LAYER_NUM,
+    LAYER_NUMSYM,
 };
 
 enum custom_keycodes {
@@ -33,6 +34,7 @@ enum custom_keycodes {
 #define HM_RSFT RSFT_T(KC_ENT)
 #define HM_SPC  LGUI_T(KC_SPC)
 #define HM_Z    LCTL_T(KC_Z)
+#define NS_TAB  LT(LAYER_NUMSYM, KC_TAB)
 #define NU_A    LT(LAYER_NUM, KC_A)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_F    LT(LAYER_SYM, KC_F)
@@ -166,7 +168,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_3, KC_DOT },
     {KC_5, KC_LBRC},
     {KC_6, KC_RBRC},
-    {KC_7, KC_HASH},
+    {KC_7, MY_EURO},
     {KC_8, KC_LPRN},
     {KC_9, KC_RPRN},
 };
@@ -327,7 +329,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
     if (!process_achordion(keycode, record)) return false;
 
-    if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM)) {
+    if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM) || layer_state_is(LAYER_NUMSYM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
     }
 
