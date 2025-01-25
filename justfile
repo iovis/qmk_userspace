@@ -5,6 +5,8 @@ alias dev := compile
 
 default: init
 
+run: compile flash
+
 # lists available tasks
 @list:
     just --list
