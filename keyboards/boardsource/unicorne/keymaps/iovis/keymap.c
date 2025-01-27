@@ -109,10 +109,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [LAYER_BASE] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        YELLW,
+        BLACK,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
-        MAGNT, BLUE ,
+        BLACK, BLACK,
         CYAN , CYAN , CYAN , // CDE
         CYAN , CYAN , CYAN , // WSX
         CYAN , CYAN , CYAN , // ZAQ
@@ -120,10 +120,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        CYAN ,
+        BLACK,
         CYAN , CYAN , CYAN , // NHY
         CYAN , CYAN , CYAN , // UJM
-        CYAN , WHITE,
+        BLACK, BLACK,
         CYAN , CYAN , CYAN , // ,KI
         CYAN , CYAN , CYAN , // OL.
         CYAN , CYAN , CYAN , // /;P
@@ -133,10 +133,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [LAYER_GAME] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        CYAN ,
+        BLACK,
         CYAN , CYAN , CYAN , // BGT
         CYAN , MAGNT, CYAN , // RFV
-        MAGNT, CYAN ,
+        BLACK, BLACK,
         CYAN , MAGNT, MAGNT, // CDE
         CYAN , MAGNT, CYAN , // WSX
         BLUE , BLUE , BLUE , // ZAQ
@@ -144,10 +144,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        CYAN ,
+        BLACK,
         CYAN , CYAN , CYAN , // NHY
         CYAN , CYAN , CYAN , // UJM
-        GREEN, WHITE,
+        BLACK, BLACK,
         CYAN , CYAN , CYAN , // ,KI
         CYAN , CYAN , CYAN , // OL.
         CYAN , CYAN , CYAN , // /;P
@@ -157,10 +157,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [LAYER_SYM] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        ORANG,
+        BLACK,
         ORANG, ORANG, ORANG,  // BGT
         ORANG, ORANG, ORANG,  // RFV
-        MAGNT, BLUE ,
+        BLACK, BLACK,
         ORANG, ORANG, ORANG,  // CDE
         ORANG, ORANG, ORANG,  // WSX
         ORANG, ORANG, ORANG,  // ZAQ
@@ -168,10 +168,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        CYAN ,
+        BLACK,
         ORANG, ORANG, ORANG, // NHY
         ORANG, ORANG, ORANG, // UJM
-        ORANG, WHITE,
+        BLACK, BLACK,
         ORANG, ORANG, ORANG, // ,KI
         ORANG, ORANG, ORANG, // OL.
         ORANG, ORANG, ORANG, // /;P
@@ -181,34 +181,34 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [LAYER_NAV] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        YELLW,
-        GREEN, ORANG, RED  , // BGT
-        RED  , ORANG, GREEN, // RFV
-        MAGNT, BLUE ,
+        BLACK,
+        BLACK, BLACK, RED  , // BGT
+        RED  , BLACK, BLACK, // RFV
+        BLACK, BLACK,
         BLUE , WHITE, WHITE, // CDE
         WHITE, WHITE, BLUE , // WSX
         BLUE , WHITE, WHITE, // ZAQ
-        RED  , BLUE , BLUE , // TAB, CMD, SFT
+        BLUE , BLUE , BLUE , // TAB, CMD, SFT
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        WHITE,
+        BLACK,
         YELLW, GREEN, RED  , // NHY
         BLACK, GREEN, YELLW, // UJM
-        WHITE, WHITE,
+        BLACK, BLACK,
         YELLW, GREEN, MAGNT, // ,KI
         BLACK, GREEN, YELLW, // OL.
-        BLACK, BLACK, BLACK, // /;P
-        WHITE, BLACK, RED  , // DEL, ', SFT
+        BLACK, WHITE, BLACK, // /;P
+        BLACK, BLACK, RED  , // DEL, ', SFT
     },
 
     [LAYER_NUM] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        YELLW,
+        BLACK,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
-        MAGNT, BLUE ,
+        BLACK, BLACK,
         CYAN , CYAN , CYAN , // CDE
         CYAN , CYAN , CYAN , // WSX
         CYAN , CYAN , CYAN , // ZAQ
@@ -216,16 +216,39 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        GREEN,
+        BLACK,
         ORANG, ORANG, ORANG, // NHY
         GREEN, GREEN, GREEN, // UJM
-        ORANG, WHITE,
+        BLACK, BLACK,
         GREEN, GREEN, GREEN, // ,KI
         GREEN, GREEN, GREEN, // OL.
         ORANG, ORANG, ORANG, // /;P
         BLUE , ORANG, ORANG, // DEL, ', SFT
     },
 
+    [LAYER_NUMSYM] = {
+        // Left
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        BLACK,
+        CYAN , CYAN , CYAN , // BGT
+        CYAN , CYAN , CYAN , // RFV
+        BLACK, BLACK,
+        CYAN , CYAN , CYAN , // CDE
+        CYAN , CYAN , CYAN , // WSX
+        CYAN , CYAN , CYAN , // ZAQ
+        BLUE , BLUE , BLUE , // TAB, CMD, SFT
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        BLACK,
+        GREEN, ORANG, ORANG, // NHY
+        CYAN , CYAN , GREEN, // UJM
+        BLACK, BLACK,
+        ORANG, ORANG, ORANG, // ,KI
+        ORANG, ORANG, ORANG, // OL.
+        ORANG, ORANG, ORANG, // /;P
+        BLUE , ORANG, BLUE , // DEL, ', SFT
+    },
 };
 #endif
 // clang-format on
