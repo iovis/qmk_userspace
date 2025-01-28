@@ -29,7 +29,7 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_voyager(
     KC_ESC , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                       KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
-    KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_MINS,
+    NS_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_MINS,
     KC_LGUI, NU_A   , KC_S   , KC_D   , SY_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L   , SY_SCLN, KC_QUOT,
     KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                       KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
                                                  KC_LALT, MY_MEH ,     QK_LEAD, KC_SPC
@@ -60,11 +60,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [LAYER_NUM] = LAYOUT_voyager(
-    _______, _______, _______, _______, _______, _______,                       KC_HASH, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, _______,
+    _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                       KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, QK_LLCK,
-    _______, _______, _______, _______, _______, _______,                       KC_COLN, KC_4   , KC_5   , KC_6   , KC_MINS, KC_EQL ,
-    _______, _______, _______, _______, _______, _______,                       KC_TILD, KC_1   , KC_2   , KC_3   , KC_SLSH, KC_PERC,
+    _______, _______, _______, _______, _______, _______,                       KC_EQL , KC_4   , KC_5   , KC_6   , KC_COLN, KC_PERC,
+    _______, _______, _______, _______, _______, _______,                       KC_TILD, KC_1   , KC_2   , KC_3   , KC_MINS, KC_SLSH,
                                                  _______, _______,     HM_NSPC, KC_0
+  ),
+
+  [LAYER_NUMSYM] = LAYOUT_voyager(
+    _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,                       KC_ASTR, KC_J   , KC_LPRN, KC_RPRN, KC_PLUS, _______,
+    _______, _______, _______, _______, _______, _______,                       KC_EQL , KC_I   , KC_LBRC, KC_RBRC, KC_SCLN, KC_HASH,
+    _______, _______, _______, _______, _______, _______,                       KC_1   , KC_0   , KC_LABK, KC_RABK, KC_MINS, KC_ENT ,
+                                                 _______, _______,     KC_SPC , KC_0
   ),
 };
 // clang-format on
@@ -158,12 +166,27 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
                                     MAGNT, YELLW,
 
         // Right
-        ORANG, ORANG, ORANG, ORANG, ORANG, BLUE ,
+        GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
         ORANG, GREEN, GREEN, GREEN, ORANG, WHITE,
         ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
         ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
         CYAN , GREEN,
     },
 
+    [LAYER_NUMSYM] = {
+        // Left
+        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        MAGNT, YELLW,
+
+        // Right
+        GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
+        ORANG, CYAN , ORANG, ORANG, ORANG, CYAN ,
+        ORANG, CYAN , ORANG, ORANG, ORANG, ORANG,
+        GREEN, GREEN, ORANG, ORANG, ORANG, BLUE ,
+        CYAN , GREEN,
+    },
 };
 // clang-format on
