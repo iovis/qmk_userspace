@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_NAV] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, RGB_VAD, RGB_TOG,     EE_CLR , XXXXXXX, DB_TOGG, XXXXXXX, XXXXXXX, XXXXXXX,
+       KC_ESC , KC_MPRV, KC_MPLY, KC_MNXT, RGB_VAD, RGB_TOG,     EE_CLR , DB_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,     KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, QK_LLCK,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
@@ -194,12 +194,12 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         BLACK,
         YELLW, GREEN, RED  , // NHY
-        BLACK, GREEN, YELLW, // UJM
+        MAGNT, GREEN, YELLW, // UJM
         BLACK, BLACK,
-        YELLW, GREEN, MAGNT, // ,KI
+        YELLW, GREEN, BLACK, // ,KI
         BLACK, GREEN, YELLW, // OL.
-        BLACK, WHITE, BLACK, // /;P
-        BLACK, BLACK, RED  , // DEL, ', SFT
+        BLACK, BLACK, BLACK, // /;P
+        BLACK, WHITE, RED  , // DEL, ', SFT
     },
 
     [LAYER_NUM] = {
