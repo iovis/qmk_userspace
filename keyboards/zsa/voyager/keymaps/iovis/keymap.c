@@ -26,7 +26,7 @@
 #include "iovis/keymap.c"
 
 #ifdef RGB_MATRIX_ENABLE
-#    include "rgb.h"
+#    include "rgb.h" // IWYU pragma: keep
 #endif
 
 // clang-format off
