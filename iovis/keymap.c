@@ -365,6 +365,7 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_NSPC:
         case HM_Z:
+        case SY_F:
             return true;
         default:
             return false;
