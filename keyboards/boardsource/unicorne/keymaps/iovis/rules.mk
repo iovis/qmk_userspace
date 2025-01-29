@@ -14,7 +14,6 @@ OS_DETECTION_ENABLE = yes
 POINTING_DEVICE_ENABLE = no
 RGB_MATRIX_ENABLE = no
 SPACE_CADET_ENABLE = no
-SRC += features/achordion.c
 SRC += features/custom_shift_keys.c
 SRC += features/socd_cleaner.c
 TAP_DANCE_ENABLE = no
