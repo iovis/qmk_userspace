@@ -269,7 +269,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case SY_F:
         case SY_SCLN:
         case NV_SLSH:
-            return 140;
+            return 150;
         default:
             return TAPPING_TERM;
     }
