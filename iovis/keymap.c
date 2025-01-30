@@ -213,7 +213,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
 
-    if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM)) {
+    if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM) || layer_state_is(LAYER_NUMSYM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
     }
 
