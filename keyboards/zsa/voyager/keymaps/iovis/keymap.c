@@ -50,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_SYM] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, KC_BSPC,
     _______, KC_GRV , KC_AT  , KC_COLN, KC_DLR , KC_CIRC,                       KC_PERC, KC_AMPR, KC_ASTR, KC_PIPE, MY_ARRW, KC_UNDS,
-    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_TILD,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, MY_FARW,
+    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_TILD,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_EQL ,
     _______, KC_SLSH, KC_LABK, KC_RABK, MY_COLN, MY_MEMO,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
-                                                 KC_BSLS, KC_EQL ,     XXXXXXX, _______
+                                                 KC_BSLS, MY_FARW,     XXXXXXX, _______
   ),
 
   [LAYER_NAV] = LAYOUT_voyager(
