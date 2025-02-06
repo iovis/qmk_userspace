@@ -62,6 +62,8 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LALT:
                 case KC_LGUI:
                 case MY_MEH:
+                case KC_J:
+                case KC_K:
                     return true;
             }
             break;
@@ -266,7 +268,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case HM_NSPC:
         case HM_Z:
             return 125;
-        case SY_F:
         case SY_SCLN:
         case NV_SLSH:
             return 150;
