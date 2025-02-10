@@ -97,7 +97,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         ORANG, ORANG, ORANG, // ,KI
         ORANG, ORANG, ORANG, // OL.
         ORANG, ORANG, ORANG, // /;P
-        BLUE , ORANG, BLUE , // DEL, ', SFT
+        ORANG, ORANG, BLUE , // DEL, ', SFT
     },
 
     [LAYER_NAV] = {
