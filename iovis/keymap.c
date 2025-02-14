@@ -287,3 +287,15 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
             return false;
     }
 }
+
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case NU_A:
+        case SY_F:
+        case SY_SCLN:
+            // Allow to register holds when double tapping
+            return 0;
+        default:
+            return QUICK_TAP_TERM;
+    }
+}

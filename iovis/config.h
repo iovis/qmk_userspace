@@ -34,4 +34,5 @@
 #ifndef TAPPING_TOGGLE
 #    define TAPPING_TOGGLE 2
 #endif
+#define QUICK_TAP_TERM_PER_KEY
 // #define QUICK_TAP_TERM 200 // Affects TT()
