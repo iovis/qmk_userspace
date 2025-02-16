@@ -50,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_SYM] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, KC_BSPC,
     _______, KC_GRV , KC_LABK, KC_RABK, KC_DLR , KC_CIRC,                       KC_PERC, KC_AMPR, KC_ASTR, KC_PIPE, KC_EQL , KC_UNDS,
-    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_SLSH,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_COLN,
-    _______, KC_TILD, KC_AT  , KC_HASH, KC_BSLS, MY_CODE,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
-                                                 MY_COLN, _______,     XXXXXXX, _______
+    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_TILD,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_COLN,
+    _______, KC_SLSH, KC_AT  , KC_HASH, KC_BSLS, MY_CODE,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
+                                                 MY_COLN, KC_0   ,     XXXXXXX, _______
   ),
 
   [LAYER_NAV] = LAYOUT_voyager(
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______,                       KC_ASTR, KC_7   , KC_8   , KC_9   , KC_EQL , QK_LLCK,
     _______, _______, _______, _______, _______, _______,                       KC_COLN, KC_4   , KC_5   , KC_6   , KC_SLSH, KC_PLUS,
     _______, _______, _______, _______, _______, _______,                       KC_TILD, KC_1   , KC_2   , KC_3   , KC_MINS, KC_PERC,
-                                                 _______, _______,     HM_NSPC, KC_0
+                                                 _______, KC_0   ,     KC_UNDS, KC_SPC
   ),
 
   [LAYER_NUMSYM] = LAYOUT_voyager(
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______,                       KC_BSLS, KC_J   , KC_LPRN, KC_RPRN, KC_EQL , _______,
     _______, _______, _______, _______, _______, _______,                       KC_0   , KC_I   , KC_LBRC, KC_RBRC, KC_SCLN, KC_PLUS,
     _______, _______, _______, _______, _______, _______,                       KC_HASH, KC_1   , KC_LABK, KC_RABK, KC_MINS, KC_ENT ,
-                                                 _______, _______,     KC_RCBR, KC_SPC
+                                                 _______, KC_0   ,     KC_RCBR, KC_SPC
   ),
 };
 

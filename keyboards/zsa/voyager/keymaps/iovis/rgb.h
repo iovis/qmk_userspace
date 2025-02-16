@@ -38,7 +38,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
-        CYAN , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        CYAN , CYAN , CYAN , CYAN , CYAN , ORANG,
         CYAN , CYAN , CYAN , CYAN , CYAN , CYAN ,
         CYAN , CYAN , CYAN , CYAN , CYAN , BLUE ,
         WHITE, CYAN ,
@@ -66,7 +66,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , ORANG, ORANG, ORANG, ORANG, ORANG,
         BLUE , ORANG, ORANG, ORANG, ORANG, ORANG,
         BLUE , ORANG, ORANG, ORANG, ORANG, ORANG,
-        MAGNT, ORANG,
+        MAGNT, GREEN,
 
         // Right
         GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
@@ -98,14 +98,14 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        MAGNT, YELLW,
+        MAGNT, GREEN,
 
         // Right
         GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
         ORANG, GREEN, GREEN, GREEN, ORANG, WHITE,
         ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
         ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
-        CYAN , GREEN,
+        CYAN , CYAN ,
     },
 
     [LAYER_NUMSYM] = {
@@ -114,14 +114,14 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        MAGNT, YELLW,
+        MAGNT, GREEN,
 
         // Right
         GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
         ORANG, CYAN , ORANG, ORANG, ORANG, CYAN ,
         ORANG, CYAN , ORANG, ORANG, ORANG, ORANG,
         GREEN, GREEN, ORANG, ORANG, ORANG, BLUE ,
-        CYAN , GREEN,
+        CYAN , CYAN ,
     },
 };
 // clang-format on
