@@ -44,7 +44,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
     // Allow same hand holds
     switch (tap_hold_keycode) {
         case HM_NSPC:
-        case HM_Z:
             return true;
         case NU_A:
             switch (other_keycode) {
@@ -126,8 +125,8 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_SLSH, KC_SLSH},
 
     // Number layer
-    {KC_0, KC_UNDS},
-    {KC_1, KC_0   },
+    {KC_0, KC_0   },
+    {KC_1, KC_1   },
     {KC_2, KC_COMM},
     {KC_3, KC_DOT },
     {KC_5, KC_LBRC},
