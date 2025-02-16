@@ -267,12 +267,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_NSPC:
         case HM_Z:
-            return 125;
         case NV_SLSH:
         case SY_SCLN:
             return 140;
         case SY_F:
-            return 150;
+            return 160;
         default:
             return TAPPING_TERM;
     }
@@ -292,9 +291,7 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case NU_A:
         case SY_F:
-        case SY_SCLN:
             // Allow to register holds when double tapping
             return 0;
         default:
