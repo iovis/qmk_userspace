@@ -25,11 +25,15 @@
 #include "version.h"
 #include "iovis/keymap.c"
 
+#ifdef RGB_MATRIX_ENABLE
+#    include "./rgb.h" // IWYU pragma: keep
+#endif
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_voyager(
     KC_ESC , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                       KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
-    KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_MINS,
+    NS_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_MINS,
     KC_LGUI, NU_A   , KC_S   , KC_D   , SY_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L   , SY_SCLN, KC_QUOT,
     KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                       KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
                                                  KC_LALT, MY_MEH ,     QK_LEAD, KC_SPC
@@ -45,10 +49,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_SYM] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, KC_BSPC,
-    _______, KC_GRV , KC_AT  , KC_COLN, KC_DLR , KC_CIRC,                       KC_PERC, KC_AMPR, KC_ASTR, KC_PIPE, MY_ARRW, KC_UNDS,
-    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_TILD,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, MY_FARW,
-    _______, KC_SLSH, KC_LABK, KC_RABK, MY_COLN, MY_MEMO,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
-                                                 KC_BSLS, _______,     XXXXXXX, _______
+    _______, KC_GRV , KC_LABK, KC_RABK, KC_DLR , KC_CIRC,                       KC_PERC, KC_AMPR, KC_ASTR, KC_PIPE, KC_EQL , KC_UNDS,
+    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_TILD,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_COLN,
+    _______, KC_SLSH, KC_AT  , KC_HASH, KC_BSLS, MY_CODE,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
+                                                 MY_COLN, KC_0   ,     XXXXXXX, _______
   ),
 
   [LAYER_NAV] = LAYOUT_voyager(
@@ -60,99 +64,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [LAYER_NUM] = LAYOUT_voyager(
-    _______, _______, _______, _______, _______, _______,                       KC_HASH, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, _______,
-    _______, _______, _______, _______, _______, _______,                       KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, QK_LLCK,
-    _______, _______, _______, _______, _______, _______,                       KC_COLN, KC_4   , KC_5   , KC_6   , KC_MINS, KC_EQL ,
-    _______, _______, _______, _______, _______, _______,                       KC_TILD, KC_1   , KC_2   , KC_3   , KC_SLSH, KC_PERC,
-                                                 _______, _______,     HM_NSPC, KC_0
+    _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,                       KC_ASTR, KC_7   , KC_8   , KC_9   , KC_EQL , QK_LLCK,
+    _______, _______, _______, _______, _______, _______,                       KC_COLN, KC_4   , KC_5   , KC_6   , KC_SLSH, KC_PLUS,
+    _______, _______, _______, _______, _______, _______,                       KC_TILD, KC_1   , KC_2   , KC_3   , KC_MINS, KC_PERC,
+                                                 _______, KC_0   ,     KC_UNDS, KC_SPC
+  ),
+
+  [LAYER_NUMSYM] = LAYOUT_voyager(
+    _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,                       KC_BSLS, KC_J   , KC_LPRN, KC_RPRN, KC_EQL , _______,
+    _______, _______, _______, _______, _______, _______,                       KC_0   , KC_I   , KC_LBRC, KC_RBRC, KC_SCLN, KC_PLUS,
+    _______, _______, _______, _______, _______, _______,                       KC_HASH, KC_1   , KC_LABK, KC_RABK, KC_MINS, KC_ENT ,
+                                                 _______, KC_0   ,     KC_RCBR, KC_SPC
   ),
 };
-// clang-format on
 
-/// RGB
-const int left_shift_index = 18;
-
-// clang-format off
-const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [LAYER_BASE] = {
-        // Left
-        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
-        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-                                    MAGNT, YELLW,
-
-        // Right
-        GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
-        CYAN , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        CYAN , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        CYAN , CYAN , CYAN , CYAN , CYAN , BLUE ,
-        WHITE, CYAN ,
-    },
-
-    [LAYER_GAME] = {
-        // Left
-        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
-        CYAN , BLUE , CYAN , MAGNT, CYAN , CYAN ,
-        CYAN , BLUE , MAGNT, MAGNT, MAGNT, CYAN ,
-        CYAN , BLUE , CYAN , CYAN , CYAN , CYAN ,
-                                    CYAN , MAGNT,
-
-        // Right
-        GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
-        CYAN , CYAN , CYAN , CYAN , CYAN , GREEN,
-        CYAN , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        CYAN , CYAN , CYAN , CYAN , CYAN , BLUE ,
-        WHITE, CYAN ,
-    },
-
-    [LAYER_SYM] = {
-        // Left
-        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
-        BLUE , ORANG, ORANG, ORANG, ORANG, ORANG,
-        BLUE , ORANG, ORANG, ORANG, ORANG, ORANG,
-        BLUE , ORANG, ORANG, ORANG, ORANG, ORANG,
-                                    MAGNT, ORANG,
-
-        // Right
-        GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
-        ORANG, ORANG, ORANG, ORANG, ORANG, ORANG,
-        ORANG, ORANG, ORANG, ORANG, ORANG, ORANG,
-        ORANG, ORANG, ORANG, ORANG, ORANG, BLUE ,
-        BLACK, CYAN ,
-    },
-
-    [LAYER_NAV] = {
-        // Left
-        BLUE , MAGNT, MAGNT, MAGNT, MAGNT, MAGNT,
-        BLUE , WHITE, WHITE, WHITE, RED  , RED  ,
-        BLUE , WHITE, WHITE, WHITE, ORANG, ORANG,
-        BLUE , BLUE , BLUE , BLUE , GREEN, GREEN,
-                                    MAGNT, YELLW,
-
-        // Right
-        MAGNT, MAGNT, MAGNT, MAGNT, MAGNT, BLUE ,
-        RED  , MAGNT, BLACK, BLACK, BLACK, BLACK,
-        GREEN, GREEN, GREEN, GREEN, BLACK, WHITE,
-        YELLW, YELLW, YELLW, YELLW, YELLW, RED  ,
-        BLUE , CYAN ,
-    },
-
-    [LAYER_NUM] = {
-        // Left
-        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
-        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-                                    MAGNT, YELLW,
-
-        // Right
-        ORANG, ORANG, ORANG, ORANG, ORANG, BLUE ,
-        ORANG, GREEN, GREEN, GREEN, ORANG, WHITE,
-        ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
-        ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
-        CYAN , GREEN,
-    },
-
-};
+/// Chordal Hold Layout
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_voyager(
+    'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+    'L', '*', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+                        '*', '*',  '*', '*'
+);
 // clang-format on

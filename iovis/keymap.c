@@ -1,16 +1,9 @@
-#include "features/achordion.h"
+#include QMK_KEYBOARD_H
+
 #include "features/custom_shift_keys.h"
 #include "features/socd_cleaner.h"
 #include "iovis/config.h"
-
-enum layers {
-    LAYER_BASE = 0,
-    LAYER_GAME,
-    LAYER_SYM,
-    LAYER_NAV,
-    LAYER_NUM,
-    LAYER_NUMSYM,
-};
+#include "iovis/layers.h"
 
 enum custom_keycodes {
     MY_ARRW = SAFE_RANGE,
@@ -46,8 +39,8 @@ enum custom_keycodes {
 #define RGB_FWD RGB_MODE_FORWARD
 // clang-format on
 
-/// Achordion (https://getreuer.info/posts/keyboards/achordion)
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+/// Chordal Hold
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
         case HM_NSPC:
@@ -69,6 +62,8 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
                 case KC_LALT:
                 case KC_LGUI:
                 case MY_MEH:
+                case KC_J:
+                case KC_K:
                     return true;
             }
             break;
@@ -102,38 +97,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, ui
             }
     }
 
-    return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-// How long to leave a key press till achordion ignores it and
-// does a hold (default 1000ms)
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-    switch (tap_hold_keycode) {
-        case HM_SPC:
-            // Bypass Achordion for these keys and let QMK handle it
-            return 0;
-    }
-
-    return TAPPING_TERM * 2;
-}
-
-uint16_t achordion_streak_chord_timeout(uint16_t tap_hold_keycode, uint16_t next_keycode) {
-    switch (tap_hold_keycode) {
-        case HM_NSPC:
-        case HM_RSFT:
-        case NV_SLSH:
-        case SY_SCLN:
-            // Disable achordion streak
-            return 0;
-        case SY_F:
-            return 25;
-        case NU_A:
-            return 50;
-        case HM_Z:
-            return 200;
-    }
-
-    return 80;
+    return get_chordal_hold_default(tap_hold_record, other_record);
 }
 
 /// Combos (https://docs.qmk.fm/features/combo)
@@ -237,86 +201,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-/// RGB Matrix (https://docs.qmk.fm/features/rgb_matrix)
-#ifdef RGB_MATRIX_ENABLE
-extern const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3];
-extern rgb_config_t rgb_matrix_config;
-extern const int left_shift_index;
-
-// clang-format off
-#define BLACK { HSV_BLACK }
-#define BLUE  { HSV_BLUE }
-#define CYAN  { HSV_CYAN }
-#define GREEN { HSV_GREEN }
-#define MAGNT { HSV_MAGENTA }
-#define ORANG { HSV_ORANGE }
-#define RED   { HSV_RED }
-#define WHITE { HSV_WHITE }
-#define YELLW { HSV_YELLOW }
-// clang-format on
-
-void set_layer_color(int layer) {
-    for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
-        HSV hsv = {
-            .h = pgm_read_byte(&ledmap[layer][i][0]),
-            .s = pgm_read_byte(&ledmap[layer][i][1]),
-            .v = pgm_read_byte(&ledmap[layer][i][2]),
-        };
-
-        if (!hsv.h && !hsv.s && !hsv.v) {
-            rgb_matrix_set_color(i, 0, 0, 0);
-        } else {
-            RGB rgb = hsv_to_rgb(hsv);
-            float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
-            rgb_matrix_set_color(i, f * rgb.r, f * rgb.g, f * rgb.b);
-        }
-    }
-}
-
-bool rgb_matrix_indicators_user(void) {
-    // if (rawhid_state.rgb_control) return false;
-    // if (keyboard_config.disable_layer_led) return false;
-
-    switch (biton32(layer_state)) {
-        case 0:
-            set_layer_color(0);
-            break;
-        case 1:
-            set_layer_color(1);
-            break;
-        case 2:
-            set_layer_color(2);
-            break;
-        case 3:
-            set_layer_color(3);
-            break;
-        case 4:
-            set_layer_color(4);
-            break;
-        case 5:
-            set_layer_color(5);
-            break;
-        default:
-            if (rgb_matrix_get_flags() == LED_FLAG_NONE) rgb_matrix_set_color_all(0, 0, 0);
-            break;
-    }
-
-    // Caps indicator
-    // uprintf("Caps Lock: %s\n", host_keyboard_led_state().caps_lock ? "on" : "off");
-    // uprintf("Caps Word: %s\n", is_caps_word_on() ? "on" : "off");
-    if (host_keyboard_led_state().caps_lock || is_caps_word_on()) {
-        rgb_matrix_set_color(left_shift_index, RGB_WHITE);
-    }
-
-    // Leader indicator
-    // if (leader_sequence_active()) {
-    //     rgb_matrix_set_color(40, RGB_GREEN);
-    // }
-
-    return true;
-}
-#endif
-
 /// User macro callbacks (https://docs.qmk.fm/feature_macros)
 void keyboard_post_init_user(void) {
     defer_exec(100, custom_os_settings, NULL);
@@ -330,7 +214,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 
     if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
-    if (!process_achordion(keycode, record)) return false;
 
     if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM) || layer_state_is(LAYER_NUMSYM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
@@ -384,12 +267,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_NSPC:
         case HM_Z:
-            return 125;
-        case SY_F:
-            return 150;
         case NV_SLSH:
         case SY_SCLN:
-            return 150;
+            return 140;
+        case SY_F:
+            return 160;
         default:
             return TAPPING_TERM;
     }
@@ -399,12 +281,20 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_NSPC:
         case HM_Z:
+        case NU_A:
+        case SY_F:
             return true;
         default:
             return false;
     }
 }
 
-void matrix_scan_user(void) {
-    achordion_task();
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SY_F:
+            // Allow to register holds when double tapping
+            return 0;
+        default:
+            return QUICK_TAP_TERM;
+    }
 }

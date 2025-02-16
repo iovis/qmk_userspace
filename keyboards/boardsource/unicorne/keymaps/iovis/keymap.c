@@ -24,6 +24,10 @@
 
 #include "iovis/keymap.c"
 
+#ifdef RGB_MATRIX_ENABLE
+#    include "./rgb.h" // IWYU pragma: keep
+#endif
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_BASE] = LAYOUT_split_3x6_3(
@@ -34,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        KC_LSFT, HM_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,     KC_N   , KC_M   , KC_COMM, KC_DOT , NV_SLSH, HM_RSFT,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  HM_SPC , KC_LALT, MY_MEH ,     KC_SPC , KC_MINS, QK_LEAD
+                                  HM_SPC , KC_LALT, MY_MEH ,     KC_SPC , KC_UNDS, QK_LEAD
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -52,13 +56,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_SYM] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       KC_ESC , KC_GRV , KC_AT  , KC_COLN, KC_DLR , KC_CIRC,     KC_PERC, KC_AMPR, KC_ASTR, KC_PIPE, MY_ARRW, _______,
+       KC_ESC , KC_GRV , KC_LABK, KC_RABK, KC_DLR , KC_CIRC,     KC_PERC, KC_AMPR, KC_ASTR, KC_PIPE, KC_EQL , KC_MINS,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_TILD,     KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, MY_FARW,
+       _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_TILD,     KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_COLN,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, KC_SLSH, KC_LABK, KC_RABK, MY_COLN, MY_MEMO,     KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
+       _______, KC_SLSH, KC_AT  , KC_HASH, KC_BSLS, MY_CODE,     KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, KC_BSLS,     _______, KC_UNDS, XXXXXXX
+                                  _______, MY_COLN, KC_0   ,     _______, KC_UNDS, XXXXXXX
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
@@ -76,179 +80,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_NUM] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, _______, _______, _______, _______, _______,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_PLUS, _______,
+       _______, _______, _______, _______, _______, _______,     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_EQL , _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, _______, _______, _______, _______, _______,     KC_COLN, KC_4   , KC_5   , KC_6   , KC_MINS, KC_EQL ,
+       _______, _______, _______, _______, _______, _______,     KC_COLN, KC_4   , KC_5   , KC_6   , KC_SLSH, KC_PLUS,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, _______, _______, _______, _______, _______,     KC_TILD, KC_1   , KC_2   , KC_3   , KC_SLSH, KC_PERC,
+       _______, _______, _______, _______, _______, _______,     KC_TILD, KC_1   , KC_2   , KC_3   , KC_MINS, KC_PERC,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     HM_NSPC, KC_0   , QK_LLCK
+                                  _______, _______, KC_0   ,     KC_SPC , KC_0   , QK_LLCK
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 
     [LAYER_NUMSYM] = LAYOUT_split_3x6_3(
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, _______, _______, _______, _______, _______,     KC_ASTR, KC_J   , KC_LPRN, KC_RPRN, KC_PLUS, _______,
+       _______, _______, _______, _______, _______, _______,     KC_BSLS, KC_J   , KC_LPRN, KC_RPRN, KC_EQL , _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, _______, _______, _______, _______, _______,     KC_EQL , KC_I   , KC_LBRC, KC_RBRC, KC_SCLN, KC_HASH,
+       _______, _______, _______, _______, _______, _______,     KC_0   , KC_I   , KC_LBRC, KC_RBRC, KC_SCLN, KC_PLUS,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, _______, _______, _______, _______, _______,     KC_1   , KC_0   , KC_LABK, KC_RABK, KC_MINS, KC_ENT ,
+       _______, _______, _______, _______, _______, _______,     KC_HASH, KC_1   , KC_LABK, KC_RABK, KC_MINS, KC_ENT ,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
-                                  _______, _______, _______,     KC_SPC , KC_0   , XXXXXXX
+                                  _______, _______, KC_0   ,     KC_SPC , KC_RCBR, XXXXXXX
     //                          `+--------+--------+--------'   `--------+--------+--------+'
     ),
 };
-// clang-format on
 
-/// RGB
-#ifdef RGB_MATRIX_ENABLE
-const int left_shift_index = 26;
-
-// clang-format off
-const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [LAYER_BASE] = {
-        // Left
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        CYAN , CYAN , CYAN , // BGT
-        CYAN , CYAN , CYAN , // RFV
-        BLACK, BLACK,
-        CYAN , CYAN , CYAN , // CDE
-        CYAN , CYAN , CYAN , // WSX
-        CYAN , CYAN , CYAN , // ZAQ
-        BLUE , BLUE , BLUE , // TAB, CMD, SFT
-
-        // Right
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        CYAN , CYAN , CYAN , // NHY
-        CYAN , CYAN , CYAN , // UJM
-        BLACK, BLACK,
-        CYAN , CYAN , CYAN , // ,KI
-        CYAN , CYAN , CYAN , // OL.
-        CYAN , CYAN , CYAN , // /;P
-        BLUE , CYAN , BLUE , // DEL, ', SFT
-    },
-
-    [LAYER_GAME] = {
-        // Left
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        CYAN , CYAN , CYAN , // BGT
-        CYAN , MAGNT, CYAN , // RFV
-        BLACK, BLACK,
-        CYAN , MAGNT, MAGNT, // CDE
-        CYAN , MAGNT, CYAN , // WSX
-        BLUE , BLUE , BLUE , // ZAQ
-        BLUE , CYAN , CYAN , // TAB, CMD, SFT
-
-        // Right
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        CYAN , CYAN , CYAN , // NHY
-        CYAN , CYAN , CYAN , // UJM
-        BLACK, BLACK,
-        CYAN , CYAN , CYAN , // ,KI
-        CYAN , CYAN , CYAN , // OL.
-        CYAN , CYAN , CYAN , // /;P
-        BLUE , CYAN , BLUE , // DEL, ', SFT
-    },
-
-    [LAYER_SYM] = {
-        // Left
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        ORANG, ORANG, ORANG,  // BGT
-        ORANG, ORANG, ORANG,  // RFV
-        BLACK, BLACK,
-        ORANG, ORANG, ORANG,  // CDE
-        ORANG, ORANG, ORANG,  // WSX
-        ORANG, ORANG, ORANG,  // ZAQ
-        RED  , BLUE , BLUE ,  // TAB, CMD, SFT
-
-        // Right
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        ORANG, ORANG, ORANG, // NHY
-        ORANG, ORANG, ORANG, // UJM
-        BLACK, BLACK,
-        ORANG, ORANG, ORANG, // ,KI
-        ORANG, ORANG, ORANG, // OL.
-        ORANG, ORANG, ORANG, // /;P
-        BLUE , ORANG, BLUE , // DEL, ', SFT
-    },
-
-    [LAYER_NAV] = {
-        // Left
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        BLACK, BLACK, RED  , // BGT
-        RED  , BLACK, BLACK, // RFV
-        BLACK, BLACK,
-        BLUE , WHITE, WHITE, // CDE
-        WHITE, WHITE, BLUE , // WSX
-        BLUE , WHITE, WHITE, // ZAQ
-        BLUE , BLUE , BLUE , // TAB, CMD, SFT
-
-        // Right
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        YELLW, GREEN, RED  , // NHY
-        MAGNT, GREEN, YELLW, // UJM
-        BLACK, BLACK,
-        YELLW, GREEN, BLACK, // ,KI
-        BLACK, GREEN, YELLW, // OL.
-        BLACK, BLACK, BLACK, // /;P
-        BLACK, WHITE, RED  , // DEL, ', SFT
-    },
-
-    [LAYER_NUM] = {
-        // Left
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        CYAN , CYAN , CYAN , // BGT
-        CYAN , CYAN , CYAN , // RFV
-        BLACK, BLACK,
-        CYAN , CYAN , CYAN , // CDE
-        CYAN , CYAN , CYAN , // WSX
-        CYAN , CYAN , CYAN , // ZAQ
-        BLUE , BLUE , BLUE , // TAB, CMD, SFT
-
-        // Right
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        ORANG, ORANG, ORANG, // NHY
-        GREEN, GREEN, GREEN, // UJM
-        BLACK, BLACK,
-        GREEN, GREEN, GREEN, // ,KI
-        GREEN, GREEN, GREEN, // OL.
-        ORANG, ORANG, ORANG, // /;P
-        BLUE , ORANG, ORANG, // DEL, ', SFT
-    },
-
-    [LAYER_NUMSYM] = {
-        // Left
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        CYAN , CYAN , CYAN , // BGT
-        CYAN , CYAN , CYAN , // RFV
-        BLACK, BLACK,
-        CYAN , CYAN , CYAN , // CDE
-        CYAN , CYAN , CYAN , // WSX
-        CYAN , CYAN , CYAN , // ZAQ
-        BLUE , BLUE , BLUE , // TAB, CMD, SFT
-
-        // Right
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        BLACK,
-        GREEN, ORANG, ORANG, // NHY
-        CYAN , CYAN , GREEN, // UJM
-        BLACK, BLACK,
-        ORANG, ORANG, ORANG, // ,KI
-        ORANG, ORANG, ORANG, // OL.
-        ORANG, ORANG, ORANG, // /;P
-        BLUE , ORANG, BLUE , // DEL, ', SFT
-    },
-};
-#endif
+/// Chordal Hold Layout
+const char PROGMEM chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] = LAYOUT_split_3x6_3(
+    'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+    'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+    'L', '*', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R',
+                   '*', '*', '*',  '*', '*', '*'
+);
 // clang-format on
