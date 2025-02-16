@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_NUM] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                       KC_ASTR, KC_7   , KC_8   , KC_9   , KC_EQL , QK_LLCK,
-    _______, _______, _______, _______, _______, _______,                       KC_COLN, KC_4   , KC_5   , KC_6   , KC_SLSH, KC_PLUS,
+    _______, _______, _______, _______, _______, _______,                       KC_SLSH, KC_4   , KC_5   , KC_6   , KC_PLUS, KC_COLN,
     _______, _______, _______, _______, _______, _______,                       KC_TILD, KC_1   , KC_2   , KC_3   , KC_MINS, KC_PERC,
                                                  _______, KC_0   ,     KC_UNDS, KC_SPC
   ),
