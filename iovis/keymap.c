@@ -127,8 +127,9 @@ const custom_shift_key_t custom_shift_keys[] = {
     // Number layer
     {KC_0, KC_0   },
     {KC_1, KC_1   },
-    {KC_2, KC_COMM},
-    {KC_3, KC_DOT },
+    {KC_2, KC_TILD},
+    // {KC_3, KC_DOT },
+    // {KC_4, KC_DLR },
     {KC_5, KC_LBRC},
     {KC_6, KC_RBRC},
     {KC_7, MY_EURO},
