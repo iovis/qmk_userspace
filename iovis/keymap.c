@@ -267,7 +267,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_ESC:
         case MY_MEH:
-            return 100;
+            return 75;
         case HM_NSPC:
         case HM_Z:
             return 130;
