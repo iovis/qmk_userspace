@@ -28,6 +28,7 @@ enum custom_keycodes {
 #define HM_Z    LCTL_T(KC_Z)
 #define NS_TAB  LT(LAYER_NUMSYM, KC_TAB)
 #define NU_A    LT(LAYER_NUM, KC_A)
+#define NU_D    LT(LAYER_NUM, KC_D)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
@@ -42,15 +43,23 @@ enum custom_keycodes {
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
+        case HM_Z:
+            switch (other_keycode) {
+                case KC_SPC:
+                case NU_D:
+                case SY_F:
+                    return true;
+            }
+            break;
         case HM_NSPC:
             return true;
         case NU_A:
+        case NU_D:
             switch (other_keycode) {
                 case KC_LALT:
                 case KC_LCTL:
                 case KC_LGUI:
                 case KC_LSFT:
-                case KC_SPC:
                 case MY_MEH:
                     return true;
             }
@@ -261,6 +270,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case NV_SLSH:
         case SY_SCLN:
             return 140;
+        case HM_RSFT:
+        case NU_D:
         case SY_F:
             return 160;
         default:
@@ -271,8 +282,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HM_ESC:
+        case HM_RSFT:
         case MY_MEH:
         case NU_A:
+        case NU_D:
         case NV_SLSH:
         case SY_F:
         case SY_SCLN:
