@@ -1,7 +1,6 @@
 #include QMK_KEYBOARD_H
 
 #include "features/custom_shift_keys.h"
-#include "features/socd_cleaner.h"
 #include "iovis/config.h"
 #include "iovis/layers.h"
 
@@ -170,8 +169,6 @@ void leader_end_user(void) {
         keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_W)) { // Keyboard settings
         keymap_config.swap_lctl_lgui = !keymap_config.swap_lctl_lgui;
-    } else if (leader_sequence_one_key(KC_S)) {
-        socd_cleaner_enabled = !socd_cleaner_enabled;
     } else if (leader_sequence_one_key(KC_ENT)) { // QK_BOOT
         reset_keyboard();
     }
@@ -193,14 +190,6 @@ uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
     }
 }
 
-/// SOCD Cleaner (https://getreuer.info/posts/keyboards/socd-cleaner)
-socd_cleaner_t socd_h = {{KC_A, KC_D}, SOCD_CLEANER_LAST};
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    socd_cleaner_enabled = IS_LAYER_ON_STATE(state, LAYER_GAME);
-    return state;
-}
-
 /// User macro callbacks (https://docs.qmk.fm/feature_macros)
 void keyboard_post_init_user(void) {
     defer_exec(100, custom_os_settings, NULL);
@@ -212,8 +201,6 @@ void keyboard_post_init_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-
-    if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
 
     if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM) || layer_state_is(LAYER_NUMSYM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
