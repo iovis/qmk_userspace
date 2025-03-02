@@ -25,6 +25,7 @@ enum custom_keycodes {
 #define HM_ESC  LGUI_T(KC_ESC)
 #define HM_NSPC RSFT_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
+#define HM_UNDS LCTL_T(KC_UNDS)
 #define HM_Z    LCTL_T(KC_Z)
 #define NS_TAB  LT(LAYER_NUMSYM, KC_TAB)
 #define NU_A    LT(LAYER_NUM, KC_A)
@@ -216,6 +217,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
+        case HM_UNDS:
+            if (record->tap.count && record->event.pressed) {
+                // Can't have complicated keys on Mod Tap
+                // See [[Mod Tap#Caveats]] section
+                tap_code16(KC_UNDS); // Send KC_UNDS on tap
+                return false;
+            }
+            break;
         case MY_ARRW:
             if (record->event.pressed) {
                 SEND_STRING("->");
