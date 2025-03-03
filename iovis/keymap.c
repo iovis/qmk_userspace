@@ -299,6 +299,9 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
         case SY_F:
         case SY_SCLN:
             return true;
+        case HM_UNDS:
+            tap_code16(KC_UNDS);
+            return false;
         default:
             return false;
     }
