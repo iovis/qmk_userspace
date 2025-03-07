@@ -30,17 +30,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_SYM] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, KC_BSPC,
-    _______, KC_GRV , KC_LABK, KC_RABK, KC_DLR , M_DASH ,                       KC_PERC, KC_AMPR, KC_ASTR, KC_PIPE, KC_EQL , KC_UNDS,
+    _______, KC_GRV , KC_LABK, KC_RABK, KC_DLR , M_DASH ,                       KC_PERC, KC_AMPR, KC_ASTR, KC_PIPE, KC_EQL , KC_MINS,
     _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_TILD,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_COLN,
     _______, KC_SLSH, KC_BSLS, KC_AT  , MY_COLN, KC_CIRC,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
-                                                 _______, KC_0   ,     MY_COLN, _______
+                                                 _______, KC_0   ,     KC_UNDS, _______
   ),
 
   [LAYER_NAV] = LAYOUT_voyager(
     _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                       KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , _______,
     _______, KC_MPRV, KC_MPLY, KC_MNXT, RGB_VAD, RGB_TOG,                       EE_CLR , DB_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,                       KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, QK_LLCK,
-    _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,                       KC_END , KC_HOME, KC_PGUP, KC_PGDN, _______, XXXXXXX,
+    _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,                       KC_END , KC_HOME, KC_PGUP, KC_PGDN, QK_LLCK, XXXXXXX,
                                                  _______, _______,     KC_CAPS, _______
   ),
 
