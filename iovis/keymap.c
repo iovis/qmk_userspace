@@ -281,8 +281,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return 140;
         case HM_RSFT:
         case NU_D:
-        case SY_F:
             return 160;
+        case SY_F:
+            return 175;
         default:
             return TAPPING_TERM;
     }
