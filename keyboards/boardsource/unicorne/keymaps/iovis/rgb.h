@@ -120,8 +120,8 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK, BLACK,
         YELLW, GREEN, BLACK, // ,KI
         BLACK, GREEN, YELLW, // OL.
-        BLACK, BLACK, BLACK, // /;P
-        BLACK, WHITE, RED  , // DEL, ', SFT
+        WHITE, BLACK, BLACK, // /;P
+        BLACK, BLACK, RED  , // DEL, ', SFT
     },
 
     [LAYER_NUM] = {
