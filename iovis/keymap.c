@@ -185,6 +185,7 @@ void leader_end_user(void) {
 }
 
 /// OS Detection
+#ifdef OS_DETECTION_ENABLE
 uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
     switch (detected_host_os()) {
         case OS_WINDOWS:
@@ -199,11 +200,13 @@ uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
             return 500;
     }
 }
+#endif
 
 /// User macro callbacks (https://docs.qmk.fm/feature_macros)
 void keyboard_post_init_user(void) {
+#ifdef OS_DETECTION_ENABLE
     defer_exec(100, custom_os_settings, NULL);
-
+#endif
 #ifdef RGB_MATRIX_ENABLE
     rgb_matrix_enable();
 #endif
