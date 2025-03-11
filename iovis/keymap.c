@@ -298,9 +298,9 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
         case HM_RSFT:
         case MY_MEH:
         case NU_A:
-        case NU_D:
+        // case NU_D:  // Retro-tapped seems to flush mods (LCTRL)
         case NV_SLSH:
-        case SY_F:
+        // case SY_F:
         case SY_SCLN:
             return true;
         case HM_UNDS:
