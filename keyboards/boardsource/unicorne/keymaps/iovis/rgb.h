@@ -105,7 +105,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         BLACK,
         BLACK, BLACK, RED  , // BGT
-        RED  , BLACK, BLACK, // RFV
+        RED  , CYAN , BLACK, // RFV
         BLACK, BLACK,
         BLUE , WHITE, WHITE, // CDE
         WHITE, WHITE, BLUE , // WSX
