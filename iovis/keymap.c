@@ -22,12 +22,12 @@ enum custom_keycodes {
 #define MY_MEH  LCAG_T(KC_SPC)
 #define M_DASH  S(RALT(KC_MINS))
 
+#define FN_TAB  LT(LAYER_NUMFN, KC_TAB)
 #define HM_ESC  LGUI_T(KC_ESC)
 #define HM_NSPC RSFT_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
 #define HM_UNDS LCTL_T(KC_UNDS)
 #define HM_Z    LCTL_T(KC_Z)
-#define NS_TAB  LT(LAYER_NUMFN, KC_TAB)
 #define NU_A    LT(LAYER_NUM, KC_A)
 #define NU_D    LT(LAYER_NUM, KC_D)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
@@ -111,10 +111,12 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
 /// Combos (https://docs.qmk.fm/features/combo)
 const uint16_t PROGMEM combo_caps_word[] = {KC_DOT, NV_SLSH, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_mouse[] = {NV_SLSH, HM_RSFT, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo_caps_word, CW_TOGG),
     COMBO(combo_esc, KC_ESC),
+    COMBO(combo_mouse, TO(LAYER_MOUSE)),
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
