@@ -27,7 +27,7 @@ enum custom_keycodes {
 #define HM_RSFT RSFT_T(KC_ENT)
 #define HM_UNDS LCTL_T(KC_UNDS)
 #define HM_Z    LCTL_T(KC_Z)
-#define NS_TAB  LT(LAYER_NUMSYM, KC_TAB)
+#define NS_TAB  LT(LAYER_NUMFN, KC_TAB)
 #define NU_A    LT(LAYER_NUM, KC_A)
 #define NU_D    LT(LAYER_NUM, KC_D)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
