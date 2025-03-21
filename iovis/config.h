@@ -31,7 +31,7 @@
 
 // RGB
 #define RGB_MATRIX_TIMEOUT 300000
-#define RGB_MATRIX_DEFAULT_VAL 15
+// #define RGB_MATRIX_DEFAULT_VAL 15 // Initial brightness
 
 // Taps
 #define PERMISSIVE_HOLD

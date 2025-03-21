@@ -34,7 +34,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
-        BLACK, BLACK,
+        MAGNT, BLUE ,
         CYAN , CYAN , CYAN , // CDE
         CYAN , CYAN , CYAN , // WSX
         CYAN , CYAN , CYAN , // ZAQ
@@ -45,7 +45,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         CYAN , CYAN , CYAN , // NHY
         CYAN , CYAN , CYAN , // UJM
-        BLACK, BLACK,
+        CYAN , WHITE,
         CYAN , CYAN , CYAN , // ,KI
         CYAN , CYAN , CYAN , // OL.
         CYAN , CYAN , CYAN , // /;P
@@ -58,7 +58,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         CYAN , CYAN , CYAN , // BGT
         CYAN , MAGNT, CYAN , // RFV
-        BLACK, BLACK,
+        MAGNT, CYAN ,
         CYAN , MAGNT, MAGNT, // CDE
         CYAN , MAGNT, CYAN , // WSX
         BLUE , BLUE , BLUE , // ZAQ
@@ -69,7 +69,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         CYAN , CYAN , CYAN , // NHY
         CYAN , CYAN , CYAN , // UJM
-        BLACK, BLACK,
+        GREEN, WHITE,
         CYAN , CYAN , CYAN , // ,KI
         CYAN , CYAN , CYAN , // OL.
         CYAN , CYAN , CYAN , // /;P
@@ -82,7 +82,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         ORANG, ORANG, ORANG,  // BGT
         ORANG, ORANG, ORANG,  // RFV
-        BLACK, BLACK,
+        MAGNT, BLUE ,
         ORANG, ORANG, ORANG,  // CDE
         ORANG, ORANG, ORANG,  // WSX
         ORANG, ORANG, ORANG,  // ZAQ
@@ -93,7 +93,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         ORANG, ORANG, ORANG, // NHY
         ORANG, ORANG, ORANG, // UJM
-        BLACK, BLACK,
+        CYAN , ORANG,
         ORANG, ORANG, ORANG, // ,KI
         ORANG, ORANG, ORANG, // OL.
         ORANG, ORANG, ORANG, // /;P
@@ -106,7 +106,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         BLACK, BLACK, RED  , // BGT
         RED  , CYAN , BLACK, // RFV
-        BLACK, BLACK,
+        MAGNT, BLUE ,
         BLUE , WHITE, WHITE, // CDE
         WHITE, WHITE, BLUE , // WSX
         BLUE , WHITE, WHITE, // ZAQ
@@ -117,7 +117,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         YELLW, GREEN, BLACK, // NHY
         BLACK, GREEN, YELLW, // UJM
-        BLACK, BLACK,
+        WHITE, WHITE,
         YELLW, GREEN, BLACK, // ,KI
         BLACK, GREEN, YELLW, // OL.
         WHITE, BLACK, BLACK, // /;P
@@ -130,7 +130,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
-        BLACK, BLACK,
+        MAGNT, BLUE ,
         CYAN , CYAN , CYAN , // CDE
         CYAN , CYAN , CYAN , // WSX
         CYAN , CYAN , CYAN , // ZAQ
@@ -141,7 +141,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         ORANG, ORANG, ORANG, // NHY
         GREEN, GREEN, GREEN, // UJM
-        BLACK, BLACK,
+        CYAN , WHITE,
         GREEN, GREEN, GREEN, // ,KI
         GREEN, GREEN, GREEN, // OL.
         ORANG, ORANG, ORANG, // /;P
@@ -178,7 +178,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
-        BLACK, BLACK,
+        MAGNT, BLUE ,
         CYAN , CYAN , CYAN , // CDE
         CYAN , CYAN , CYAN , // WSX
         CYAN , CYAN , CYAN , // ZAQ
@@ -189,7 +189,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         BLACK, RED  , RED  , // NHY
         MAGNT, MAGNT, MAGNT, // UJM
-        BLACK, BLACK,
+        BLACK, WHITE,
         MAGNT, MAGNT, MAGNT, // ,KI
         MAGNT, MAGNT, MAGNT, // OL.
         MAGNT, MAGNT, MAGNT, // /;P
@@ -202,7 +202,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
-        BLACK, BLACK,
+        MAGNT, BLUE ,
         CYAN , CYAN , CYAN , // CDE
         CYAN , CYAN , CYAN , // WSX
         CYAN , CYAN , CYAN , // ZAQ
@@ -211,12 +211,12 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         BLACK,
-        YELLW, GREEN, ORANG, // NHY
-        ORANG, GREEN, YELLW, // UJM
-        BLACK, BLACK,
-        YELLW, GREEN, ORANG, // ,KI
-        ORANG, GREEN, YELLW, // OL.
-        YELLW, BLACK, BLACK, // /;P
+        BLACK, CYAN , YELLW, // NHY
+        CYAN , GREEN, YELLW, // UJM
+        BLACK, WHITE,
+        YELLW, GREEN, GREEN, // ,KI
+        CYAN , GREEN, YELLW, // OL.
+        BLACK, CYAN , YELLW, // /;P
         BLACK, BLACK, WHITE, // DEL, ', SFT
     },
 };
