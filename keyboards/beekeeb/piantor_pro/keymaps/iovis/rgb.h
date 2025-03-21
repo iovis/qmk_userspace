@@ -105,7 +105,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         BLACK,
         BLACK, BLACK, RED  , // BGT
-        RED  , BLACK, BLACK, // RFV
+        RED  , CYAN , BLACK, // RFV
         BLACK, BLACK,
         BLUE , WHITE, WHITE, // CDE
         WHITE, WHITE, BLUE , // WSX
@@ -115,13 +115,13 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         BLACK,
-        YELLW, GREEN, RED  , // NHY
-        MAGNT, GREEN, YELLW, // UJM
+        YELLW, GREEN, BLACK, // NHY
+        BLACK, GREEN, YELLW, // UJM
         BLACK, BLACK,
         YELLW, GREEN, BLACK, // ,KI
         BLACK, GREEN, YELLW, // OL.
-        BLACK, BLACK, BLACK, // /;P
-        BLACK, WHITE, RED  , // DEL, ', SFT
+        WHITE, BLACK, BLACK, // /;P
+        BLACK, BLACK, RED  , // DEL, ', SFT
     },
 
     [LAYER_NUM] = {
@@ -170,5 +170,53 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         ORANG, ORANG, ORANG, // OL.
         ORANG, ORANG, ORANG, // /;P
         BLUE , ORANG, BLUE , // DEL, ', SFT
+    },
+
+    [LAYER_NUMFN] = {
+        // Left
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        BLACK,
+        CYAN , CYAN , CYAN , // BGT
+        CYAN , CYAN , CYAN , // RFV
+        BLACK, BLACK,
+        CYAN , CYAN , CYAN , // CDE
+        CYAN , CYAN , CYAN , // WSX
+        CYAN , CYAN , CYAN , // ZAQ
+        BLUE , BLUE , BLUE , // TAB, CMD, SFT
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        BLACK,
+        BLACK, RED  , RED  , // NHY
+        MAGNT, MAGNT, MAGNT, // UJM
+        BLACK, BLACK,
+        MAGNT, MAGNT, MAGNT, // ,KI
+        MAGNT, MAGNT, MAGNT, // OL.
+        MAGNT, MAGNT, MAGNT, // /;P
+        BLACK, BLACK, BLACK, // DEL, ', SFT
+    },
+
+    [LAYER_MOUSE] = {
+        // Left
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        BLACK,
+        CYAN , CYAN , CYAN , // BGT
+        CYAN , CYAN , CYAN , // RFV
+        BLACK, BLACK,
+        CYAN , CYAN , CYAN , // CDE
+        CYAN , CYAN , CYAN , // WSX
+        CYAN , CYAN , CYAN , // ZAQ
+        BLUE , BLUE , BLUE , // TAB, CMD, SFT
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        BLACK,
+        YELLW, GREEN, ORANG, // NHY
+        ORANG, GREEN, YELLW, // UJM
+        BLACK, BLACK,
+        YELLW, GREEN, ORANG, // ,KI
+        ORANG, GREEN, YELLW, // OL.
+        YELLW, BLACK, BLACK, // /;P
+        BLACK, BLACK, WHITE, // DEL, ', SFT
     },
 };
