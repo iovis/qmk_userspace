@@ -7,4 +7,6 @@ enum layers {
     LAYER_NAV,
     LAYER_NUM,
     LAYER_NUMSYM,
+    LAYER_NUMFN,
+    LAYER_MOUSE,
 };
