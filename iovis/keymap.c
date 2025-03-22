@@ -22,6 +22,7 @@ enum custom_keycodes {
 #define MY_MEH  LCAG_T(KC_SPC)
 #define M_DASH  S(RALT(KC_MINS))
 
+#define FN_ESC  LT(LAYER_NUMFN, KC_ESC)
 #define FN_TAB  LT(LAYER_NUMFN, KC_TAB)
 #define HM_ESC  LGUI_T(KC_ESC)
 #define HM_NSPC RSFT_T(KC_SPC)
@@ -59,10 +60,12 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
             switch (other_keycode) {
                 case KC_LALT:
                 case KC_LCTL:
-                case KC_LGUI:
                 case KC_LSFT:
                 case MY_MEH:
                     return true;
+                case KC_LGUI:
+                    // Prioritize LGUI in Windows
+                    if (layer_state_is(LAYER_BASE)) return true;
             }
             break;
         case SY_F:
@@ -116,12 +119,12 @@ const uint16_t PROGMEM combo_mouse[] = {NV_SLSH, HM_RSFT, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo_caps_word, CW_TOGG),
     COMBO(combo_esc, KC_ESC),
-    COMBO(combo_mouse, TO(LAYER_MOUSE)),
+    COMBO(combo_mouse, TG(LAYER_MOUSE)),
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    // Only trigger combos in the base layer
-    return layer_state_is(LAYER_BASE);
+    // Only trigger combos in the base layers
+    return layer_state_is(LAYER_BASE) || layer_state_is(LAYER_WIN);
 }
 
 /// Custom Shift Keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
@@ -162,6 +165,7 @@ const key_override_t *key_overrides[] = {
 
 /// Leader (https://docs.qmk.fm/features/leader_key)
 bool original_swap_lctl_lgui = false;
+uint8_t current_layer = LAYER_BASE;
 
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_P)) { // 1Password popup
@@ -173,13 +177,22 @@ void leader_end_user(void) {
     } else if (leader_sequence_one_key(KC_K)) {
         tap_code16(G(S(KC_5)));
     } else if (leader_sequence_one_key(KC_G)) { // Layers
+        if (layer_state_is(LAYER_GAME)) return;
+
         original_swap_lctl_lgui = keymap_config.swap_lctl_lgui;
+        current_layer = get_highest_layer(layer_state);
+
         layer_move(LAYER_GAME);
+
         keymap_config.swap_lctl_lgui = false;
     } else if (leader_sequence_one_key(KC_F)) {
-        layer_move(LAYER_BASE);
+        layer_move(current_layer);
         keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
-    } else if (leader_sequence_one_key(KC_W)) { // Keyboard settings
+    } else if (leader_sequence_one_key(KC_B)) {
+        layer_move(LAYER_BASE);
+    } else if (leader_sequence_one_key(KC_W)) {
+        layer_move(LAYER_WIN);
+    } else if (leader_sequence_one_key(KC_Z)) { // Keyboard settings
         keymap_config.swap_lctl_lgui = !keymap_config.swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_ENT)) { // QK_BOOT
         reset_keyboard();
@@ -192,14 +205,13 @@ uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
     switch (detected_host_os()) {
         case OS_WINDOWS:
         case OS_LINUX:
-            // Swap LCTRL and LGUI
-            keymap_config.swap_lctl_lgui = true;
+            layer_move(LAYER_WIN);
             return 0;
         case OS_MACOS:
         case OS_IOS:
             return 0;
         default:
-            return 500;
+            return 200;
     }
 }
 #endif
@@ -295,6 +307,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case FN_ESC:
         case HM_ESC:
         case HM_RSFT:
         case MY_MEH:
