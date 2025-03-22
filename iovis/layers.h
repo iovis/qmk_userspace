@@ -2,6 +2,7 @@
 
 enum layers {
     LAYER_BASE = 0,
+    LAYER_WIN,
     LAYER_GAME,
     LAYER_SYM,
     LAYER_NAV,
