@@ -5,10 +5,6 @@
 
 #include "iovis/keymap.c"
 
-#ifdef RGB_MATRIX_ENABLE
-#    include "./rgb.h" // IWYU pragma: keep
-#endif
-
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_BASE] = LAYOUT_split_3x6_3(
