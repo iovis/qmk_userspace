@@ -35,6 +35,7 @@ enum custom_keycodes {
 #define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
 #define TT_NUM  TT(LAYER_NUM)
+#define TG_MOUS TG(LAYER_MOUSE)
 
 #define MOON_LED_LEVEL LED_LEVEL
 #define TG_LCLR TOGGLE_LAYER_COLOR

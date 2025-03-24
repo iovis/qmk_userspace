@@ -139,5 +139,37 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         GREEN, GREEN, ORANG, ORANG, ORANG, BLUE ,
         CYAN , CYAN ,
     },
+
+    [LAYER_NUMFN] = {
+        // Left
+        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        MAGNT, YELLW,
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        RED  , MAGNT, MAGNT, MAGNT, MAGNT, BLACK,
+        RED  , MAGNT, MAGNT, MAGNT, MAGNT, BLACK,
+        BLACK, MAGNT, MAGNT, MAGNT, MAGNT, BLACK,
+        BLACK, BLACK,
+    },
+
+    [LAYER_MOUSE] = {
+        // Left
+        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        MAGNT, YELLW,
+
+        // Right
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
+        ORANG, ORANG, GREEN, ORANG, ORANG, BLACK,
+        MAGNT, GREEN, GREEN, GREEN, MAGNT, BLACK,
+        WHITE, MAGNT,
+        BLACK, MAGNT, MAGNT, MAGNT, BLACK, WHITE,
+    },
 };
 // clang-format on
