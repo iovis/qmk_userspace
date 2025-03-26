@@ -52,7 +52,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , CYAN , BLUE , // DEL, ', SFT
     },
 
-    [LAYER_WIN] = {
+    [LAYER_LINUX] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         BLACK,
