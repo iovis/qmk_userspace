@@ -125,7 +125,7 @@ combo_t key_combos[] = {
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     // Only trigger combos in the base layers
-    return layer_state_is(LAYER_BASE) || layer_state_is(LAYER_WIN);
+    return layer_state_is(LAYER_BASE) || layer_state_is(LAYER_LINUX);
 }
 
 /// Custom Shift Keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
@@ -140,16 +140,16 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_SLSH, KC_SLSH},
 
     // Number layer
-    {KC_0, KC_0   },
-    {KC_1, KC_1   },
-    {KC_2, KC_TILD},
-    // {KC_3, KC_DOT },
-    // {KC_4, KC_DLR },
-    {KC_5, KC_LBRC},
-    {KC_6, KC_RBRC},
-    {KC_7, MY_EURO},
-    {KC_8, KC_LPRN},
-    {KC_9, KC_RPRN},
+    // {KC_0, KC_0   },
+    // {KC_1, KC_1   },
+    // {KC_2, KC_TILD},
+    // // {KC_3, KC_DOT },
+    // // {KC_4, KC_DLR },
+    // {KC_5, KC_LBRC},
+    // {KC_6, KC_RBRC},
+    // {KC_7, MY_EURO},
+    // {KC_8, KC_LPRN},
+    // {KC_9, KC_RPRN},
 };
 // clang-format on
 
@@ -192,7 +192,7 @@ void leader_end_user(void) {
     } else if (leader_sequence_one_key(KC_B)) {
         layer_move(LAYER_BASE);
     } else if (leader_sequence_one_key(KC_W)) {
-        layer_move(LAYER_WIN);
+        layer_move(LAYER_LINUX);
     } else if (leader_sequence_one_key(KC_Z)) { // Keyboard settings
         keymap_config.swap_lctl_lgui = !keymap_config.swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_ENT)) { // QK_BOOT
@@ -206,7 +206,7 @@ uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
     switch (detected_host_os()) {
         case OS_WINDOWS:
         case OS_LINUX:
-            layer_move(LAYER_WIN);
+            layer_move(LAYER_LINUX);
             return 0;
         case OS_MACOS:
         case OS_IOS:
