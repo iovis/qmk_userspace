@@ -167,7 +167,7 @@ const key_override_t *key_overrides[] = {
 
 /// Leader (https://docs.qmk.fm/features/leader_key)
 bool original_swap_lctl_lgui = false;
-uint8_t current_layer = LAYER_BASE;
+uint8_t current_base_layer = LAYER_BASE;
 
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_P)) { // 1Password popup
@@ -182,13 +182,13 @@ void leader_end_user(void) {
         if (layer_state_is(LAYER_GAME)) return;
 
         original_swap_lctl_lgui = keymap_config.swap_lctl_lgui;
-        current_layer = get_highest_layer(layer_state);
+        current_base_layer = get_highest_layer(layer_state);
 
         layer_move(LAYER_GAME);
 
         keymap_config.swap_lctl_lgui = false;
     } else if (leader_sequence_one_key(KC_F)) {
-        layer_move(current_layer);
+        layer_move(current_base_layer);
         keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_B)) {
         layer_move(LAYER_BASE);
