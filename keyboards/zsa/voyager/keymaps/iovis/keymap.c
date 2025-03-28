@@ -60,14 +60,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                  _______, KC_0   ,     KC_DOT , KC_SPC
   ),
 
-  [LAYER_NUMSYM] = LAYOUT_voyager(
-    _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,                       KC_LCBR, KC_J   , KC_LPRN, KC_RPRN, KC_EQL , _______,
-    _______, _______, _______, _______, _______, _______,                       KC_0   , KC_I   , KC_LBRC, KC_RBRC, KC_SCLN, KC_PLUS,
-    _______, _______, _______, _______, _______, _______,                       KC_BSLS, KC_1   , KC_LABK, KC_RABK, KC_MINS, KC_ENT ,
-                                                 _______, KC_0   ,     KC_RCBR, KC_SPC
-  ),
-
   [LAYER_NUMFN] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, _______, _______, _______, _______, _______,                       EE_CLR , KC_F7  , KC_F8  , KC_F9  , KC_F12 , XXXXXXX,
@@ -78,10 +70,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_MOUSE] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, _______, _______, _______, _______, _______,                       MS_WHLL, MS_WHLD, MS_UP  , MS_WHLU, MS_WHLR, XXXXXXX,
-    _______, _______, _______, _______, _______, _______,                       MS_BTN4, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN5, XXXXXXX,
-    _______, _______, _______, _______, _______, _______,                       XXXXXXX, MS_BTN1, MS_BTN3, MS_BTN2, XXXXXXX, TG_MOUS,
-                                                 _______, _______,     TG_MOUS, MS_BTN1
+    _______, _______, _______, _______, _______, _______,                       KC_WH_L, KC_WH_D, KC_MS_U, KC_WH_U, KC_WH_R, XXXXXXX,
+    _______, _______, _______, _______, _______, _______,                       KC_BTN4, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN5, XXXXXXX,
+    _______, _______, _______, _______, _______, _______,                       XXXXXXX, KC_BTN1, KC_BTN3, KC_BTN2, XXXXXXX, TG_MOUS,
+                                                 _______, _______,     TG_MOUS, KC_BTN1
   ),
 };
 
