@@ -22,7 +22,7 @@ enum custom_keycodes {
 #define MY_MEH  LCAG_T(KC_SPC)
 #define M_DASH  S(RALT(KC_MINS))
 
-#define FN_ESC  LT(LAYER_NUMFN, KC_ESC)
+#define FN_QUOT LT(LAYER_NUMFN, KC_QUOT)
 #define FN_TAB  LT(LAYER_NUMFN, KC_TAB)
 #define HM_ESC  LGUI_T(KC_ESC)
 #define HM_NSPC RSFT_T(KC_SPC)
@@ -309,7 +309,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case FN_ESC:
+        case FN_QUOT:
         case HM_ESC:
         case HM_RSFT:
         case MY_MEH:
