@@ -58,7 +58,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         CYAN , CYAN , CYAN , // BGT
         CYAN , CYAN , CYAN , // RFV
-        BLUE , BLUE ,
+        MAGNT, RED  ,
         CYAN , CYAN , CYAN , // CDE
         CYAN , CYAN , CYAN , // WSX
         CYAN , CYAN , CYAN , // ZAQ
@@ -69,7 +69,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         CYAN , CYAN , CYAN , // NHY
         CYAN , CYAN , CYAN , // UJM
-        BLUE , BLUE ,
+        CYAN , WHITE,
         CYAN , CYAN , CYAN , // ,KI
         CYAN , CYAN , CYAN , // OL.
         CYAN , CYAN , CYAN , // /;P
