@@ -47,6 +47,9 @@ bool rgb_matrix_indicators_user(void) {
         case LAYER_BASE:
             set_layer_color(LAYER_BASE);
             break;
+        case LAYER_LINUX:
+            set_layer_color(LAYER_LINUX);
+            break;
         case LAYER_GAME:
             set_layer_color(LAYER_GAME);
             break;
