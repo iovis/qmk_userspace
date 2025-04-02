@@ -22,6 +22,7 @@ setup keyboard:
     @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware24
     qmk setup -H {{ if parent_directory(keyboard) == "zsa" { zsa_firmware } else { qmk_firmware } }} --yes
     qmk config user.keyboard={{ keyboard }}
+    qmk config user.keymap=iovis
     qmk compile --compiledb -j0
 
 compile:
