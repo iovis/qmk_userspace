@@ -96,16 +96,16 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         // Left
         BLUE , MAGNT, MAGNT, MAGNT, MAGNT, MAGNT,
         BLUE , WHITE, WHITE, WHITE, RED  , RED  ,
-        BLUE , WHITE, WHITE, WHITE, BLACK, BLACK,
-        BLUE , BLUE , BLUE , BLUE , BLACK, BLACK,
+        BLUE , WHITE, WHITE, WHITE, CYAN , BLACK,
+        BLUE , BLUE , BLUE , BLUE , WHITE, BLACK,
         MAGNT, YELLW,
 
         // Right
         MAGNT, MAGNT, MAGNT, MAGNT, MAGNT, BLUE ,
-        RED  , MAGNT, BLACK, BLACK, BLACK, BLACK,
+        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         GREEN, GREEN, GREEN, GREEN, BLACK, BLACK,
-        YELLW, YELLW, YELLW, YELLW, WHITE, BLACK,
-        YELLW, WHITE,
+        YELLW, YELLW, YELLW, YELLW, WHITE, BLUE ,
+        BLUE , WHITE,
     },
 
     [LAYER_NUM] = {
