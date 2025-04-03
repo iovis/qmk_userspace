@@ -48,8 +48,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                       KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , _______,
     _______, KC_MPRV, KC_MPLY, KC_MNXT, RGB_VAD, RGB_TOG,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_F   , XXXXXXX,                       KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX, XXXXXXX,
-    _______, KC_LCTL, MY_CSTB, MY_CTAB, XXXXXXX, XXXXXXX,                       KC_END , KC_HOME, KC_PGUP, KC_PGDN, QK_LLCK, XXXXXXX,
-                                                 _______, _______,     KC_CAPS, QK_LLCK
+    _______, KC_LCTL, MY_CSTB, MY_CTAB, KC_CAPS, XXXXXXX,                       KC_END , KC_HOME, KC_PGUP, KC_PGDN, QK_LLCK, KC_RSFT,
+                                                 _______, _______,     KC_RCTL, QK_LLCK
   ),
 
   [LAYER_NUM] = LAYOUT_voyager(
