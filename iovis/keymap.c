@@ -66,17 +66,16 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case NV_SLSH:
                     return true;
                 case KC_LGUI:
-                    // Prioritize LGUI in Windows
+                    // Prioritize LGUI in Linux
                     if (layer_state_is(LAYER_BASE)) return true;
             }
             break;
         case SY_F:
             switch (other_keycode) {
+                case KC_E: // allow for chords in different hands, like =>
                 case KC_LALT:
                 case KC_LGUI:
                 case MY_MEH:
-                case KC_J:
-                case KC_K:
                     return true;
             }
             break;
@@ -105,7 +104,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_J:
                 case KC_K:
                 case KC_L:
-                case KC_QUOT:
                     return true;
             }
     }
