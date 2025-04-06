@@ -7,6 +7,7 @@ enum layers {
     LAYER_BASE = 0,
     LAYER_MOUSE,
     LAYER_NUM,
+    LAYER_MPV,
 };
 
 /// Layout
@@ -29,6 +30,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_7   , KC_8   , KC_9   ,
         KC_4   , KC_5   , KC_6   ,
         KC_1   , KC_2   , KC_3
+    ),
+    [LAYER_MPV] = LAYOUT(
+        TG(LAYER_MPV),
+        KC_F   , KC_K   , KC_ESC ,
+        KC_H   , KC_J   , KC_L   ,
+        KC_SCLN, KC_LEFT, KC_RGHT
     )
 };
 // clang-format on
@@ -38,15 +45,18 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [LAYER_BASE] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
     [LAYER_MOUSE] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)},
     [LAYER_NUM] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)},
+    [LAYER_MPV] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
 };
 
 /// Combos (https://docs.qmk.fm/features/combo)
 const uint16_t PROGMEM combo_boot[] = {KC_M, KC_UP, KC_ESC, COMBO_END};
 const uint16_t PROGMEM combo_mouse[] = {MS_BTN4, MS_BTN5, COMBO_END};
 const uint16_t PROGMEM combo_num[] = {KC_F, KC_UP, COMBO_END};
+const uint16_t PROGMEM combo_mpv[] = {KC_M, MS_BTN4, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo_boot, QK_BOOT),
     COMBO(combo_mouse, TG(LAYER_MOUSE)),
     COMBO(combo_num, TG(LAYER_NUM)),
+    COMBO(combo_mpv, TG(LAYER_MPV)),
 };
