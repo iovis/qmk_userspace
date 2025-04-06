@@ -3,24 +3,40 @@
 
 #include QMK_KEYBOARD_H
 
+enum layers {
+    LAYER_BASE = 0,
+    LAYER_NUM,
+};
+
+// #define FN_QUOT LT(LAYER_NUMFN, KC_QUOT)
+
+/// Layout
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT(
+    [LAYER_BASE] = LAYOUT(
         KC_MUTE,
-        KC_7   , KC_8    , KC_9    ,
-        KC_4   , KC_5    , KC_6    ,
-        KC_1   , KC_2    , LT(1, KC_3)
+        KC_F   , KC_UP  , KC_ESC ,
+        KC_LEFT, KC_DOWN, KC_RGHT,
+        KC_M   , MS_BTN4, MS_BTN5
     ),
-    [1] = LAYOUT(
-        RM_TOGG,
-        RM_HUEU,  RM_SATU,  RM_SPDU,
-        RM_HUED,  RM_SATD,  RM_SPDD,
-        RM_PREV,  RM_NEXT,  _______
+    [LAYER_NUM] = LAYOUT(
+        TG(LAYER_NUM),
+        KC_7   , KC_8   , KC_9   ,
+        KC_4   , KC_5   , KC_6   ,
+        KC_1   , KC_2   , KC_3
     )
 };
 // clang-format on
 
+/// Encoder
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
-    [1] = {ENCODER_CCW_CW(RM_VALD, RM_VALU)},
+    [LAYER_BASE] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LAYER_NUM] = {ENCODER_CCW_CW(MS_WHLD, MS_WHLU)},
+};
+
+/// Combos (https://docs.qmk.fm/features/combo)
+const uint16_t PROGMEM combo_num[] = {MS_BTN4, MS_BTN5, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(combo_num, TG(LAYER_NUM)),
 };
