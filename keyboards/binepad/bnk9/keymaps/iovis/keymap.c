@@ -8,8 +8,6 @@ enum layers {
     LAYER_NUM,
 };
 
-// #define FN_QUOT LT(LAYER_NUMFN, KC_QUOT)
-
 /// Layout
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -35,8 +33,10 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 
 /// Combos (https://docs.qmk.fm/features/combo)
+const uint16_t PROGMEM combo_boot[] = {KC_M, KC_UP, KC_ESC, COMBO_END};
 const uint16_t PROGMEM combo_num[] = {MS_BTN4, MS_BTN5, COMBO_END};
 
 combo_t key_combos[] = {
+    COMBO(combo_boot, QK_BOOT),
     COMBO(combo_num, TG(LAYER_NUM)),
 };
