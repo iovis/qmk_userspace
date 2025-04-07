@@ -3,11 +3,13 @@
 
 #include QMK_KEYBOARD_H
 
+// TODO: use RGB to indicate layer?
+
 enum layers {
     LAYER_BASE = 0,
     LAYER_MOUSE,
-    LAYER_NUM,
     LAYER_MPV,
+    LAYER_NUM,
 };
 
 /// Layout
@@ -19,23 +21,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LEFT, KC_DOWN, KC_RGHT,
         KC_M   , MS_BTN4, KC_ESC
     ),
+
     [LAYER_MOUSE] = LAYOUT(
         TG(LAYER_MOUSE),
         MS_BTN4, MS_UP  , MS_BTN5,
         MS_LEFT, MS_DOWN, MS_RGHT,
         MS_BTN1, MS_BTN3, MS_BTN2
     ),
-    [LAYER_NUM] = LAYOUT(
-        TG(LAYER_NUM),
-        KC_7   , KC_8   , KC_9   ,
-        KC_4   , KC_5   , KC_6   ,
-        KC_1   , KC_2   , KC_3
-    ),
+
     [LAYER_MPV] = LAYOUT(
         TG(LAYER_MPV),
         KC_F   , KC_K   , KC_SPC ,
         KC_H   , KC_J   , KC_L   ,
         KC_SCLN, KC_LEFT, KC_RGHT
+    ),
+
+    [LAYER_NUM] = LAYOUT(
+        TG(LAYER_NUM),
+        KC_7   , KC_8   , KC_9   ,
+        KC_4   , KC_5   , KC_6   ,
+        KC_1   , KC_2   , KC_3
     )
 };
 // clang-format on
@@ -53,6 +58,11 @@ const uint16_t PROGMEM combo_boot[] = {KC_M, KC_UP, KC_SPC, COMBO_END};
 const uint16_t PROGMEM combo_mouse[] = {MS_BTN4, KC_ESC, COMBO_END};
 const uint16_t PROGMEM combo_num[] = {KC_F, KC_UP, COMBO_END};
 const uint16_t PROGMEM combo_mpv[] = {KC_M, MS_BTN4, COMBO_END};
+
+// LAYER_MOUSE
+const uint16_t PROGMEM combo_mouse_base[] = {MS_BTN3, MS_BTN2, COMBO_END};
+
+// LAYER_NUM
 const uint16_t PROGMEM combo_zero[] = {KC_1, KC_2, COMBO_END};
 
 // clang-format off
@@ -61,7 +71,7 @@ combo_t key_combos[] = {
     COMBO(combo_mouse, TG(LAYER_MOUSE)),
     COMBO(combo_num, TG(LAYER_NUM)),
     COMBO(combo_mpv, TG(LAYER_MPV)),
+    COMBO(combo_mouse_base, TG(LAYER_MOUSE)),
     COMBO(combo_zero, KC_0),
 };
 // clang-format on
-
