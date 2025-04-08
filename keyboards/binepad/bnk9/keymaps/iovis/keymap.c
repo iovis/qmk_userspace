@@ -3,14 +3,9 @@
 
 #include QMK_KEYBOARD_H
 
-// TODO: use RGB to indicate layer?
-
-enum layers {
-    LAYER_BASE = 0,
-    LAYER_MOUSE,
-    LAYER_MPV,
-    LAYER_NUM,
-};
+#ifdef RGB_MATRIX_ENABLE
+#    include "./rgb.h" // IWYU pragma: keep
+#endif
 
 /// Layout
 // clang-format off
@@ -62,6 +57,9 @@ const uint16_t PROGMEM combo_mpv[] = {KC_SPC, MS_BTN4, COMBO_END};
 // LAYER_MOUSE
 const uint16_t PROGMEM combo_mouse_base[] = {MS_BTN3, MS_BTN2, COMBO_END};
 
+// LAYER_MPV
+const uint16_t PROGMEM combo_mpv_base[] = {KC_SPC, KC_LEFT, COMBO_END};
+
 // LAYER_NUM
 const uint16_t PROGMEM combo_zero[] = {KC_1, KC_2, COMBO_END};
 
@@ -69,9 +67,10 @@ const uint16_t PROGMEM combo_zero[] = {KC_1, KC_2, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo_boot, QK_BOOT),
     COMBO(combo_mouse, TG(LAYER_MOUSE)),
-    COMBO(combo_num, TG(LAYER_NUM)),
-    COMBO(combo_mpv, TG(LAYER_MPV)),
     COMBO(combo_mouse_base, TG(LAYER_MOUSE)),
+    COMBO(combo_mpv, TG(LAYER_MPV)),
+    COMBO(combo_mpv_base, TG(LAYER_MPV)),
+    COMBO(combo_num, TG(LAYER_NUM)),
     COMBO(combo_zero, KC_0),
 };
 // clang-format on

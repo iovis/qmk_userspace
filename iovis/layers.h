@@ -10,4 +10,5 @@ enum layers {
     LAYER_NUMFN,
     LAYER_MOUSE,
     LAYER_NUMSYM,
+    LAYER_MPV,
 };
