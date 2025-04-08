@@ -42,46 +42,16 @@ void set_layer_color(int layer) {
 bool rgb_matrix_indicators_user(void) {
     // if (rawhid_state.rgb_control) return false;
     // if (keyboard_config.disable_layer_led) return false;
-
-    switch (biton32(layer_state)) {
-        case LAYER_BASE:
-            set_layer_color(LAYER_BASE);
-            break;
-        case LAYER_LINUX:
-            set_layer_color(LAYER_LINUX);
-            break;
-        case LAYER_GAME:
-            set_layer_color(LAYER_GAME);
-            break;
-        case LAYER_SYM:
-            set_layer_color(LAYER_SYM);
-            break;
-        case LAYER_NAV:
-            set_layer_color(LAYER_NAV);
-            break;
-        case LAYER_NUM:
-            set_layer_color(LAYER_NUM);
-            break;
-        case LAYER_NUMSYM:
-            set_layer_color(LAYER_NUMSYM);
-            break;
-        case LAYER_NUMFN:
-            set_layer_color(LAYER_NUMFN);
-            break;
-        case LAYER_MOUSE:
-            set_layer_color(LAYER_MOUSE);
-            break;
-        default:
-            if (rgb_matrix_get_flags() == LED_FLAG_NONE) rgb_matrix_set_color_all(0, 0, 0);
-            break;
-    }
+    set_layer_color(biton32(layer_state));
 
     // Caps indicator
     // uprintf("Caps Lock: %s\n", host_keyboard_led_state().caps_lock ? "on" : "off");
     // uprintf("Caps Word: %s\n", is_caps_word_on() ? "on" : "off");
+#ifdef CAPS_WORD_ENABLE
     if (host_keyboard_led_state().caps_lock || is_caps_word_on()) {
         rgb_matrix_set_color(left_shift_index, RGB_WHITE);
     }
+#endif
 
     // Leader indicator
     // if (leader_sequence_active()) {
