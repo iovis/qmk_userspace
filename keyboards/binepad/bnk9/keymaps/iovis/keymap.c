@@ -76,6 +76,8 @@ const uint16_t PROGMEM combo_zero[] = {KC_1, KC_2, COMBO_END};
 
 // LAYER_CALL
 const uint16_t PROGMEM combo_call_base[] = {LSG(KC_R), LSG(KC_E), COMBO_END};
+const uint16_t PROGMEM combo_call_leave[] = {LAG(KC_5), LAG(KC_6), COMBO_END};
+const uint16_t PROGMEM combo_call_enter[] = {LCAG(KC_V), LCAG(KC_A), COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
@@ -84,10 +86,13 @@ combo_t key_combos[] = {
     COMBO(combo_mouse_base, TG(LAYER_MOUSE)),
     COMBO(combo_mpv, TG(LAYER_MPV)),
     COMBO(combo_mpv_base, TG(LAYER_MPV)),
-    COMBO(combo_call, TG(LAYER_CALL)),
-    COMBO(combo_call_base, TG(LAYER_CALL)),
 
     COMBO(combo_num, TG(LAYER_NUM)),
     COMBO(combo_zero, KC_0),
+
+    COMBO(combo_call, TG(LAYER_CALL)),
+    COMBO(combo_call_base, TG(LAYER_CALL)),
+    COMBO(combo_call_leave, G(KC_L)),
+    COMBO(combo_call_enter, KC_ENTER),
 };
 // clang-format on
