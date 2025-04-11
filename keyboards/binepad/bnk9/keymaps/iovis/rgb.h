@@ -20,9 +20,9 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     },
 
     [LAYER_MPV] = {
-        ORANG, ORANG, ORANG,
-        ORANG, ORANG, ORANG,
-        ORANG, ORANG, ORANG,
+        MAGNT, MAGNT, MAGNT,
+        MAGNT, MAGNT, MAGNT,
+        MAGNT, MAGNT, MAGNT,
     },
 
     [LAYER_NUM] = {
@@ -32,9 +32,9 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     },
 
     [LAYER_CALL] = {
-        MAGNT, MAGNT, MAGNT,
-        MAGNT, MAGNT, MAGNT,
-        MAGNT, MAGNT, MAGNT,
+        ORANG, ORANG, ORANG,
+        ORANG, ORANG, ORANG,
+        ORANG, ORANG, ORANG,
     },
 };
 // clang-format on
