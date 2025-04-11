@@ -65,6 +65,11 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case MY_MEH:
                     return true;
                 case KC_N:
+                case KC_H:
+                case KC_Y:
+                case KC_P:
+                case SY_SCLN:
+                case NV_SLSH:
                     return false;
             }
             break;
