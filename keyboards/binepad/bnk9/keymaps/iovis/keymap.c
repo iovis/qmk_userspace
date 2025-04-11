@@ -7,6 +7,10 @@
 #    include "./rgb.h" // IWYU pragma: keep
 #endif
 
+enum custom_keycodes {
+    MY_BRWS = SAFE_RANGE,
+};
+
 /// Layout
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -14,7 +18,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MUTE,
         KC_F   , KC_UP  , KC_ESC ,
         KC_LEFT, KC_DOWN, KC_RGHT,
-        KC_SPC , MS_BTN4, MS_BTN5
+        KC_SPC , MS_BTN4, MY_BRWS
     ),
 
     [LAYER_MOUSE] = LAYOUT(
@@ -60,7 +64,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
 /// Combos (https://docs.qmk.fm/features/combo)
 const uint16_t PROGMEM combo_boot[] = {KC_SPC, KC_UP, KC_ESC, COMBO_END};
-const uint16_t PROGMEM combo_mouse[] = {MS_BTN4, MS_BTN5, COMBO_END};
+const uint16_t PROGMEM combo_mouse[] = {MS_BTN4, MY_BRWS, COMBO_END};
 const uint16_t PROGMEM combo_mpv[] = {KC_SPC, MS_BTN4, COMBO_END};
 const uint16_t PROGMEM combo_num[] = {KC_F, KC_UP, COMBO_END};
 const uint16_t PROGMEM combo_call[] = {KC_UP, KC_ESC, COMBO_END};
@@ -96,3 +100,26 @@ combo_t key_combos[] = {
     COMBO(combo_call_enter, KC_ENTER),
 };
 // clang-format on
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    os_variant_t detected_os = detected_host_os();
+
+    switch (keycode) {
+        case MY_BRWS:
+            if (record->event.pressed) {
+                switch (detected_os) {
+                    case OS_MACOS:
+                        tap_code16(G(C(A(KC_F))));
+                        break;
+                    case OS_LINUX:
+                        tap_code16(G(KC_F));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            break;
+    }
+
+    return true;
+}
