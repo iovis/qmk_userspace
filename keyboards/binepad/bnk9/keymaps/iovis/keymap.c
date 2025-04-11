@@ -76,7 +76,8 @@ const uint16_t PROGMEM combo_mouse_base[] = {MS_BTN3, MS_BTN2, COMBO_END};
 const uint16_t PROGMEM combo_mpv_base[] = {KC_SPC, KC_LEFT, COMBO_END};
 
 // LAYER_NUM
-const uint16_t PROGMEM combo_zero[] = {KC_1, KC_2, COMBO_END};
+const uint16_t PROGMEM combo_num_base[] = {KC_7, KC_8, COMBO_END};
+const uint16_t PROGMEM combo_num_zero[] = {KC_1, KC_2, COMBO_END};
 
 // LAYER_CALL
 const uint16_t PROGMEM combo_call_base[] = {LSG(KC_R), LSG(KC_E), COMBO_END};
@@ -86,13 +87,16 @@ const uint16_t PROGMEM combo_call_enter[] = {LCAG(KC_V), LCAG(KC_A), COMBO_END};
 // clang-format off
 combo_t key_combos[] = {
     COMBO(combo_boot, QK_BOOT),
+
     COMBO(combo_mouse, TG(LAYER_MOUSE)),
     COMBO(combo_mouse_base, TG(LAYER_MOUSE)),
+
     COMBO(combo_mpv, TG(LAYER_MPV)),
     COMBO(combo_mpv_base, TG(LAYER_MPV)),
 
     COMBO(combo_num, TG(LAYER_NUM)),
-    COMBO(combo_zero, KC_0),
+    COMBO(combo_num_base, TG(LAYER_NUM)),
+    COMBO(combo_num_zero, KC_0),
 
     COMBO(combo_call, TG(LAYER_CALL)),
     COMBO(combo_call_base, TG(LAYER_CALL)),
