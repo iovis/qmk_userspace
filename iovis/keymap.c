@@ -57,6 +57,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
             }
             break;
         case HM_NSPC:
+        case FN_QUOT:
             return true;
         case NU_A:
             switch (other_keycode) {
