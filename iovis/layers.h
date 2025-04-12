@@ -2,14 +2,14 @@
 
 enum layers {
     LAYER_BASE = 0,
-    LAYER_LINUX,
+    LAYER_CALL,
     LAYER_GAME,
-    LAYER_SYM,
+    LAYER_LINUX,
+    LAYER_MOUSE,
+    LAYER_MPV,
     LAYER_NAV,
     LAYER_NUM,
     LAYER_NUMFN,
-    LAYER_MOUSE,
-    LAYER_NUMSYM,
-    LAYER_MPV,
-    LAYER_CALL,
+    LAYER_NUMGM,
+    LAYER_SYM,
 };

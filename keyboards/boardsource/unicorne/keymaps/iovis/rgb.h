@@ -153,28 +153,28 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLUE , ORANG, ORANG, // DEL, ', SFT
     },
 
-    [LAYER_NUMSYM] = {
+    [LAYER_NUMGM] = {
         // Left
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         BLACK,
         CYAN , CYAN , CYAN , // BGT
-        CYAN , CYAN , CYAN , // RFV
-        BLACK, BLACK,
-        CYAN , CYAN , CYAN , // CDE
-        CYAN , CYAN , CYAN , // WSX
-        CYAN , CYAN , CYAN , // ZAQ
-        BLUE , BLUE , BLUE , // TAB, CMD, SFT
+        CYAN , MAGNT, CYAN , // RFV
+        MAGNT, CYAN ,
+        CYAN , MAGNT, MAGNT, // CDE
+        CYAN , MAGNT, CYAN , // WSX
+        BLUE , BLUE , BLUE , // ZAQ
+        RED  , CYAN , CYAN , // TAB, CMD, SFT
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
         BLACK,
-        ORANG, GREEN, ORANG, // NHY
-        CYAN , CYAN , GREEN, // UJM
-        BLACK, BLACK,
-        ORANG, ORANG, ORANG, // ,KI
-        ORANG, ORANG, ORANG, // OL.
-        ORANG, ORANG, ORANG, // /;P
-        BLUE , ORANG, BLUE , // DEL, ', SFT
+        CYAN , CYAN , CYAN , // NHY
+        GREEN, GREEN, GREEN, // UJM
+        GREEN, WHITE,
+        GREEN, GREEN, GREEN, // ,KI
+        GREEN, GREEN, GREEN, // OL.
+        CYAN , CYAN , CYAN , // /;P
+        BLUE , CYAN , BLUE , // DEL, ', SFT
     },
 
     [LAYER_NUMFN] = {

@@ -29,12 +29,12 @@ enum custom_keycodes {
 #define HM_RSFT RSFT_T(KC_ENT)
 #define HM_UNDS LCTL_T(KC_UNDS)
 #define HM_Z    LCTL_T(KC_Z)
+#define MO_NUMG MO(LAYER_NUMGM)
 #define NU_A    LT(LAYER_NUM, KC_A)
 #define NU_D    LT(LAYER_NUM, KC_D)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
-#define TT_NUM  TT(LAYER_NUM)
 #define TG_MOUS TG(LAYER_MOUSE)
 
 #define MOON_LED_LEVEL LED_LEVEL
@@ -248,7 +248,7 @@ void keyboard_post_init_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
 
-    if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM) || layer_state_is(LAYER_NUMSYM)) {
+    if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM) || layer_state_is(LAYER_NUMGM)) {
         if (!process_custom_shift_keys(keycode, record)) return false;
     }
 
