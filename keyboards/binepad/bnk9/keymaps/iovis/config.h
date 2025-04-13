@@ -8,3 +8,6 @@
 // Mouse
 #define MK_KINETIC_SPEED
 #define MOUSEKEY_BASE_SPEED 1200 // Max speed
+
+// Taps
+#define PERMISSIVE_HOLD
