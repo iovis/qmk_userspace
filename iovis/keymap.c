@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 
-#include "features/custom_shift_keys.h"
+#include "custom_shift_keys.h"
+
 #include "iovis/config.h"
 #include "iovis/layers.h"
 
@@ -156,31 +157,8 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_RBRC, KC_RBRC},
     {KC_SCLN, KC_SCLN},
     {KC_SLSH, KC_SLSH},
-
-    // Number layer
-    // {KC_0, KC_0   },
-    // {KC_1, KC_1   },
-    // {KC_2, KC_TILD},
-    // // {KC_3, KC_DOT },
-    // // {KC_4, KC_DLR },
-    // {KC_5, KC_LBRC},
-    // {KC_6, KC_RBRC},
-    // {KC_7, MY_EURO},
-    // {KC_8, KC_LPRN},
-    // {KC_9, KC_RPRN},
 };
 // clang-format on
-
-uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
-
-/// Key Overrides (https://docs.qmk.fm/features/key_overrides)
-#ifdef KEY_OVERRIDE_ENABLE
-const key_override_t equals_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_EQL);
-
-const key_override_t *key_overrides[] = {
-    &equals_key_override,
-};
-#endif
 
 /// Leader (https://docs.qmk.fm/features/leader_key)
 bool original_swap_lctl_lgui = false;
@@ -218,7 +196,7 @@ void leader_end_user(void) {
     }
 }
 
-/// OS Detection
+/// OS Detection (https://docs.qmk.fm/features/os_detection#os-detection)
 #ifdef OS_DETECTION_ENABLE
 uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
     switch (detected_host_os()) {
@@ -247,10 +225,6 @@ void keyboard_post_init_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-
-    if (layer_state_is(LAYER_SYM) || layer_state_is(LAYER_NUM) || layer_state_is(LAYER_NUMGM)) {
-        if (!process_custom_shift_keys(keycode, record)) return false;
-    }
 
     switch (keycode) {
         case HM_UNDS:
