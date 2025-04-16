@@ -12,5 +12,4 @@ MOUSEKEY_ENABLE = yes
 OS_DETECTION_ENABLE = yes
 POINTING_DEVICE_ENABLE = no
 SPACE_CADET_ENABLE = no
-SRC += features/custom_shift_keys.c
 TAP_DANCE_ENABLE = no
