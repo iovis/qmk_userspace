@@ -80,6 +80,7 @@ const uint16_t PROGMEM combo_mpv_base[] = {KC_SPC, KC_LEFT, COMBO_END};
 // LAYER_NUM
 const uint16_t PROGMEM combo_num_base[] = {KC_7, KC_8, COMBO_END};
 const uint16_t PROGMEM combo_num_zero[] = {KC_1, KC_2, COMBO_END};
+const uint16_t PROGMEM combo_num_backspace[] = {KC_8, KC_9, COMBO_END};
 
 // LAYER_CALL
 const uint16_t PROGMEM combo_call_base[] = {LSG(KC_R), LSG(KC_E), COMBO_END};
@@ -99,6 +100,7 @@ combo_t key_combos[] = {
     COMBO(combo_num, TG(LAYER_NUM)),
     COMBO(combo_num_base, TG(LAYER_NUM)),
     COMBO(combo_num_zero, KC_0),
+    COMBO(combo_num_backspace, KC_BSPC),
 
     COMBO(combo_call, TG(LAYER_CALL)),
     COMBO(combo_call_base, TG(LAYER_CALL)),
