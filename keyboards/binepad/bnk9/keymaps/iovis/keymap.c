@@ -76,6 +76,8 @@ const uint16_t PROGMEM combo_mouse_base[] = {MS_BTN3, MS_BTN2, COMBO_END};
 
 // LAYER_MPV
 const uint16_t PROGMEM combo_mpv_base[] = {KC_SPC, KC_LEFT, COMBO_END};
+const uint16_t PROGMEM combo_mpv_quit[] = {KC_F, KC_K, COMBO_END};
+const uint16_t PROGMEM combo_mpv_random[] = {KC_F, KC_K, COMBO_END};
 
 // LAYER_NUM
 const uint16_t PROGMEM combo_num_base[] = {KC_7, KC_8, COMBO_END};
@@ -96,6 +98,8 @@ combo_t key_combos[] = {
 
     COMBO(combo_mpv, TG(LAYER_MPV)),
     COMBO(combo_mpv_base, TG(LAYER_MPV)),
+    COMBO(combo_mpv_quit, KC_Q),
+    COMBO(combo_mpv_random, KC_SLSH),
 
     COMBO(combo_num, TG(LAYER_NUM)),
     COMBO(combo_num_base, TG(LAYER_NUM)),
