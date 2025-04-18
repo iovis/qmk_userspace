@@ -73,6 +73,9 @@ const uint16_t PROGMEM combo_call[] = {KC_UP, KC_ESC, COMBO_END};
 
 // LAYER_MOUSE
 const uint16_t PROGMEM combo_mouse_base[] = {MS_BTN3, MS_BTN2, COMBO_END};
+const uint16_t PROGMEM combo_mouse_slow[] = {MS_BTN1, MS_BTN3, COMBO_END};
+const uint16_t PROGMEM combo_mouse_normal[] = {MS_BTN4, MS_UP, COMBO_END};
+const uint16_t PROGMEM combo_mouse_fast[] = {MS_UP, MS_BTN5, COMBO_END};
 
 // LAYER_MPV
 const uint16_t PROGMEM combo_mpv_base[] = {KC_SPC, KC_LEFT, COMBO_END};
@@ -95,6 +98,9 @@ combo_t key_combos[] = {
 
     COMBO(combo_mouse, TG(LAYER_MOUSE)),
     COMBO(combo_mouse_base, TG(LAYER_MOUSE)),
+    COMBO(combo_mouse_slow, MS_ACL0),
+    COMBO(combo_mouse_normal, MS_ACL1),
+    COMBO(combo_mouse_fast, MS_ACL2),
 
     COMBO(combo_mpv, TG(LAYER_MPV)),
     COMBO(combo_mpv_base, TG(LAYER_MPV)),
