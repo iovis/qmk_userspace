@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [LAYER_MPV] = LAYOUT(
-        TG(LAYER_MPV),
+        KC_M,
         KC_F   , KC_K   , KC_SCLN,
         KC_H   , KC_J   , KC_L   ,
         KC_SPC , KC_LEFT, KC_RGHT
@@ -59,7 +59,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [LAYER_BASE] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
     [LAYER_MOUSE] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)},
     [LAYER_NUM] = {ENCODER_CCW_CW(MS_WHLU, MS_WHLD)},
-    [LAYER_MPV] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
+    [LAYER_MPV] = {ENCODER_CCW_CW(KC_DOWN, KC_UP)},
     [LAYER_CALL] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)},
 };
 // clang-format on
