@@ -3,7 +3,7 @@
 #pragma once
 
 // Combo
-#define COMBO_TERM 25
+#define COMBO_TERM 10
 
 // Mouse
 #define MK_3_SPEED         // Constant speed
