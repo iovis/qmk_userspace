@@ -48,11 +48,9 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
     // Allow same hand holds
     switch (tap_hold_keycode) {
         case HM_Z:
+            // HM_Z uses '*'
             switch (other_keycode) {
-                case KC_SPC:
-                case NU_D:
-                case SY_F:
-                    return true;
+                case KC_E:
                 case KC_Y:
                     return false;
             }
@@ -68,9 +66,9 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LSFT:
                 case MY_MEH:
                     return true;
-                case KC_N:
-                case KC_H:
                 case KC_Y:
+                case KC_H:
+                case KC_N:
                 case KC_P:
                 case SY_SCLN:
                 case NV_SLSH:
