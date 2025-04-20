@@ -172,21 +172,19 @@ void leader_end_user(void) {
     } else if (leader_sequence_one_key(KC_K)) {
         tap_code16(G(S(KC_5)));
     } else if (leader_sequence_one_key(KC_G)) { // Layers
-        if (layer_state_is(LAYER_GAME)) return;
-
         original_swap_lctl_lgui = keymap_config.swap_lctl_lgui;
-        current_base_layer = get_highest_layer(layer_state);
-
         layer_move(LAYER_GAME);
-
+        keymap_config.swap_lctl_lgui = false;
+    } else if (leader_sequence_one_key(KC_D)) {
+        original_swap_lctl_lgui = keymap_config.swap_lctl_lgui;
+        layer_move(LAYER_DWARF);
         keymap_config.swap_lctl_lgui = false;
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(current_base_layer);
         keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_B)) {
-        layer_move(LAYER_BASE);
-    } else if (leader_sequence_one_key(KC_W)) {
-        layer_move(LAYER_LINUX);
+        layer_move(current_base_layer);
+        keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_Z)) { // Keyboard settings
         keymap_config.swap_lctl_lgui = !keymap_config.swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_ENT)) { // QK_BOOT
@@ -200,6 +198,7 @@ uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
     switch (detected_host_os()) {
         case OS_WINDOWS:
         case OS_LINUX:
+            current_base_layer = LAYER_LINUX;
             layer_move(LAYER_LINUX);
             return 0;
         case OS_MACOS:
