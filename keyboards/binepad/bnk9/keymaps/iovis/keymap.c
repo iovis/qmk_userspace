@@ -44,8 +44,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_CALL] = LAYOUT(
         LCAG(KC_B),
-        S(C(KC_K)), LSG(KC_R) , LSG(KC_E) ,
-        LAG(KC_4) , LAG(KC_5) , LAG(KC_6) ,
+        S(C(KC_K)), LSG(KC_R) , G(KC_L)   ,
+        LAG(KC_4) , LAG(KC_5) , LSG(KC_E) ,
         LCAG(KC_B), LCAG(KC_V), LCAG(KC_A)
     )
 };
@@ -86,9 +86,7 @@ const uint16_t PROGMEM combo_num_zero[] = {KC_1, KC_2, COMBO_END};
 const uint16_t PROGMEM combo_num_backspace[] = {KC_8, KC_9, COMBO_END};
 
 // LAYER_CALL
-const uint16_t PROGMEM combo_call_base[] = {LSG(KC_R), LSG(KC_E), COMBO_END};
-const uint16_t PROGMEM combo_call_leave[] = {LAG(KC_5), LAG(KC_6), COMBO_END};
-const uint16_t PROGMEM combo_call_enter[] = {LCAG(KC_V), LCAG(KC_A), COMBO_END};
+const uint16_t PROGMEM combo_call_base[] = {LSG(KC_R), G(KC_L), COMBO_END};
 
 // clang-format off
 combo_t key_combos[] = {
@@ -112,8 +110,6 @@ combo_t key_combos[] = {
 
     COMBO(combo_call, TG(LAYER_CALL)),
     COMBO(combo_call_base, TG(LAYER_CALL)),
-    COMBO(combo_call_leave, G(KC_L)),
-    COMBO(combo_call_enter, KC_ENTER),
 };
 // clang-format on
 
