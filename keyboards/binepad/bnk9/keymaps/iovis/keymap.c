@@ -78,7 +78,7 @@ const uint16_t PROGMEM combo_mouse_fast[] = {MS_UP, MS_BTN5, COMBO_END};
 // LAYER_MPV
 const uint16_t PROGMEM combo_mpv_base[] = {KC_SPC, KC_LEFT, COMBO_END};
 const uint16_t PROGMEM combo_mpv_quit[] = {KC_F, KC_K, COMBO_END};
-const uint16_t PROGMEM combo_mpv_random[] = {KC_F, KC_K, COMBO_END};
+const uint16_t PROGMEM combo_mpv_random[] = {KC_K, KC_SCLN, COMBO_END};
 
 // LAYER_NUM
 const uint16_t PROGMEM combo_num_base[] = {KC_7, KC_8, COMBO_END};
