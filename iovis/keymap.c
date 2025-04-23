@@ -24,7 +24,6 @@ enum custom_keycodes {
 #define M_DASH  S(RALT(KC_MINS))
 
 #define FN_QUOT LT(LAYER_NUMFN, KC_QUOT)
-#define FN_TAB  LT(LAYER_NUMFN, KC_TAB)
 #define HM_ESC  LGUI_T(KC_ESC)
 #define HM_NSPC RSFT_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
@@ -300,9 +299,6 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
         case HM_RSFT:
         case MY_MEH:
         case NU_A:
-        // case NU_D:  // Retro-tapped seems to flush mods (LCTRL)
-        // case NV_SLSH:
-        // case SY_F:
         case SY_SCLN:
             return true;
         case HM_UNDS:
