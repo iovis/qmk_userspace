@@ -48,9 +48,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
     // Allow same hand holds
     switch (tap_hold_keycode) {
         case HM_Z:
-            // HM_Z uses '*'
             switch (other_keycode) {
-                case KC_E:
                 case KC_Y:
                     return false;
             }
