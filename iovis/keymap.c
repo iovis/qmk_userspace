@@ -23,8 +23,9 @@ enum custom_keycodes {
 #define MY_MEH  LCAG_T(KC_SPC)
 #define M_DASH  S(RALT(KC_MINS))
 
+#define FN_ESC  LT(LAYER_NUMFN, KC_ESC)
 #define FN_QUOT LT(LAYER_NUMFN, KC_QUOT)
-#define HM_ESC  LGUI_T(KC_ESC)
+#define FN_SPC  LT(LAYER_NUMFN, KC_SPC)
 #define HM_NSPC RSFT_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
 #define HM_UNDS LCTL_T(KC_UNDS)
@@ -275,7 +276,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case HM_ESC:
         case MY_MEH:
             return 75;
         case HM_NSPC:
@@ -295,8 +295,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case FN_ESC:
         case FN_QUOT:
-        case HM_ESC:
+        case FN_SPC:
         case HM_RSFT:
         case MY_MEH:
         case NU_A:
