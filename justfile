@@ -1,6 +1,9 @@
 qmk_firmware := quote(justfile_directory() / "../qmk_firmware/")
 zsa_firmware := quote(justfile_directory() / "../zsa_firmware/")
 
+# Fix LIBUSB_ACCESS_ERROR (udev rules)
+# https://github.com/zsa/wally/wiki/Linux-install#2-create-a-udev-rule-file
+
 alias dev := compile
 
 default: init

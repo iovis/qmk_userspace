@@ -59,6 +59,22 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         WHITE, CYAN ,
     },
 
+    [LAYER_DWARF] = {
+        // Left
+        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        CYAN , MAGNT,
+
+        // Right
+        GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
+        CYAN , CYAN , CYAN , CYAN , CYAN , ORANG,
+        CYAN , CYAN , CYAN , CYAN , CYAN , CYAN ,
+        CYAN , CYAN , CYAN , CYAN , CYAN , BLUE ,
+        WHITE, CYAN ,
+    },
+
     [LAYER_SYM] = {
         // Left
         BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
@@ -103,24 +119,8 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
         ORANG, GREEN, GREEN, GREEN, ORANG, WHITE,
         ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
-        ORANG, GREEN, GREEN, GREEN, ORANG, ORANG,
+        ORANG, GREEN, GREEN, GREEN, ORANG, BLUE ,
         CYAN , CYAN ,
-    },
-
-    [LAYER_NUMFN] = {
-        // Left
-        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
-        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        MAGNT, YELLW,
-
-        // Right
-        BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        RED  , MAGNT, MAGNT, MAGNT, MAGNT, BLACK,
-        RED  , MAGNT, MAGNT, MAGNT, MAGNT, BLACK,
-        BLACK, MAGNT, MAGNT, MAGNT, MAGNT, BLACK,
-        BLACK, BLACK,
     },
 
     [LAYER_MOUSE] = {
@@ -133,10 +133,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
 
         // Right
         BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
-        ORANG, ORANG, GREEN, ORANG, ORANG, BLACK,
-        MAGNT, GREEN, GREEN, GREEN, MAGNT, BLACK,
-        WHITE, MAGNT,
+        ORANG, ORANG, GREEN, ORANG, ORANG, YELLW,
+        MAGNT, GREEN, GREEN, GREEN, MAGNT, YELLW,
         BLACK, MAGNT, MAGNT, MAGNT, BLACK, WHITE,
+        YELLW, MAGNT,
     },
 };
 // clang-format on
