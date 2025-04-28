@@ -1,7 +1,5 @@
 #include QMK_KEYBOARD_H
 
-#include "custom_shift_keys.h"
-
 #include "iovis/config.h"
 #include "iovis/layers.h"
 
@@ -12,7 +10,6 @@ enum custom_keycodes {
     MY_COLN,
     MY_CODE,
     MY_NWLN,
-    RGB_SLD,
 };
 
 /// Aliases
@@ -146,10 +143,11 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 
 /// Custom Shift Keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
 // clang-format off
+#include "custom_shift_keys.h"
 const custom_shift_key_t custom_shift_keys[] = {
     // Symbols layer (allow fast rolling)
     {KC_EQL,  KC_EQL},
-    {KC_MINS, KC_MINS},
+    // {KC_MINS, KC_MINS},
     {KC_LBRC, KC_LBRC},
     {KC_RBRC, KC_RBRC},
     {KC_SCLN, KC_SCLN},
@@ -261,14 +259,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("\\n");
             }
             break;
-#ifdef RGB_MATRIX_ENABLE
-        case RGB_SLD:
-            if (record->event.pressed) {
-                rgblight_mode(1);
-            }
-
-            return false;
-#endif
     }
 
     return true;

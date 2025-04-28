@@ -7,12 +7,13 @@ enum layers {
     LAYER_GAME,
     LAYER_DWARF,
 
-    LAYER_CALL,
     LAYER_MOUSE,
-    LAYER_MPV,
     LAYER_NAV,
     LAYER_NUM,
+    LAYER_SYM,
+
+    LAYER_CALL,
+    LAYER_MPV,
     LAYER_NUMFN,
     LAYER_NUMGM,
-    LAYER_SYM,
 };

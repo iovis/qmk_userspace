@@ -242,10 +242,10 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         BLACK,
         BLACK, MAGNT, ORANG, // NHY
         ORANG, GREEN, MAGNT, // UJM
-        BLACK, WHITE,
+        YELLW, WHITE,
         MAGNT, GREEN, GREEN, // ,KI
         ORANG, GREEN, MAGNT, // OL.
         BLACK, MAGNT, ORANG, // /;P
-        BLACK, BLACK, WHITE, // DEL, ', SFT
+        YELLW, YELLW, WHITE, // DEL, ', SFT
     },
 };
