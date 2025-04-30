@@ -11,6 +11,7 @@ extern const int left_shift_index;
 
 // clang-format off
 #define BLACK { HSV_BLACK }
+#define BHITE { 128, 60, 255 } // Bluer white if white ends up being pink
 #define BLUE  { HSV_BLUE }
 #define CYAN  { HSV_CYAN }
 #define GREEN { HSV_GREEN }
