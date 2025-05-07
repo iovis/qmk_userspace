@@ -21,8 +21,7 @@ init:
     git stash pop || true
 
 update_community_modules:
-    mkdir -p modules
-    git submodule add --force https://github.com/getreuer/qmk-modules.git modules/getreuer
+    @ # git submodule add https://github.com/getreuer/qmk-modules.git modules/getreuer
     git submodule update --init --recursive
 
 # just setup boardsource/unicorne
