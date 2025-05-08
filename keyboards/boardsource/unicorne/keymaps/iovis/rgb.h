@@ -222,7 +222,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         MAGNT, MAGNT, MAGNT, // ,KI
         MAGNT, MAGNT, MAGNT, // OL.
         MAGNT, MAGNT, MAGNT, // /;P
-        BLACK, BLACK, BLACK, // DEL, ', SFT
+        BLUE , BLACK, BLACK, // DEL, ', SFT
     },
 
     [LAYER_MOUSE] = {
