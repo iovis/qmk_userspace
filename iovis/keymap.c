@@ -44,6 +44,12 @@ enum custom_keycodes {
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
+        case HM_RSFT:
+            switch (other_keycode) {
+                case NV_SLSH:
+                    return true;
+            }
+            break;
         case HM_Z:
             switch (other_keycode) {
                 case KC_Y:
@@ -113,6 +119,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LCTL:
                 case KC_LGUI:
                 case KC_LSFT:
+                case HM_RSFT:
                 case MY_MEH:
                 case KC_H:
                 case KC_J:
