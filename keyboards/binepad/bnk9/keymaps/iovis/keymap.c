@@ -10,6 +10,7 @@ enum custom_keycodes {
 };
 
 #define MY_SPC LCTL_T(KC_SPC)
+#define LC_BRWS LCTL_T(MY_BRWS)
 
 /// Layout
 // clang-format off
@@ -18,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MUTE,
         KC_F   , KC_UP  , KC_ESC ,
         KC_LEFT, KC_DOWN, KC_RGHT,
-        MY_SPC , MS_BTN4, MY_BRWS
+        MY_SPC , MS_BTN4, LC_BRWS
     ),
 
     [LAYER_MOUSE] = LAYOUT(
@@ -64,7 +65,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
 /// Combos (https://docs.qmk.fm/features/combo)
 const uint16_t PROGMEM combo_boot[] = {MY_SPC, KC_UP, KC_ESC, COMBO_END};
-const uint16_t PROGMEM combo_mouse[] = {MS_BTN4, MY_BRWS, COMBO_END};
+const uint16_t PROGMEM combo_mouse[] = {MS_BTN4, LC_BRWS, COMBO_END};
 const uint16_t PROGMEM combo_mpv[] = {MY_SPC, MS_BTN4, COMBO_END};
 const uint16_t PROGMEM combo_num[] = {KC_F, KC_UP, COMBO_END};
 const uint16_t PROGMEM combo_call[] = {KC_UP, KC_ESC, COMBO_END};
