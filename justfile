@@ -20,14 +20,13 @@ init:
     git pull
     git stash pop || true
 
-update_community_modules:
-    @ # git submodule add https://github.com/getreuer/qmk-modules.git modules/getreuer
-    git submodule update --init --recursive
-
 # just setup boardsource/unicorne
-setup keyboard: update_community_modules
+setup keyboard:
     @ # gh repo clone zsa/qmk_firmware zsa_firmware -- -b firmware25
     qmk setup -H {{ if parent_directory(keyboard) == "zsa" { zsa_firmware } else { qmk_firmware } }} --yes
+
+choose keyboard:
+    qmk config user.qmk_home={{ if parent_directory(keyboard) == "zsa" { zsa_firmware } else { qmk_firmware } }}
     qmk config user.keyboard={{ keyboard }}
     qmk config user.keymap=iovis
     qmk compile --compiledb -j0
