@@ -17,6 +17,7 @@ enum custom_keycodes {
 #define MY_CSTB S(C(KC_TAB))
 #define MY_CTAB C(KC_TAB)
 #define MY_EURO S(RALT(KC_2))
+#define MY_LGUI LGUI_T(KC_SPC)
 #define MY_MEH  LCAG_T(KC_SPC)
 #define M_DASH  S(RALT(KC_MINS))
 
@@ -65,6 +66,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LCTL:
                 case KC_LGUI:
                 case KC_LSFT:
+                case MY_LGUI:
                 case MY_MEH:
                     return true;
                 case KC_Y:
@@ -82,6 +84,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LALT:
                 case KC_LCTL:
                 case KC_LSFT:
+                case MY_LGUI:
                 case MY_MEH:
                 case NV_SLSH:
                     return true;
@@ -95,6 +98,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_E: // allow for chords in different hands, like =>
                 case KC_LALT:
                 case KC_LGUI:
+                case MY_LGUI:
                 case MY_MEH:
                     return true;
             }
@@ -120,6 +124,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LGUI:
                 case KC_LSFT:
                 case HM_RSFT:
+                case MY_LGUI:
                 case MY_MEH:
                 case KC_H:
                 case KC_J:
@@ -273,6 +278,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case MY_LGUI:
         case MY_MEH:
             return 75;
         case HM_NSPC:
@@ -296,6 +302,7 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
         case FN_QUOT:
         case FN_SPC:
         case HM_RSFT:
+        case MY_LGUI:
         case MY_MEH:
         case NU_A:
         case SY_SCLN:
