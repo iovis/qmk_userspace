@@ -44,8 +44,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_SYM] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, KC_BSPC,
     _______, KC_GRV , KC_LABK, KC_RABK, KC_DLR , MY_COLN,                       KC_PERC, KC_AMPR, KC_ASTR, KC_PIPE, KC_EQL , KC_UNDS,
-    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_SLSH,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_COLN,
-    _______, KC_TILD, KC_BSLS, KC_AT  , KC_HASH, KC_CIRC,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
+    _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_TILD,                       KC_DQUO, KC_LCBR, KC_LPRN, KC_RPRN, KC_SCLN, KC_COLN,
+    _______, KC_SLSH, KC_BSLS, KC_AT  , KC_HASH, KC_CIRC,                       KC_QUES, KC_RCBR, KC_LBRC, KC_RBRC, KC_HASH, KC_ENT ,
                                                  _______, KC_0   ,     MY_CODE, _______
   ),
 
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______,                       KC_ASTR, KC_7   , KC_8   , KC_9   , KC_EQL , QK_LLCK,
     _______, _______, _______, _______, _______, _______,                       KC_SLSH, KC_4   , KC_5   , KC_6   , KC_PLUS, KC_COLN,
     _______, _______, _______, _______, _______, _______,                       KC_COMM, KC_1   , KC_2   , KC_3   , KC_MINS, KC_ENT ,
-                                                 _______, KC_0   ,     KC_DOT , KC_SPC
+                                                 _______, KC_DOT ,     KC_0   , KC_SPC
   ),
 
   [LAYER_MOUSE] = LAYOUT_voyager(
