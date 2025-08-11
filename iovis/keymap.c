@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 
+#include "keycodes.h"
 #include "iovis/config.h"
 #include "iovis/layers.h"
 
