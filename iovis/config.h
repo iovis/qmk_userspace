@@ -17,6 +17,9 @@
 #define COMBO_TERM 25
 #define COMBO_SHOULD_TRIGGER
 
+// Deferred execution
+#define MAX_DEFERRED_EXECUTORS 10
+
 // Leader
 // #define LEADER_PER_KEY_TIMING
 // #define LEADER_TIMEOUT 250

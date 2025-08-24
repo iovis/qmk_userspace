@@ -178,6 +178,27 @@ void leader_end_user(void) {
     }
 }
 
+/// SM_TD (https://github.com/stasmarkin/sm_td)
+#include "sm_td.h"
+
+smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
+    // Causes layers to get stuck?
+    // if (!layer_state_is(LAYER_BASE) && !layer_state_is(LAYER_LINUX)) return SMTD_RESOLUTION_UNHANDLED;
+
+    switch (keycode) {
+        SMTD_LT(KC_A, LAYER_NUM);
+        SMTD_LT(KC_D, LAYER_NUM);
+        SMTD_LT(KC_ESC, LAYER_NUMFN);
+        SMTD_LT(KC_F, LAYER_SYM);
+        SMTD_LT(KC_SCLN, LAYER_SYM);
+        SMTD_LT(KC_SLSH, LAYER_NAV);
+        SMTD_MT(KC_Z, KC_LCTL);
+        SMTD_MT(KC_ENT, KC_RSFT);
+    }
+
+    return SMTD_RESOLUTION_UNHANDLED;
+}
+
 /// OS Detection (https://docs.qmk.fm/features/os_detection#os-detection)
 #ifdef OS_DETECTION_ENABLE
 uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
