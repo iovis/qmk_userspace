@@ -87,7 +87,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LSFT:
                 case MY_LGUI:
                 case MY_MEH:
-                case NV_SLSH:
                     return true;
                 case KC_LGUI:
                     // Prioritize LGUI in Linux
