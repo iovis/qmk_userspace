@@ -30,7 +30,7 @@ enum custom_keycodes {
 #define HM_UNDS LCTL_T(KC_UNDS)
 #define HM_Z    LCTL_T(KC_Z)
 #define MO_NUMG MO(LAYER_NUMGM)
-#define NU_A    LT(LAYER_NUM, KC_A)
+#define NU_A    LT(LAYER_NUMGM, KC_A)
 #define NU_D    LT(LAYER_NUM, KC_D)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_F    LT(LAYER_SYM, KC_F)
