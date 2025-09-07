@@ -19,6 +19,7 @@ init:
     git stash
     git pull
     git stash pop || true
+    git submodule update --init --recursive
 
 # just setup boardsource/unicorne
 setup keyboard:
