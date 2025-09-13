@@ -165,13 +165,9 @@ void leader_end_user(void) {
         tap_code16(G(S(KC_4)));
     } else if (leader_sequence_one_key(KC_K)) {
         tap_code16(G(S(KC_5)));
-    } else if (leader_sequence_one_key(KC_G)) { // Layers
+    } else if (leader_sequence_one_key(KC_D)) { // Layers
         original_swap_lctl_lgui = keymap_config.swap_lctl_lgui;
         layer_move(LAYER_GAME);
-        keymap_config.swap_lctl_lgui = false;
-    } else if (leader_sequence_one_key(KC_D)) {
-        original_swap_lctl_lgui = keymap_config.swap_lctl_lgui;
-        layer_move(LAYER_DWARF);
         keymap_config.swap_lctl_lgui = false;
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(current_base_layer);

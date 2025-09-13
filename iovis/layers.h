@@ -5,7 +5,6 @@ enum layers {
     LAYER_BASE = 0,
     LAYER_LINUX,
     LAYER_GAME,
-    LAYER_DWARF,
 
     LAYER_MOUSE,
     LAYER_NAV,
