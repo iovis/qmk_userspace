@@ -5,27 +5,18 @@
 #include "iovis/layers.h"
 
 enum custom_keycodes {
-    MY_ARRW = SAFE_RANGE,
-    MY_FARW,
-    MY_MEMO,
+    MY_CODE = SAFE_RANGE,
     MY_COLN,
-    MY_CODE,
-    MY_NWLN,
 };
 
 /// Aliases
 // clang-format off
 #define MY_CSTB S(C(KC_TAB))
 #define MY_CTAB C(KC_TAB)
-#define MY_EURO S(RALT(KC_2))
-#define MY_LGUI LGUI_T(KC_SPC)
 #define MY_MEH  LCAG_T(KC_SPC)
-#define M_DASH  S(RALT(KC_MINS))
 
 #define FN_ESC  LT(LAYER_NUMFN, KC_ESC)
 #define FN_QUOT LT(LAYER_NUMFN, KC_QUOT)
-#define FN_SPC  LT(LAYER_NUMFN, KC_SPC)
-#define HM_NSPC RSFT_T(KC_SPC)
 #define HM_RSFT RSFT_T(KC_ENT)
 #define HM_UNDS LCTL_T(KC_UNDS)
 #define HM_Z    LCTL_T(KC_Z)
@@ -37,10 +28,6 @@ enum custom_keycodes {
 #define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
 #define TG_MOUS TG(LAYER_MOUSE)
-
-#define MOON_LED_LEVEL LED_LEVEL
-#define TG_LCLR TOGGLE_LAYER_COLOR
-#define RGB_FWD RGB_MODE_FORWARD
 // clang-format on
 
 /// Chordal Hold
@@ -59,8 +46,8 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                     return false;
             }
             break;
-        case HM_NSPC:
         case FN_QUOT:
+        case NG_ESC:
             return true;
         case NG_A:
             switch (other_keycode) {
@@ -68,7 +55,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LCTL:
                 case KC_LGUI:
                 case KC_LSFT:
-                case MY_LGUI:
                 case MY_MEH:
                     return true;
                 case KC_Y:
@@ -86,7 +72,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LALT:
                 case KC_LCTL:
                 case KC_LSFT:
-                case MY_LGUI:
                 case MY_MEH:
                     return true;
                 case KC_LGUI:
@@ -100,7 +85,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_W: // allow for chords in different hands, like ::<
                 case KC_LALT:
                 case KC_LGUI:
-                case MY_LGUI:
                 case MY_MEH:
                     return true;
             }
@@ -126,7 +110,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LGUI:
                 case KC_LSFT:
                 case HM_RSFT:
-                case MY_LGUI:
                 case MY_MEH:
                 case KC_H:
                 case KC_J:
@@ -243,21 +226,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
-        case MY_ARRW:
-            if (record->event.pressed) {
-                SEND_STRING("->");
-            }
-            break;
-        case MY_FARW:
-            if (record->event.pressed) {
-                SEND_STRING("=>");
-            }
-            break;
-        case MY_MEMO:
-            if (record->event.pressed) {
-                SEND_STRING("||=");
-            }
-            break;
         case MY_COLN:
             if (record->event.pressed) {
                 SEND_STRING("::");
@@ -268,11 +236,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("```");
             }
             break;
-        case MY_NWLN:
-            if (record->event.pressed) {
-                SEND_STRING("\\n");
-            }
-            break;
     }
 
     return true;
@@ -280,10 +243,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MY_LGUI:
         case MY_MEH:
             return 75;
-        case HM_NSPC:
         case HM_Z:
             return 130;
         case NV_SLSH:
@@ -302,12 +263,9 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case FN_ESC:
         case FN_QUOT:
-        case FN_SPC:
         case HM_RSFT:
-        case MY_LGUI:
         case MY_MEH:
         case NG_A:
-        case NG_ESC:
         case SY_SCLN:
             return true;
         case HM_UNDS:
