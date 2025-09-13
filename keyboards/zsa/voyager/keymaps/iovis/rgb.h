@@ -44,22 +44,6 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [LAYER_GAME] = {
         // Left
         BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
-        CYAN , BLUE , CYAN , MAGNT, CYAN , CYAN ,
-        CYAN , BLUE , MAGNT, MAGNT, MAGNT, CYAN ,
-        CYAN , BLUE , CYAN , CYAN , CYAN , CYAN ,
-        CYAN , MAGNT,
-
-        // Right
-        GREEN, GREEN, GREEN, GREEN, GREEN, BLUE ,
-        CYAN , CYAN , CYAN , CYAN , CYAN , GREEN,
-        CYAN , CYAN , CYAN , CYAN , CYAN , CYAN ,
-        CYAN , CYAN , CYAN , CYAN , CYAN , BLUE ,
-        BHITE, CYAN ,
-    },
-
-    [LAYER_DWARF] = {
-        // Left
-        BLUE , GREEN, GREEN, GREEN, GREEN, GREEN,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
         BLUE , CYAN , CYAN , CYAN , CYAN , CYAN ,
