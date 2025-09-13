@@ -15,4 +15,5 @@ enum layers {
     LAYER_MPV,
     LAYER_NUMFN,
     LAYER_NUMGM,
+    LAYER_NUMGI,
 };
