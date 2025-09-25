@@ -276,7 +276,6 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case NU_D:
         case SY_F:
             // Allow to register holds when double tapping
             return 0;
