@@ -34,6 +34,9 @@ enum custom_keycodes {
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     // Allow same hand holds
     switch (tap_hold_keycode) {
+        case FN_QUOT:
+        case NG_ESC:
+            return true;
         case HM_RSFT:
             switch (other_keycode) {
                 case NV_SLSH:
@@ -46,9 +49,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                     return false;
             }
             break;
-        case FN_QUOT:
-        case NG_ESC:
-            return true;
         case NG_A:
             switch (other_keycode) {
                 case KC_LALT:
@@ -74,15 +74,13 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LSFT:
                 case MY_MEH:
                     return true;
-                case KC_LGUI:
-                    // Prioritize LGUI in Linux
-                    if (layer_state_is(LAYER_BASE)) return true;
             }
             break;
         case SY_F:
             switch (other_keycode) {
                 case KC_E: // allow for chords in different hands, like =>
                 case KC_W: // allow for chords in different hands, like ::<
+                case KC_BSPC:
                 case KC_LALT:
                 case KC_LGUI:
                 case MY_MEH:
