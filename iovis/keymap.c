@@ -124,12 +124,10 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
 
 /// Combos (https://docs.qmk.fm/features/combo)
 const uint16_t PROGMEM combo_caps_word[] = {KC_DOT, NV_SLSH, COMBO_END};
-const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_mouse[] = {NV_SLSH, HM_RSFT, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo_caps_word, CW_TOGG),
-    COMBO(combo_esc, KC_ESC),
     COMBO(combo_mouse, TG(LAYER_MOUSE)),
 };
 
