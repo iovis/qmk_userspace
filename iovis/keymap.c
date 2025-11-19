@@ -173,7 +173,7 @@ void leader_end_user(void) {
         keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_Z)) { // Keyboard settings
         keymap_config.swap_lctl_lgui = !keymap_config.swap_lctl_lgui;
-    } else if (leader_sequence_one_key(KC_ENT)) { // QK_BOOT
+    } else if (leader_sequence_one_key(KC_QUOT)) { // QK_BOOT
         reset_keyboard();
     }
 }
