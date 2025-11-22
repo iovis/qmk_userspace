@@ -9,8 +9,8 @@ enum custom_keycodes {
     MY_BRWS = SAFE_RANGE,
 };
 
-#define MY_SPC  LCTL_T(KC_SPC)
 #define MY_BTN4 LCTL_T(MS_BTN4)
+#define MY_SPC  LCTL_T(KC_SPC)
 #define MY_LEFT LCTL_T(KC_LEFT)
 
 /// Layout
@@ -126,15 +126,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 switch (detected_os) {
                     case OS_MACOS:
                         tap_code16(G(C(A(KC_F))));
-                        break;
+                        return false;
                     case OS_LINUX:
                         tap_code16(G(KC_F));
-                        break;
+                        return false;
                     default:
                         break;
                 }
             }
-            break;
+
+            return true;
+
+        case MY_BTN4:
+            if (record->tap.count == 0) { // On hold
+                if (record->event.pressed) { // On key down
+                    switch (detected_os) {
+                        case OS_MACOS:
+                            register_code(KC_LALT);
+                            return false;
+                        default:
+                            return true;
+                    }
+                } else { // On key up
+                    switch (detected_os) {
+                        case OS_MACOS:
+                            unregister_code(KC_LALT);
+                            return false;
+                        default:
+                            return true;
+                    }
+                }
+            }
+
+            // On tap, continue default handling
+            return true;
     }
 
     return true;
