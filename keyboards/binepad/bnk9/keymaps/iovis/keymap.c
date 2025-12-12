@@ -32,9 +32,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_MPV] = LAYOUT(
         KC_M,
-        KC_F   , KC_K   , KC_SCLN,
-        KC_H   , KC_J   , KC_L   ,
-        MY_SPC , MY_LEFT, KC_RGHT
+        KC_F   , S(KC_K), KC_SCLN,
+        KC_J   , S(KC_J), KC_L   ,
+        KC_K   , MY_LEFT, KC_RGHT
     ),
 
     [LAYER_NUM] = LAYOUT(
@@ -79,9 +79,9 @@ const uint16_t PROGMEM combo_mouse_normal[] = {MS_BTN4, MS_UP, COMBO_END};
 const uint16_t PROGMEM combo_mouse_fast[] = {MS_UP, MS_BTN5, COMBO_END};
 
 // LAYER_MPV
-const uint16_t PROGMEM combo_mpv_base[] = {MY_SPC, MY_LEFT, COMBO_END};
-const uint16_t PROGMEM combo_mpv_quit[] = {KC_F, KC_K, COMBO_END};
-const uint16_t PROGMEM combo_mpv_random[] = {KC_K, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM combo_mpv_base[] = {KC_K, MY_LEFT, COMBO_END};
+const uint16_t PROGMEM combo_mpv_quit[] = {KC_F, S(KC_K), COMBO_END};
+const uint16_t PROGMEM combo_mpv_random[] = {S(KC_K), KC_SCLN, COMBO_END};
 
 // LAYER_NUM
 const uint16_t PROGMEM combo_num_base[] = {KC_7, KC_8, COMBO_END};
