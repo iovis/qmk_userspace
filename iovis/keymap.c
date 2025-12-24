@@ -18,7 +18,7 @@ enum custom_keycodes {
 #define FN_ESC  LT(LAYER_NUMFN, KC_ESC)
 #define FN_QUOT LT(LAYER_NUMFN, KC_QUOT)
 #define HM_RSFT RSFT_T(KC_ENT)
-#define HM_UNDS LCTL_T(KC_UNDS)
+#define HM_UNDS RCTL_T(KC_UNDS)
 #define HM_Z    LCTL_T(KC_Z)
 #define MO_NUMG MO(LAYER_NUMGM)
 #define NG_A    LT(LAYER_NUMGM, KC_A)
