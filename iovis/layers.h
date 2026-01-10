@@ -8,12 +8,12 @@ enum layers {
 
     LAYER_MOUSE,
     LAYER_NAV,
-    LAYER_NUM,
+    LAYER_NUM, // keep under LAYER_SYM
     LAYER_SYM,
 
     LAYER_CALL,
     LAYER_MPV,
     LAYER_NUMFN,
-    LAYER_NUMGM,
+    LAYER_NUMGM, // keep over LAYER_SYM
     LAYER_NUMGI,
 };

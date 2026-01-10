@@ -24,6 +24,7 @@ enum custom_keycodes {
 #define NG_A    LT(LAYER_NUMGM, KC_A)
 #define NG_ESC  LT(LAYER_NUMGI, KC_ESC)
 #define NU_D    LT(LAYER_NUM, KC_D)
+#define NU_PLUS LT(LAYER_NUMGM, KC_PLUS)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
 #define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
@@ -215,6 +216,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // Can't have complicated keys on Mod Tap
                 // See [[Mod Tap#Caveats]] section
                 tap_code16(KC_UNDS); // Send KC_UNDS on tap
+                return false;
+            }
+            break;
+        case NU_PLUS:
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_PLUS);
                 return false;
             }
             break;
