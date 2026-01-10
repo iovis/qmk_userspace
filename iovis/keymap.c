@@ -1,4 +1,4 @@
-#include QMK_KEYBOARD_H
+#include QMK_KEYBOARD_H // IWYU pragma: keep
 
 #include "keycodes.h"
 #include "iovis/config.h"

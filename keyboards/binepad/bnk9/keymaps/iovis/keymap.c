@@ -1,20 +1,20 @@
 // Copyright 2025 David Marchante
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include QMK_KEYBOARD_H
+#include QMK_KEYBOARD_H // IWYU pragma: keep
 
-#include "./rgb.h" // IWYU pragma: keep
+#include "./rgb.h"
 
 enum custom_keycodes {
     MY_BRWS = SAFE_RANGE,
 };
 
+// clang-format off
 #define MY_BTN4 LCTL_T(MS_BTN4)
 #define MY_SPC  LCTL_T(KC_SPC)
 #define MY_LEFT LCTL_T(KC_LEFT)
 
 /// Layout
-// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_BASE] = LAYOUT(
         KC_MUTE,
@@ -138,7 +138,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
 
         case MY_BTN4:
-            if (record->tap.count == 0) { // On hold
+            if (record->tap.count == 0) {    // On hold
                 if (record->event.pressed) { // On key down
                     switch (detected_os) {
                         case OS_MACOS:
