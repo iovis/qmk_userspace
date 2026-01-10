@@ -15,5 +15,4 @@ enum layers {
     LAYER_MPV,
     LAYER_NUMFN,
     LAYER_NUMGM, // keep over LAYER_SYM
-    LAYER_NUMGI,
 };
