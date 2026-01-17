@@ -79,6 +79,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
         case SY_F:
             switch (other_keycode) {
                 case KC_E: // allow for chords in different hands, like =>
+                case KC_S: // allow for chords in different hands, like -[]
                 case KC_W: // allow for chords in different hands, like ::<
                 case KC_BSPC:
                 case KC_LALT:
