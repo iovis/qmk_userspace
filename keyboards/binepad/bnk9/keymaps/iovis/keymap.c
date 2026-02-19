@@ -3,7 +3,7 @@
 
 #include QMK_KEYBOARD_H // IWYU pragma: keep
 
-#include "./rgb.h"
+#include "./rgb.h" // IWYU pragma: keep
 
 enum custom_keycodes {
     MY_BRWS = SAFE_RANGE,
