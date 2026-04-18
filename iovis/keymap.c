@@ -91,20 +91,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                     return true;
             }
             break;
-        case SY_SCLN:
-            switch (other_keycode) {
-                case KC_Y:
-                case KC_U:
-                case KC_I:
-                case KC_O:
-                case KC_H:
-                case KC_J:
-                case KC_K:
-                case KC_N:
-                case KC_COMM:
-                    return true;
-            }
-            break;
         case NV_SLSH:
             switch (other_keycode) {
                 case KC_LALT:
