@@ -20,6 +20,7 @@ enum custom_keycodes {
 #define HM_RSFT RSFT_T(KC_ENT)
 #define HM_UNDS RCTL_T(KC_UNDS)
 #define HM_Z    LCTL_T(KC_Z)
+#define MO_NUMF MO(LAYER_NUMFN)
 #define MO_NUMG MO(LAYER_NUMGM)
 #define NG_A    LT(LAYER_NUMGM, KC_A)
 #define NU_D    LT(LAYER_NUM, KC_D)
@@ -231,9 +232,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case FN_ESC:
         case MY_MEH:
             return 75;
+        case FN_ESC:
         case HM_Z:
             return 130;
         case NV_SLSH:
