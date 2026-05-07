@@ -1,3 +1,6 @@
 [submodule "modules/getreuer"]
 	path = modules/getreuer
 	url = https://github.com/getreuer/qmk-modules.git
+[submodule "modules/binepad"]
+	path = modules/binepad
+	url = https://github.com/binepad-global/qmk_modules.git
