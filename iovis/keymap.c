@@ -240,9 +240,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case NV_SLSH:
         case SY_SCLN:
             return 140;
+        case SY_F:
+            return 150;
         case HM_RSFT:
         case NU_D:
-        case SY_F:
             return 175;
         default:
             return TAPPING_TERM;
