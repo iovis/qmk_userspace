@@ -71,7 +71,7 @@ const uint16_t PROGMEM combo_mouse[] = {MY_BTN4, MY_BRWS, COMBO_END};
 const uint16_t PROGMEM combo_mpv[] = {KC_SPC, MY_BTN4, COMBO_END};
 const uint16_t PROGMEM combo_num[] = {KC_F, KC_UP, COMBO_END};
 const uint16_t PROGMEM combo_call[] = {KC_UP, KC_ESC, COMBO_END};
-const uint16_t PROGMEM combo_base_sidebar[] = {KC_SPC, MY_BRWS, COMBO_END};
+const uint16_t PROGMEM combo_base_sidebar[] = {KC_SPC, KC_LEFT, COMBO_END};
 const uint16_t PROGMEM combo_base_enter[] = {MY_BRWS, KC_RGHT, COMBO_END};
 
 // LAYER_MOUSE
