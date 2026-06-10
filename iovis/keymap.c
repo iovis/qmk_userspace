@@ -152,6 +152,8 @@ void leader_end_user(void) {
         tap_code16(G(S(KC_4)));
     } else if (leader_sequence_one_key(KC_K)) {
         tap_code16(G(S(KC_5)));
+    } else if (leader_sequence_one_key(KC_L)) {
+        tap_code16(G(S(KC_6)));
     } else if (leader_sequence_one_key(KC_D)) { // Layers
         original_swap_lctl_lgui = keymap_config.swap_lctl_lgui;
         layer_move(LAYER_GAME);
