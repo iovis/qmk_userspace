@@ -35,7 +35,6 @@ choose keyboard:
 compile:
     qmk lint
     qmk compile -j0
-    fish -ic pause_if_err
 
 flash:
     @ # cp boardsource_unicorne_iovis.uf2 /Volumes/RPI-RP2
