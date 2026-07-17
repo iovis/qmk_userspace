@@ -157,6 +157,10 @@ void leader_end_user(void) {
         layer_move(LAYER_GAME);
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(current_base_layer);
+    } else if (leader_sequence_one_key(KC_N)) { // Enable NKRO
+        clear_keyboard();
+        keymap_config.nkro = true;
+        eeconfig_update_keymap(&keymap_config);
     } else if (leader_sequence_one_key(KC_QUOT)) { // QK_BOOT
         reset_keyboard();
     }

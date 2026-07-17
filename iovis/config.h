@@ -36,6 +36,9 @@
 #define MK_W_INTERVAL_1 80  // Time between scroll steps
 #define MK_W_INTERVAL_2 60  // Time between scroll steps
 
+// NKRO
+#define NKRO_DEFAULT_ON true
+
 // RGB
 #define RGB_MATRIX_TIMEOUT 300000
 // #define RGB_MATRIX_DEFAULT_VAL 15 // Initial brightness
