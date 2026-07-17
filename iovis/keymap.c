@@ -140,7 +140,6 @@ const custom_shift_key_t custom_shift_keys[] = {
 // clang-format on
 
 /// Leader (https://docs.qmk.fm/features/leader_key)
-bool original_swap_lctl_lgui = false;
 uint8_t current_base_layer = LAYER_BASE;
 
 void leader_end_user(void) {
@@ -155,17 +154,9 @@ void leader_end_user(void) {
     } else if (leader_sequence_one_key(KC_L)) {
         tap_code16(G(S(KC_6)));
     } else if (leader_sequence_one_key(KC_D)) { // Layers
-        original_swap_lctl_lgui = keymap_config.swap_lctl_lgui;
         layer_move(LAYER_GAME);
-        keymap_config.swap_lctl_lgui = false;
     } else if (leader_sequence_one_key(KC_F)) {
         layer_move(current_base_layer);
-        keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
-    } else if (leader_sequence_one_key(KC_B)) {
-        layer_move(current_base_layer);
-        keymap_config.swap_lctl_lgui = original_swap_lctl_lgui;
-    } else if (leader_sequence_one_key(KC_Z)) { // Keyboard settings
-        keymap_config.swap_lctl_lgui = !keymap_config.swap_lctl_lgui;
     } else if (leader_sequence_one_key(KC_QUOT)) { // QK_BOOT
         reset_keyboard();
     }
