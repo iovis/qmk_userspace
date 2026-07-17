@@ -164,27 +164,33 @@ void leader_end_user(void) {
 
 /// OS Detection (https://docs.qmk.fm/features/os_detection#os-detection)
 #ifdef OS_DETECTION_ENABLE
-uint32_t custom_os_settings(uint32_t trigger_name, void *cb_arg) {
-    switch (detected_host_os()) {
+bool process_detected_host_os_user(os_variant_t detected_os) {
+    uint8_t detected_base_layer;
+
+    switch (detected_os) {
         case OS_WINDOWS:
         case OS_LINUX:
-            current_base_layer = LAYER_LINUX;
-            layer_move(LAYER_LINUX);
-            return 0;
+            detected_base_layer = LAYER_LINUX;
+            break;
         case OS_MACOS:
         case OS_IOS:
-            return 0;
+            detected_base_layer = LAYER_BASE;
+            break;
         default:
-            return 200;
+            return true;
     }
+
+    bool on_base_layer = layer_state_is(LAYER_BASE) || layer_state_is(LAYER_LINUX);
+    current_base_layer = detected_base_layer;
+
+    if (on_base_layer) layer_move(current_base_layer);
+
+    return true;
 }
 #endif
 
 /// User macro callbacks (https://docs.qmk.fm/feature_macros)
 void keyboard_post_init_user(void) {
-#ifdef OS_DETECTION_ENABLE
-    defer_exec(100, custom_os_settings, NULL);
-#endif
 #ifdef RGB_MATRIX_ENABLE
     rgb_matrix_enable();
 #endif
