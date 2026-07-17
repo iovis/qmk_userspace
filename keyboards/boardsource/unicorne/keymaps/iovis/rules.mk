@@ -9,5 +9,4 @@ OLED_ENABLE = no
 UNICORNE_SRC := $(filter-out lib/oled.c,$(SRC))
 SRC = $(UNICORNE_SRC)
 
-ROOT_DIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
-include ${ROOT_DIR}../../../../../rules.mk
+include $(QMK_USERSPACE)/rules.mk
