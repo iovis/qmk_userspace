@@ -218,12 +218,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 SEND_STRING("::");
             }
-            break;
+            return false;
         case MY_CODE:
             if (record->event.pressed) {
                 SEND_STRING("```");
             }
-            break;
+            return false;
     }
 
     return true;
