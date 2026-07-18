@@ -126,6 +126,18 @@ bool process_detected_host_os_user(os_variant_t detected_os) {
     return true;
 }
 
+// Use debounced OS resolution for the encoder
+// From: modules/binepad/bp_encoder_configurable/bp_encoder_configurable.c
+uint8_t get_encoder_resolution(void) {
+    switch (current_os) {
+        case OS_MACOS:
+        case OS_IOS:
+            return ENCODER_RESOLUTION_MACOS;
+        default:
+            return ENCODER_RESOLUTION;
+    }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MY_BRWS:
