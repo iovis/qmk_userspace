@@ -120,48 +120,40 @@ combo_t key_combos[] = {
 };
 // clang-format on
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    os_variant_t detected_os = detected_host_os();
+static os_variant_t current_os = OS_UNSURE;
+bool process_detected_host_os_user(os_variant_t detected_os) {
+    current_os = detected_os;
+    return true;
+}
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MY_BRWS:
             if (record->event.pressed) {
-                switch (detected_os) {
+                switch (current_os) {
                     case OS_MACOS:
                         tap_code16(G(C(A(KC_F))));
-                        return false;
+                        break;
                     case OS_LINUX:
                         tap_code16(G(KC_F));
-                        return false;
+                        break;
                     default:
                         break;
                 }
             }
-
-            return true;
+            return false;
 
         case MY_BTN4:
-            if (record->tap.count == 0) {    // On hold
-                if (record->event.pressed) { // On key down
-                    switch (detected_os) {
-                        case OS_MACOS:
-                            register_code(KC_LALT);
-                            return false;
-                        default:
-                            return true;
-                    }
-                } else { // On key up
-                    switch (detected_os) {
-                        case OS_MACOS:
-                            unregister_code(KC_LALT);
-                            return false;
-                        default:
-                            return true;
-                    }
+            if (record->tap.count == 0 && current_os == OS_MACOS) {
+                if (record->event.pressed) {
+                    register_code(KC_LALT);
+                } else {
+                    unregister_code(KC_LALT);
                 }
+                return false;
             }
 
-            // On tap, continue default handling
+            // Let QMK produce MS_BTN4 on tap or LCTL on a non-macOS hold.
             return true;
     }
 
