@@ -22,7 +22,3 @@
 
 // Taps
 #define PERMISSIVE_HOLD
-
-#if defined(ENCODER_RESOLUTION) && defined(OS_DETECTION_ENABLE)
-#    define ENCODER_RESOLUTION_MACOS 4
-#endif
