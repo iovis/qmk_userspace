@@ -68,6 +68,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case SY_SCLN:
                 case KC_N:
                 case NV_SLSH:
+                case KC_SPC:
                     return false;
             }
             break;
@@ -78,6 +79,8 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_LSFT:
                 case MY_MEH:
                     return true;
+                case KC_SPC:
+                    return false;
             }
             break;
         case SY_F:
@@ -105,6 +108,8 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
                 case KC_K:
                 case KC_L:
                     return true;
+                case KC_SPC:
+                    return false;
             }
     }
 
