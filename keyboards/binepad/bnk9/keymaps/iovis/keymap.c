@@ -12,7 +12,8 @@ enum custom_keycodes {
 // clang-format off
 #define MY_BTN4 LCTL_T(MS_BTN4)
 #define MY_SPC  LCTL_T(KC_SPC)
-#define MY_LEFT LCTL_T(KC_LEFT)
+#define MY_H    LCTL_T(KC_H)
+#define MY_ENT  LSFT_T(KC_ENT)
 
 /// Layout
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -32,9 +33,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [LAYER_MPV] = LAYOUT(
         KC_M,
-        KC_F   , S(KC_K), KC_SCLN,
+        KC_F   , S(KC_L), KC_SCLN,
         KC_J   , S(KC_J), KC_L   ,
-        KC_K   , MY_LEFT, KC_RGHT
+        KC_SPC , MY_H   , MY_ENT
     ),
 
     [LAYER_NUM] = LAYOUT(
@@ -82,9 +83,9 @@ const uint16_t PROGMEM combo_mouse_normal[] = {MS_BTN4, MS_UP, COMBO_END};
 const uint16_t PROGMEM combo_mouse_fast[] = {MS_UP, MS_BTN5, COMBO_END};
 
 // LAYER_MPV
-const uint16_t PROGMEM combo_mpv_base[] = {KC_K, MY_LEFT, COMBO_END};
-const uint16_t PROGMEM combo_mpv_quit[] = {KC_F, S(KC_K), COMBO_END};
-const uint16_t PROGMEM combo_mpv_random[] = {S(KC_K), KC_SCLN, COMBO_END};
+const uint16_t PROGMEM combo_mpv_base[] = {KC_SPC, MY_H, COMBO_END};
+const uint16_t PROGMEM combo_mpv_quit[] = {KC_F, S(KC_L), COMBO_END};
+const uint16_t PROGMEM combo_mpv_random[] = {S(KC_L), KC_SCLN, COMBO_END};
 
 // LAYER_NUM
 const uint16_t PROGMEM combo_num_base[] = {KC_7, KC_8, COMBO_END};
