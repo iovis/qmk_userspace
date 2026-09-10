@@ -135,12 +135,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 switch (current_os) {
                     case OS_MACOS:
+                    case OS_IOS:
                         tap_code16(G(C(A(KC_F))));
                         break;
-                    case OS_LINUX:
-                        tap_code16(G(KC_F));
-                        break;
                     default:
+                        tap_code16(G(KC_F));
                         break;
                 }
             }

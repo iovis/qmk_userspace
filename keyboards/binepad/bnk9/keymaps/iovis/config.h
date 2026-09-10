@@ -20,5 +20,8 @@
 #define MK_W_INTERVAL_1 80  // Time between scroll steps
 #define MK_W_INTERVAL_2 60  // Time between scroll steps
 
+// OS Detection
+#define OS_DETECTION_KEYBOARD_RESET
+
 // Taps
 #define PERMISSIVE_HOLD
