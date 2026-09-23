@@ -26,6 +26,7 @@ enum custom_keycodes {
 #define NU_D    LT(LAYER_NUM, KC_D)
 #define NU_PLUS LT(LAYER_NUMGM, KC_PLUS)
 #define NV_SLSH LT(LAYER_NAV, KC_SLSH)
+#define NV_TAB  LT(LAYER_NAV, KC_TAB)
 #define SY_F    LT(LAYER_SYM, KC_F)
 #define SY_SCLN LT(LAYER_SYM, KC_SCLN)
 #define TG_MOUS TG(LAYER_MOUSE)
@@ -262,6 +263,7 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
         case HM_RSFT:
         case MY_MEH:
         case NG_A:
+        case NV_TAB:
         case SY_SCLN:
             return true;
         case HM_UNDS:
