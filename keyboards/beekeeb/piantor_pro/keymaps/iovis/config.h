@@ -5,14 +5,11 @@
 
 #include "iovis/config.h"
 
-// VIA
-// #define DYNAMIC_KEYMAP_LAYER_COUNT 5
+// Ignore the board's GP17 handedness pin to make the USB half act as left.
+// Connecting USB to the physical right half would then swap the hands.
+// Flash both halves if you use either USB port
+// #undef SPLIT_HAND_PIN
 
-// UEFI was not detecting some of my boards
-#define SPLIT_WATCHDOG_ENABLE
-#define SPLIT_MAX_CONNECTION_ERRORS 30
-#define SPLIT_CONNECTION_CHECK_TIMEOUT 500
-#define SPLIT_USB_DETECT
-#define SPLIT_USB_TIMEOUT 1000
-#define SPLIT_USB_TIMEOUT_POLL 20
-#define SPLIT_WATCHDOG_TIMEOUT 5000
+// Use the outer top-right Backspace key for right Bootmagic
+#define BOOTMAGIC_ROW_RIGHT 4
+#define BOOTMAGIC_COLUMN_RIGHT 0
