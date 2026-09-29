@@ -146,6 +146,12 @@ const custom_shift_key_t custom_shift_keys[] = {
 /// Leader (https://docs.qmk.fm/features/leader_key)
 uint8_t current_base_layer = LAYER_BASE;
 
+bool leader_add_user(uint16_t keycode) {
+    // All configured sequences are one key long, so finish on the first key.
+    (void)keycode;
+    return true;
+}
+
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_P)) { // 1Password popup
         tap_code16(G(S(KC_BSLS)));
