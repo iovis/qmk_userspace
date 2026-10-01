@@ -1,7 +1,5 @@
 #pragma once
 
-#include "iovis/layers.h"
-
 // Debugging
 // #define DEBUG_MATRIX_SCAN_RATE
 
@@ -20,6 +18,9 @@
 #define COMBO_SHOULD_TRIGGER
 
 // Custom Shift Keys
+#ifndef __ASSEMBLER__
+#    include "iovis/layers.h"
+#endif
 #define CUSTOM_SHIFT_KEYS_LAYER_MASK ((1UL << LAYER_SYM) | (1UL << LAYER_NUM) | (1UL << LAYER_NUMGM))
 
 // Leader
